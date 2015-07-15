@@ -1,0 +1,2 @@
+class GotchisController < ApplicationController
+end

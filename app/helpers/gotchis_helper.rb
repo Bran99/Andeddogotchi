@@ -1,0 +1,2 @@
+module GotchisHelper
+end
