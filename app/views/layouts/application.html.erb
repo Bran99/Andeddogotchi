@@ -2,48 +2,73 @@
 <html>
 <head>
   <title>Andeddogotchi</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-<script>
+  <div id="fb-root"></div>
+<script id='facebook-code'>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1653771621504537',
       xfbml      : true,
       version    : 'v2.4'
     });
+
+    FB.getLoginStatus(function (response) {
+      if (response.status === 'connected') {
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+          document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+          if ($('.disable-by-facebook')) {
+            $('.disable-by-facebook').remove();
+          };
+        });
+      } else {
+        FB.login();
+      }
+    });
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
   };
+</script>
+<script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
+<script>
+//
+// (function(d, s, id){
+//    var js, fjs = d.getElementById(s);
+//    if (d.getElementById(id)) {
+//      return;
+//    } else {
+//      js = d.createElement("script");
+//      js.id = id;
+//      js.src = "//connect.facebook.net/en_US/sdk.js";
+//      fjs.parentNode.insertBefore(js, fjs);
+//    }
+//  })(document, 'facebook-code', 'facebook-jssdk');
 
-  FB.ui({
-    method: 'share_open_graph',
-    action_type: 'og.likes',
-    action_properties: JSON.stringify({
-      object:'https://developers.facebook.com/docs/',
-    })
-  }, function(response){
-    // Debug response (optional)
-    console.log(response);
-  });
-
-  FB.getLoginStatus(function(response) {
-    if (response.status === 'connected') {
-      console.log('Logged in.');
-    } else {
-      FB.login();
-    }
-  });
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+  //  FB.ui({
+  //    method: 'share_open_graph',
+  //    action_type: 'og.likes',
+  //    action_properties: JSON.stringify({
+  //      object:'https://developers.facebook.com/docs/',
+  //    })
+  //  }, function(response){
+  //    // Debug response (optional)
+  //    console.log(response);
+  //  });
 
 
 </script>
-
+<div id="status"></div>
+<div
+  class="fb-like"
+  data-width="450"
+  data-show-faces="true">
+</div>
+<div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="true" data-auto-logout-link="true"></div>
 <%= yield %>
 
 </body>
