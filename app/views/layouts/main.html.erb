@@ -1,14 +1,12 @@
 <% unless current_user %>
   <div class="modal">
-    <form action="<%= users_path %>" method="post">
+    <form id="signup" action="<%= users_path %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="text" name="user[name]" placeholder="Name">
-      <input type="password" name="user[password]" placeholder="Password">
+      <input class="disable-by-facebook" type="text" name="user[name]" placeholder="Name">
+      <input class="disable-by-facebook" type="password" name="user[password]" placeholder="Password">
+      <input class="disable-by-facebook" type="email" name="user[email]" placeholder="e-mail">
       <input type="text" name="user[gotchi_name]" placeholder="Name your Andeddogotchi">
-      <span>Optional</span>
-      <input type="email" name="user[email]" placeholder="e-mail">
       <input type="submit" value="Let's Go!">
     </form>
-    <div>Facebook says hi</div>
   </div>
 <% end %>
