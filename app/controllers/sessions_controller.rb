@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(user_params[:password])
       login!(@user)
       levelup!(@user)
-      redirect_to root_path
+      redirect_to new_gotchis_path
     else
       flash[:message] = "Incorrect login information!  Try again..."
       redirect_to root_path
