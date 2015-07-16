@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
 
   def logout!
     session[:current_user_id] = nil
+    session[:current_gotchi_age] = nil
   end
 
   def current_user
