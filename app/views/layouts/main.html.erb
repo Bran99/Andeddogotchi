@@ -23,7 +23,7 @@
       <input class='button' type="submit" value="Let's Go!">
     </form>
     <h3>Log In!</h3>
-    <form class="col s12" action="session_path" method="post">
+    <form class="col s12" action="<%= session_path %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <div class="input-field">
         <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
