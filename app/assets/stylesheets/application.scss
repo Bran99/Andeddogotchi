@@ -69,7 +69,7 @@ body{
 
 .logout{
   margin-top:-4%;
-  margin-left:70%;
+  margin-left:90%;
 }
 /*<><><><><>GAME<><><><><>*/
 
@@ -310,12 +310,15 @@ body{
 
 .fb-login-button{
   background:whitesmoke;
-  border-radius: 5px;
-  width:5vw;
+  border-radius: 1px;
+  width:10vw;
+  margin-left:90%;
+  font-family: 'VT323', monospace;
 }
 
-.fb-like{
-  background-color: white;
-  display:none;
-  opacity: 0;
+.mvs.fsm{
+  font-family: 'VT323', monospace;
+
 }
+
+
