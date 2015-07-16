@@ -30,7 +30,7 @@
   </div>
 <% end %>
 <% if current_user %>
-  <form id="logout" class="col s12" action="<%= session_path %>" method="post">
+  <form id="logout" class="col s12 logout"  action="<%= session_path %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
     <input class="button" type="submit" value="Log out">
