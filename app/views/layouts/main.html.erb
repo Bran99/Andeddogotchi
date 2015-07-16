@@ -1,12 +1,41 @@
-<% unless current_user %>
+
   <div class="modal">
+    <h3>Create an account!</h3>
     <form id="signup" action="<%= users_path %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input class="disable-by-facebook" type="text" name="user[name]" placeholder="Name">
       <input class="disable-by-facebook" type="password" name="user[password]" placeholder="Password">
       <input class="disable-by-facebook" type="email" name="user[email]" placeholder="e-mail">
       <input type="text" name="user[gotchi_name]" placeholder="Name your Andeddogotchi">
-      <input type="submit" value="Let's Go!">
+      <input class='button' type="submit" value="Let's Go!">
     </form>
   </div>
-<% end %>
+
+
+
+<div class='play'>
+  <div class='nav'>
+    <label>Food</label>
+    <div class='brain'></div> 
+    <div class='foot'></div>
+    <label>Rest</label>
+    <div class='sun'></div> 
+    <div class='moon'></div>
+  </div>
+  <div class='stats'>
+    <label>Fullness</label> 
+    <div class='bar'><div class='fillfull'></div></div>
+    <label>Health</label>
+    <div class='bar'><div class='fillhealth'></div></div>
+    <label>Age</label>
+
+  </div>
+  <div class='grave'></div>
+  <div class='grave'></div>
+  <div class='grave'></div>
+  <div class='grave'></div>
+  <div class='grave'></div>
+
+  <div class='grave'></div>
+</div>
+

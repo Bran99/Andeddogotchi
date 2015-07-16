@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150715155605) do
     t.string   "password_digest",                                 null: false
     t.string   "email"
     t.string   "gotchi_name",                                     null: false
-    t.datetime "last_login",      default: '2015-07-15 17:58:48', null: false
+    t.datetime "last_login",      default: '2015-07-15 21:14:14', null: false
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
