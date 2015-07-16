@@ -17,35 +17,55 @@
  */
 
 @import "materialize/components/color";
-/*$primary-color: color("blue", "lighten-2") !default;*/
+
+$secondary-color: color("green", "lighten-2") !default;
+
 @import 'materialize';
 @import url(http://fonts.googleapis.com/css?family=VT323);
+
+/*<><><><><>SIGN UP<><><><><>*/
 .modal{
   visibility: visible;
   display:block;
-  opacity: .8;
-  padding:5px 100px;
+  opacity: .9;
+  padding:5px;
   z-index: 999;
-  width:80vw;
+  width:60vw;
   height:100%;
 }
 .modal h3{
   text-align:center;
   padding-top:5px;
-  color:#999;
+  color:#666;
   font-family: 'VT323', monospace;
   text-shadow:1px 1px 1px green;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
+
+.modal input{
+  text-align: center;
+  font-size: 2em;
+  font-family: 'VT323', monospace;
+  letter-spacing: .1em;
+}
 .button{
  font-family: 'VT323', monospace;
  font-size: 1.5em;
+ display: block;
+ margin:0 auto;
+ color:#666;
+}
+
+.button:hover{
+  background-color: lightgreen;
 }
 
 body{
   background:black;
 }
+
+/*<><><><><>GAME<><><><><>*/
 
 .play{
   display:inline-block;
@@ -61,65 +81,9 @@ body{
 
 }
 
-.grave{
-  width:100px;
-  height:100px;
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/8Bit_Tombstone.svg');
-  background-size:100% auto;
-  background-repeat: no-repeat;
-  position: absolute;
-  display: inline-block;
-  bottom:0;
-  transition:1s;
-  z-index: 999;
-}
-.grave:first-child{
-  height:175px;
-  margin-left:55%;
-  transform:rotate(-5deg);
-  z-index: 888;
-}
 
-.grave:nth-child(2){
-  height:175px;
-  margin-left:5%;
-  transform:rotate(-5deg);
-  z-index: 888;
-}
-.grave:nth-child(3){
-  height:150px;
-  margin-left:15%;
-  transform:rotate(2deg);
-}
-.grave:nth-child(4){
-  margin-bottom:3%;
-  margin-left:29%;
-  transform: rotate(-1deg);
-  
-}
-.grave:nth-child(5){
-  height:120px;
-  margin-bottom:1%;
-  margin-left:50%;
-  transform: rotate(-4deg);
-}
 
-.grave:nth-child(6){
-  margin-bottom:3%;
-  margin-left:70%;
-  transform:rotate(5deg);
-}
-
-.grave:nth-child(7){
-  margin-bottom:-5%;
-  margin-left:80%;
-  height:175px;
-  transform:rotate(-2deg);
-}
-
-.grave:hover{
- height:Calc(20% + 10px);
-}
+/*<><><><><>NAV & STATS<><><><><>*/
 
 .nav{
   background-color: whitesmoke;
@@ -155,7 +119,7 @@ body{
   background-color: whitesmoke;
   height:25%;
   width:20vw;
-  margin-top:20%;
+  bottom:20%;
   margin-left: 3%;
   position:fixed;
   display: inline-block;
@@ -236,9 +200,115 @@ body{
   border-radius: 15px;
 }
 
+
+.fillhealth{
+  background-color: red;
+  height:100%;
+  width:1%;
+  border-radius: 20px;
+}
+.fillhealth.one{
+  width:33%;
+}
+.fillhealth.two{
+  background-color: green;
+  width:66%;
+}
+.fillhealth.three{
+  background-color: green;
+  width:100%;
+}
+
+
+
 .fillfull{
   background-color: red;
   height:100%;
-  width:25%;
+  width:1%;
   border-radius: 20px;
+}
+.fillfull.one{
+  width:33%;
+}
+.fillfull.two{
+  background-color: green;
+  width:66%;
+}
+.fillfull.three{
+  background-color: green;
+  width:100%;
+}
+/*<><><><><>GRAVEYARD<><><><><>*/
+.grave{
+  width:100px;
+  height:100px;
+  background-image: url('https://dl.dropboxusercontent.com/u/89221222/8Bit_Tombstone.svg');
+  background-size:100% auto;
+  background-repeat: no-repeat;
+  position: absolute;
+  display: inline-block;
+  bottom:0;
+  transition:1s;
+  z-index: 999;
+}
+.grave:first-child{
+  height:175px;
+  margin-left:55%;
+  transform:rotate(-5deg);
+  z-index: 888;
+}
+
+.grave:nth-child(2){
+  height:175px;
+  margin-left:5%;
+  transform:rotate(-5deg);
+  z-index: 888;
+}
+.grave:nth-child(3){
+  height:150px;
+  margin-left:15%;
+  transform:rotate(2deg);
+}
+.grave:nth-child(4){
+  margin-bottom:3%;
+  margin-left:29%;
+  transform: rotate(-1deg);
+  
+}
+.grave:nth-child(5){
+  height:120px;
+  margin-bottom:1%;
+  margin-left:50%;
+  transform: rotate(-4deg);
+}
+
+.grave:nth-child(6){
+  margin-bottom:3%;
+  margin-left:70%;
+  transform:rotate(5deg);
+}
+
+.grave:nth-child(7){
+  margin-bottom:-5%;
+  margin-left:80%;
+  height:175px;
+  transform:rotate(-2deg);
+}
+
+.grave:hover{
+ height:Calc(20% + 10px);
+}
+
+/*<><><><><>FACEBOOK<><><><><>*/
+
+.fb-login-button{
+  background:whitesmoke;
+  border-radius: 5px;
+  width:5vw;
+}
+
+.fb-like{
+  background-color: white;
+  display:none;
+  opacity: 0;
 }
