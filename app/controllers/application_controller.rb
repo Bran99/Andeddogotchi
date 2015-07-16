@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def main
+    #default password for facebook users
+    @secret = 'aaratiisthebombdiggity!'
     render 'layouts/main'
   end
 
