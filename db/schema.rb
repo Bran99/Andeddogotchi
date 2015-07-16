@@ -27,9 +27,8 @@ ActiveRecord::Schema.define(version: 20150715155605) do
   create_table "users", force: :cascade do |t|
     t.string   "name",                                            null: false
     t.string   "password_digest",                                 null: false
-    t.string   "email"
     t.string   "gotchi_name",                                     null: false
-    t.datetime "last_login",      default: '2015-07-16 17:39:51', null: false
+    t.datetime "last_login",      default: '2015-07-16 19:38:42', null: false
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end

@@ -14,12 +14,6 @@ class ApplicationController < ActionController::Base
   private
 
   def login!(user)
-    user.last_login = Time.now
-    if user.last_login - user.created_at > 1.day
-      levelup!(user)
-    elsif user.last_login - user.created_at > 2.day
-      levelup!(user)
-    end
     session[:current_user_id] = user.id
   end
 
@@ -29,6 +23,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by(id: session[:current_user_id])
+
   end
 
   def require_current_user
@@ -39,6 +34,12 @@ class ApplicationController < ActionController::Base
   end
 
   def levelup!(user)
-    user.gotchi.age += 1
+    user.last_login = Time.now
+
+    if user.last_login - user.created_at > 1.day
+      user.levelup!
+    elsif user.last_login - user.created_at > 2.day
+      user.levelup!
+    end
   end
 end
