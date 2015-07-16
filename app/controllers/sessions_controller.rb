@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(name: user_params[:username])
 
-    if @user.authenticate(user_params[:password])
+    if @user && @user.authenticate(user_params[:password])
       login!
-      redirect_to user_path(@user.id)
+      redirect_to root_path
     else
       flash[:message] = "Incorrect login information!  Try again..."
     end

@@ -4,18 +4,13 @@
     <form id="signup" class="col s12" action="<%= users_path %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <div class="input-field">
-      <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
-      <label for='name'>Name</label>
+        <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
+        <label for='name'>Name</label>
       </div>
 
       <div class="input-field">
-      <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
-      <label for='password'>Password</label>
-      </div>
-
-      <div class="input-field">
-      <input id='email' class="disable-by-facebook validate" type="email" name="user[email]" >
-      <label for='email'>Email</label>
+        <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
+        <label for='password'>Password</label>
       </div>
 
       <div class='row'>
@@ -26,6 +21,19 @@
       </div>
 
       <input class='button' type="submit" value="Let's Go!">
+    </form>
+    <h3>Log In!</h3>
+    <form class="col s12" action="<%= session_path %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <div class="input-field">
+        <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
+        <label for="name">Name</label>
+      </div>
+      <div class="input-field">
+        <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
+        <label for="password">Password</label>
+      </div>
+      <input class="button" type="submit" value="Let's Go!">
     </form>
   </div>
 <% end %>
