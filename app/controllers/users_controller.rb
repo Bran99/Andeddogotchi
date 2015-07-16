@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login!(@user)
-      redirect_to @user
+      redirect_to root_path
     else
       flash[:message] = @user.errors.full_messages_to_sentence
       redirect_to new_user_path

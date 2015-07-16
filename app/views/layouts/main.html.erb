@@ -1,4 +1,4 @@
-
+<% unless current_user %>
   <div class="modal">
     <h3>Create an account!</h3>
     <form id="signup" class="col s12" action="<%= users_path %>" method="post">
@@ -12,7 +12,7 @@
       <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
       <label for='password'>Password</label>
       </div>
-      
+
       <div class="input-field">
       <input id='email' class="disable-by-facebook validate" type="email" name="user[email]" >
       <label for='email'>Email</label>
@@ -28,20 +28,26 @@
       <input class='button' type="submit" value="Let's Go!">
     </form>
   </div>
-
-
+<% end %>
+<% if current_user %>
+  <form id="logout" class="col s12" action="<%= session_path %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input class="button" type="submit" value="Log out">
+  </form>
+<% end %>
 
 <div class='play'>
   <div class='nav'>
     <label>Food</label>
-    <div class='brain'></div> 
+    <div class='brain'></div>
     <div class='foot'></div>
     <label>Rest</label>
-    <div class='sun'></div> 
+    <div class='sun'></div>
     <div class='moon'></div>
   </div>
   <div class='stats'>
-    <label>Fullness</label> 
+    <label>Fullness</label>
     <div class='bar'><div class='fillfull'></div></div>
     <label>Health</label>
     <div class='bar'><div class='fillhealth'></div></div>
@@ -56,5 +62,3 @@
 
   <div class='grave'></div>
 </div>
-
-
