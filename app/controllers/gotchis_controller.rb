@@ -1,6 +1,7 @@
 class GotchisController < ApplicationController
   def new
     @user = User.find_by(id: session[:current_user_id])
+    puts @user.gotchi
     unless @user.gotchi
       @user.gotchi = Gotchi.new
       @user.gotchi.save
