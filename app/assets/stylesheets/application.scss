@@ -249,6 +249,7 @@ body{
   height:10%;
   border:1px solid black;
   border-radius: 15px;
+  overflow: hidden;
 }
 
 
@@ -257,7 +258,6 @@ body{
   background-color: red;
   height:100%;
   width:1%;
-  border-radius: 20px;
 }
 .fillhealth.one{
   width:33%;
@@ -277,7 +277,6 @@ body{
   background-color: red;
   height:100%;
   width:1%;
-  border-radius: 20px;
 }
 .fillfull.one{
   width:33%;
