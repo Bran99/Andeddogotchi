@@ -15,7 +15,6 @@
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
-    console.log(response.status);
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
@@ -31,11 +30,7 @@
       // they are logged into this app or not.
       document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.';
       if ($('.modal')) {
-        console.log("I'm even here and yeah!");
-        var $input1 = $('<input class="disable-by-facebook" type="text" name="user[name]" placeholder="Name">');
-        var $input2 = $('<input class="disable-by-facebook" type="password" name="user[password]" placeholder="Password">');
-        var $input3 = $('<input class="disable-by-facebook" type="email" name="user[email]" placeholder="e-mail">');
-        $('#signup').prepend($input3).prepend($input2).prepend($input1);
+        setTimeout(console.log('waiting'), 5000);
       };
     };
   };
@@ -76,15 +71,21 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      // console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
+  }
+
+  function makeChanges(status) {
+    if (status === 'unknown') {
+      console.log("I'm even here and yeah!");
+      var $input1 = $('<input class="disable-by-facebook" type="text" name="user[name]" placeholder="Name">');
+      var $input2 = $('<input class="disable-by-facebook" type="password" name="user[password]" placeholder="Password">');
+      var $input3 = $('<input class="disable-by-facebook" type="email" name="user[email]" placeholder="e-mail">');
+      $('#signup').prepend($input3).prepend($input2).prepend($input1)
+    }
   }
 </script>
 <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
@@ -94,7 +95,6 @@
   data-width="450"
   data-show-faces="true">
 </div>
-<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
 <div onlogin="checkLoginState()" class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="true" data-auto-logout-link="true"></div>
 <%= yield %>
 
