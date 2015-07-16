@@ -20,17 +20,21 @@ ActiveRecord::Schema.define(version: 20150715155605) do
     t.integer  "fullity",    default: 100, null: false
     t.integer  "rest",       default: 100, null: false
     t.integer  "age",        default: 1,   null: false
+    t.integer  "user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  add_index "gotchis", ["user_id"], name: "index_gotchis_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                                            null: false
     t.string   "password_digest",                                 null: false
     t.string   "gotchi_name",                                     null: false
-    t.datetime "last_login",      default: '2015-07-16 20:36:35', null: false
+    t.datetime "last_login",      default: '2015-07-16 20:52:09', null: false
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
 
+  add_foreign_key "gotchis", "users"
 end

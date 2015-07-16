@@ -36,6 +36,17 @@
       <input class="letsgo button" type="submit" value="Let's Go!">
     </form>
   </div>
+  <script>
+  $('#togglelog').on('click', function(){
+     $('.signup').addClass('collapse');
+     $('.login').addClass('show');
+  })
+
+  $('#new').on('click', function(){
+     $('.login').removeClass('show');
+     $('.signup').removeClass('collapse');
+  })
+  </script>
 <% end %>
 <% if current_user %>
   <form id="logout" class="col s12 logout"  action="<%= session_path %>" method="post">
@@ -43,6 +54,8 @@
     <input type="hidden" name="_method" value="DELETE">
     <input class="letsgo button" type="submit" value="Log out">
   </form>
+
+  <div class="Gotchi-<%= current_gotchi_age %>"><%= current_user.gotchi_name %></div>
 <% end %>
 
 <div class='play'>
@@ -60,6 +73,7 @@
     <label>Health</label>
     <div class='bar'><div class='fillhealth'></div></div>
     <label>Age</label>
+    <span><%= current_gotchi_age %></span>
 
   </div>
   <div class='grave'></div>
@@ -70,16 +84,3 @@
 
   <div class='grave'></div>
 </div>
-
-<script> 
-$('#togglelog').on('click', function(){
-   $('.signup').addClass('collapse');
-   $('.login').addClass('show');
-})
-
-$('#new').on('click', function(){
-   $('.login').removeClass('show');
-   $('.signup').removeClass('collapse');  
-})
-
-</script>

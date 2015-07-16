@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
+  helper_method :current_gotchi_age
 
   def main
     #default password for facebook users
@@ -14,6 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def login!(user)
+    user.last_login = Time.now
     session[:current_user_id] = user.id
   end
 
@@ -23,7 +25,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by(id: session[:current_user_id])
+  end
 
+  def current_gotchi_age
+    @current_gotchi_age ||= session[:current_gotchi_age]
   end
 
   def require_current_user
@@ -34,11 +39,9 @@ class ApplicationController < ActionController::Base
   end
 
   def levelup!(user)
-    user.last_login = Time.now
-
-    if user.last_login - user.created_at > 1.day
+    if user.last_login - user.created_at > 2.day
       user.levelup!
-    elsif user.last_login - user.created_at > 2.day
+    elsif user.last_login - user.created_at > 1.day
       user.levelup!
     end
   end
