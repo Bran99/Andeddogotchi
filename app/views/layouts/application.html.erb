@@ -19,9 +19,6 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      if ($('.disable-by-facebook')) {
-        $('.disable-by-facebook').remove();
-      }
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -30,9 +27,9 @@
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
       document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.';
-      if ($('.modal')) {
-        setTimeout(console.log('waiting'), 5000);
-      };
+      $('[name="user[name]"]').val('');
+      $('[name="user[password]"]').val('');
+      $
     };
   };
 
@@ -42,9 +39,6 @@
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
-      if ($('.disable-by-facebook')) {
-        $('.disable-by-facebook').remove();
-      }
     });
   }
 
@@ -74,19 +68,11 @@
 
   function testAPI() {
     FB.api('/me', function(response) {
+      $('[name="user[name]"]').val(response.name);
+      $('[name="user[password]"]').val("<%= @secret %>");
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
-  }
-
-  function makeChanges(status) {
-    if (status === 'unknown') {
-      console.log("I'm even here and yeah!");
-      var $input1 = $('<input class="disable-by-facebook" type="text" name="user[name]" placeholder="Name">');
-      var $input2 = $('<input class="disable-by-facebook" type="password" name="user[password]" placeholder="Password">');
-      var $input3 = $('<input class="disable-by-facebook" type="email" name="user[email]" placeholder="e-mail">');
-      $('#signup').prepend($input3).prepend($input2).prepend($input1)
-    }
   }
 </script>
 <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
