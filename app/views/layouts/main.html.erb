@@ -1,12 +1,30 @@
 
   <div class="modal">
     <h3>Create an account!</h3>
-    <form id="signup" action="<%= users_path %>" method="post">
+    <form id="signup" class="col s12" action="<%= users_path %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input class="disable-by-facebook" type="text" name="user[name]" placeholder="Name">
-      <input class="disable-by-facebook" type="password" name="user[password]" placeholder="Password">
-      <input class="disable-by-facebook" type="email" name="user[email]" placeholder="e-mail">
-      <input type="text" name="user[gotchi_name]" placeholder="Name your Andeddogotchi">
+      <div class="input-field">
+      <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
+      <label for='name'>Name</label>
+      </div>
+
+      <div class="input-field">
+      <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
+      <label for='password'>Password</label>
+      </div>
+      
+      <div class="input-field">
+      <input id='email' class="disable-by-facebook validate" type="email" name="user[email]" >
+      <label for='email'>Email</label>
+      </div>
+
+      <div class='row'>
+        <div class="input-field">
+          <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
+          <label for='gotchiname'>Name your Andeddogotchi</label>
+        </div>
+      </div>
+
       <input class='button' type="submit" value="Let's Go!">
     </form>
   </div>
@@ -38,4 +56,5 @@
 
   <div class='grave'></div>
 </div>
+
 

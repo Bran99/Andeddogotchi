@@ -25,12 +25,12 @@
   display:block;
   opacity: .8;
   padding:5px 100px;
-  text-align:center;
   z-index: 999;
   width:80vw;
   height:100%;
 }
 .modal h3{
+  text-align:center;
   padding-top:5px;
   color:#999;
   font-family: 'VT323', monospace;
@@ -145,7 +145,10 @@ body{
 
 }
 
-label{
+.play label{
+  font-family: 'VT323', monospace;
+}
+.nav label{
   font-family: 'VT323', monospace;
 }
 .stats{
