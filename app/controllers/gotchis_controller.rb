@@ -14,8 +14,9 @@ class GotchisController < ApplicationController
 
   def update
     # if Parameters["health_action"] == "brain"
-      puts "hi"
-      render json: 'hey'
+    @gotchi = current_user.gotchi
+    @gotchi.fullity -= 33
+    render json: @gotchi
     # end
   end
 
