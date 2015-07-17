@@ -13,15 +13,28 @@ class GotchisController < ApplicationController
   end
 
   def update
-    # if Parameters["health_action"] == "brain"
     @gotchi = current_user.gotchi
-    @gotchi.fullity -= 33
+    if gotchi_params[:health_action] == "brain"
+      @gotchi.fullity += 33
+      @gotchi.save
+    elsif gotchi_params[:health_action] == "tick"
+      @gotchi.fullity -= 33
+      @gotchi.save
+    end
+
     render json: @gotchi
-    # end
   end
 
-  def destroy(user)
-    user.gotchi.destroy
+  def destroy
+    session[:current_gotchi_age] = nil
+    current_user.gotchi.destroy
+
+    render json: current_user
+  end
+
+  private
+  def gotchi_params
+    params.require(:gotchi).permit(:health_action)
   end
 
 end
