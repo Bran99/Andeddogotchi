@@ -23,6 +23,16 @@ $secondary-color: color("green", "lighten-2") !default;
 @import 'materialize';
 @import url(http://fonts.googleapis.com/css?family=VT323);
 
+
+body{
+    background: -webkit-linear-gradient(black, midnightblue, maroon); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(black, midnightblue, maroon); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(black, midnightblue, maroon); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(black, midnightblue, maroon); /* Standard syntax */
+  background-repeat: no-repeat;
+  height:100vh;
+  overflow: hidden;
+}
 /*<><><><><>SIGN UP<><><><><>*/
 .login{
   opacity: 0;
@@ -106,9 +116,6 @@ $secondary-color: color("green", "lighten-2") !default;
 }
 
 
-body{
-  background:black;
-}
 
 
 
@@ -117,45 +124,77 @@ body{
   margin-left:90%;
 }
 /*<><><><><>GAME<><><><><>*/
+canvas{
+  position:absolute;
+  z-index: 2;
+  margin-top:0%;
 
+}
 .play{
+  position: relative;
+  z-index: 777;
   display:inline-block;
   width:100%;
   height:80vh;
-  /*background-image: url('https://dl.dropboxusercontent.com/u/89221222/NightSky.svg');*/
-  background-size:100% auto;
-  background-repeat: no-repeat;
-  background: -webkit-linear-gradient(black, midnightblue, maroon); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(black, midnightblue, maroon); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(black, midnightblue, maroon); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(black, midnightblue, maroon); /* Standard syntax */
-  transition: background, 1s, ease-in;
-}
-
-.morning{
-  background: -webkit-linear-gradient(white, skyblue,white, black); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(white, skyblue,white, black); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(white, skyblue,white, black); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(white, skyblue,white, black); /* Standard syntax */
 
 }
+
+/*.morning{
+  background: -webkit-linear-gradient(white, skyblue,white); /* For Safari 5.1 to 6.0 */
+  /*background: -o-linear-gradient(white, skyblue,white);  For Opera 11.1 to 12.0 
+  background: -moz-linear-gradient(white, skyblue,white); /* For Firefox 3.6 to 15 */
+  /*background: linear-gradient(white, skyblue,white); /* Standard syntax */
+
+/*}*/
 
 
 /*<><><><><>MESSAGE<><><><><><>*/
 .messagealert{
   position: fixed;
-  top:5%;
-  left:15%;
+  top:8%;
+  left:13%;
   border-radius: 5px;
   padding:5px;
   color:black;
-  font-size: 1em;
+  font-size: 1rem;
   z-index: 777;
-  height:5%;
-  width:21%;
   background-color: cornsilk;
   opacity: .9;
   font-family: 'VT323', monospace;
+  transition:1s;
+  opacity: 0;
+  -webkit-animation-name: floating;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+
+.showmessage{
+  opacity: 1;
+}
+
+
+
+.triangle{
+  position: absolute;
+  width:15px;
+  height:15px;
+  margin-top:-5px;
+  margin-left: 10px;
+  transform: rotate(45deg);
+  background-color: cornsilk;
+}
+
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translateY(0%);  
+  }
+  50% {
+    -webkit-transform: translateY(8%);  
+  } 
+  100% {
+    -webkit-transform: translateY(0%);
+  }     
 }
 
 /*<><><><><>NAV & STATS<><><><><>*/
@@ -164,11 +203,11 @@ body{
   background-color: whitesmoke;
   height:40vh;
   width:8vw;
-  margin-top:-1%;
+  margin-top:0;
   margin-left: 3%;
   position:fixed;
   display: inline-block;
-  z-index: 0;
+  z-index: 999;
   padding:5px;
   border-radius:5px;
   opacity: .5;
@@ -194,11 +233,11 @@ body{
   background-color: whitesmoke;
   height:28%;
   width:20vw;
-  bottom:25%;
+  bottom:20%;
   margin-left: 3%;
   position:fixed;
   display: inline-block;
-  z-index: 0;
+  z-index: 999;
   border-radius:5px;
   opacity: .5;
 
@@ -319,13 +358,19 @@ body{
   width:100%;
 }
 
-
+.agedisplay{
+  font-family: 'VT323', monospace;
+  text-align: center;
+  display: block;
+}
 /*<><><><><>GOTCHIS<><><><><>*/
 .gotchi-1{
   background-image:url('https://dl.dropboxusercontent.com/u/89221222/1_tadpoleGreen.svg');
   background-size:cover;
   background-repeat: no-repeat;
   height:300px;
+  position: relative;
+  z-index: 998;
   width: 300px;
   margin-left:20%;
   margin-top:15%;
@@ -363,7 +408,9 @@ body{
 .turn{
   transform:rotate(90deg);
 }
-
+.gotchi-1.turn{
+  transform: translateX(150px) rotate(45deg);
+}
 .mouth{
 
   float:left;
@@ -382,58 +429,91 @@ body{
   font-family: 'VT323', monospace; 
 }
 
+/*<><><><><><><>TUB<><><><><><><>*/
+
+.bathtub{
+ background-image:url('https://dl.dropboxusercontent.com/u/89221222/Tub.svg');
+ width:600px;
+ height:600px;
+ margin-left:-105%;
+ margin-top:-37%;
+ position: absolute;
+ z-index: 998;
+ transition:.5s ease-out;
+}
+
+.bathtubshow{
+  opacity: 1;
+  margin-left:24.5%;
+}
+
+
+
 /*<><><><><>GRAVEYARD<><><><><>*/
+.yard{
+  background-color: black;
+  position: relative;
+  z-index: 997;
+  width:100vw;
+  height:20vh;
+  bottom:0;
+  display:block;
+
+}
 .grave{
   width:100px;
   height:100px;
   background-image: url('https://dl.dropboxusercontent.com/u/89221222/8Bit_Tombstone.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
-  position: absolute;
+  position: relative;
   display: inline-block;
   bottom:0;
   transition:1s;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .grave:first-child{
+  margin-bottom:20%;
   height:175px;
-  margin-left:55%;
+  margin-left:5%;
   transform:rotate(-5deg);
 }
 
 .grave:nth-child(2){
+  margin-bottom:10%;
   height:275px;
   margin-left:15%;
   transform:rotate(-5deg);
 }
 .grave:nth-child(3){
+  margin-bottom:20%;
   height:150px;
-  margin-left:15%;
+  margin-left:40%;
   transform:rotate(2deg);
 }
 .grave:nth-child(4){
-  margin-bottom:3%;
-  margin-left:29%;
+  margin-bottom:20%;
+  margin-left:9%;
   transform: rotate(-1deg);
   
 }
 .grave:nth-child(5){
   height:120px;
-  margin-bottom:1%;
-  margin-left:50%;
+  margin-bottom:20%;
+  margin-left:9%;
   transform: rotate(-4deg);
 }
 
 .grave:nth-child(6){
-  margin-bottom:3%;
-  margin-left:70%;
+  margin-bottom:80%;
+  margin-left:-40%;
   transform:rotate(5deg);
 }
 
 .grave:nth-child(7){
-  margin-bottom:-1%;
-  margin-left:80%;
+  margin-bottom:10%;
+  margin-left:-16%;
   height:105px;
   transform:rotate(-2deg);
 }
