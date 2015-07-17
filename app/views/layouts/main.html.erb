@@ -55,17 +55,17 @@
     <input class="letsgo button" type="submit" value="Log out">
   </form>
 
-  <div class="Gotchi-<%= current_gotchi_age %>"><%= current_user.gotchi_name %></div>
+  
 <% end %>
-
+  <span class='messagealert'> your andeddogotchi is already doing that!</span>
 <div class='play'>
   <div class='nav'>
     <label>Food</label>
     <div class='brain'></div>
     <div class='foot'></div>
     <label>Rest</label>
-    <div class='sun'></div>
-    <div class='moon'></div>
+    <div class='sun'></div> 
+    <div class='moon gray'></div>
   </div>
   <div class='stats'>
     <label>Fullness</label>
@@ -78,11 +78,45 @@
     <% end %>
 
   </div>
+  <% if current_user %>
+  <div class='gotchi'>
+  <h3 class='gname'><%= current_user.gotchi_name %></h3>
+  <div class="gotchi-<%= current_gotchi_age %>">
+    <div class='eye'></div>
+    <div class='eye'></div>
+    <div class='mouth'></div>
+  </div>
+  </div>
+  <% end %>
   <div class='grave'></div>
   <div class='grave'></div>
   <div class='grave'></div>
-  <div class='grave'></div>
-  <div class='grave'></div>
-
-  <div class='grave'></div>
+  <div class='grave six'></div>
+  <div class='grave seven'>
+  </div>
 </div>
+
+<script>  
+function on(){
+  $('.gotchi-1').addClass('moving')
+}
+function off(){
+ $('.gotchi-1').removeClass('moving')
+}
+$('.sun').on('click',function(){
+  $('.gotchi-1').addClass('turn');
+  $('.eye').addClass('turn');
+  $('.play').addClass('morning');
+  $('.sun').addClass('gray');
+  $('.moon').removeClass('gray');
+})
+$('.moon').on('click',function(){
+  $('.gotchi-1').removeClass('turn');
+  $('.eye').removeClass('turn');
+  $('.play').removeClass('morning');
+  $('.moon').addClass('gray');
+  $('.sun').removeClass('gray');
+})
+setInterval(on,2090)
+setInterval(off,1800)
+</script>

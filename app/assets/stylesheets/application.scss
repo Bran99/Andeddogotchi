@@ -129,10 +129,34 @@ body{
   background: -o-linear-gradient(black, midnightblue, maroon); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(black, midnightblue, maroon); /* For Firefox 3.6 to 15 */
   background: linear-gradient(black, midnightblue, maroon); /* Standard syntax */
+  transition: background, 1s, ease-in;
+}
+
+.morning{
+  background: -webkit-linear-gradient(white, skyblue,white, black); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(white, skyblue,white, black); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(white, skyblue,white, black); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(white, skyblue,white, black); /* Standard syntax */
 
 }
 
 
+/*<><><><><>MESSAGE<><><><><><>*/
+.messagealert{
+  position: fixed;
+  top:5%;
+  left:15%;
+  border-radius: 5px;
+  padding:5px;
+  color:black;
+  font-size: 1em;
+  z-index: 777;
+  height:5%;
+  width:21%;
+  background-color: cornsilk;
+  opacity: .9;
+  font-family: 'VT323', monospace;
+}
 
 /*<><><><><>NAV & STATS<><><><><>*/
 
@@ -168,9 +192,9 @@ body{
 }
 .stats{
   background-color: whitesmoke;
-  height:25%;
+  height:28%;
   width:20vw;
-  bottom:20%;
+  bottom:25%;
   margin-left: 3%;
   position:fixed;
   display: inline-block;
@@ -237,11 +261,12 @@ body{
   background-color: black;
   border-radius:20%;
   margin-top:5%;
-  -webkit-filter: grayscale(100%);
-  opacity:.5;
 
 }
-
+.gray{
+  -webkit-filter: grayscale(100%);
+  opacity:.5;
+}
 
 .bar{
   margin: 2% auto;
@@ -270,8 +295,12 @@ body{
   background-color: green;
   width:100%;
 }
-
-
+.gotchi{
+ height:90%;
+ width:50%;
+ display: block;
+ margin:0 auto;
+}
 
 .fillfull{
   background-color: red;
@@ -289,6 +318,70 @@ body{
   background-color: green;
   width:100%;
 }
+
+
+/*<><><><><>GOTCHIS<><><><><>*/
+.gotchi-1{
+  background-image:url('https://dl.dropboxusercontent.com/u/89221222/1_tadpoleGreen.svg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  height:300px;
+  width: 300px;
+  margin-left:20%;
+  margin-top:15%;
+  transition:background-image 0s;
+  transition:.5s;
+  transition-property:transform;
+  transition-timing-function: cubic-bezier(.16,1.37,.81,.25);
+}
+.gotchi-1.moving{
+  width:305px;
+  height:305px;
+}
+
+.eye:first-child{
+  margin-left:29%;
+  margin-top:12%;
+}
+
+.eye:nth-child(2){
+  margin-left:0%;
+  margin-top:12%;
+}
+
+.eye {
+
+  float:left;
+  width:70px;
+  height:70px;
+  background-image:url('https://dl.dropboxusercontent.com/u/89221222/EYE.svg');
+  background-image-size:cover;
+  background-repeat:no-repeat;   
+}
+
+
+.turn{
+  transform:rotate(90deg);
+}
+
+.mouth{
+
+  float:left;
+  margin-top:23%;
+  margin-left:-35%;
+  z-index:999;
+  height:72px;
+  width:72px;
+  background-image:url('https://dl.dropboxusercontent.com/u/89221222/mouth.svg');
+  background-image-size:cover;
+  background-repeat:no-repeat; 
+}
+.gname{
+  text-align: center;
+  color:green;
+  font-family: 'VT323', monospace; 
+}
+
 /*<><><><><>GRAVEYARD<><><><><>*/
 .grave{
   width:100px;
@@ -302,18 +395,17 @@ body{
   transition:1s;
   z-index: 999;
 }
+
 .grave:first-child{
   height:175px;
   margin-left:55%;
   transform:rotate(-5deg);
-  z-index: 888;
 }
 
 .grave:nth-child(2){
-  height:175px;
-  margin-left:5%;
+  height:275px;
+  margin-left:15%;
   transform:rotate(-5deg);
-  z-index: 888;
 }
 .grave:nth-child(3){
   height:150px;
@@ -340,9 +432,9 @@ body{
 }
 
 .grave:nth-child(7){
-  margin-bottom:-5%;
+  margin-bottom:-1%;
   margin-left:80%;
-  height:175px;
+  height:105px;
   transform:rotate(-2deg);
 }
 
