@@ -7,7 +7,8 @@ $('.brain').on('click', function (e) {
             health_action: "brain"
           },
     success: function(data) {
-      console.log(data);
+      $('.fillfull').css('width', data.fullity);
+      console.log(data)
     },
     failure: function(data){
       console.log(data);
