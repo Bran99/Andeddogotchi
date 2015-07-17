@@ -10,11 +10,15 @@ var token = $('[name="csrf-token"]').attr('content'),
 //////////////////////////////////////////////
 
 $('.sun').on('click', function () {
-  isSleeping = 120000;
+  if(!$('.sun').hasClass('gray')) {
+    isSleeping = 120000;
+  }
 })
 
 $('.moon').on('click', function () {
-  isSleeping = 60000;
+  if(!$('.moon').hasClass('gray')) {
+    isSleeping = 60000;
+  }
 })
 
 //////////////////////////////////////////////
