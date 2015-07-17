@@ -30,10 +30,10 @@ function isDead() {
       method: "DELETE",
       data: { "authenticity_token": token },
       success: function(data) {
-        console.log("I'm here! Fuck yeah!");
         clearInterval(interval);
       }
     })
+    $('.dead').attr('class', 'active');
   }
 }
 
