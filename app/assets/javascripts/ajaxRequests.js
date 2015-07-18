@@ -37,7 +37,8 @@ function isDead() {
         clearInterval(interval);
       }
     })
-    $('.dead').attr('class', 'active');
+    $('.death-hidden').removeClass('death-hidden')
+              .attr('class', 'death');
   }
 }
 

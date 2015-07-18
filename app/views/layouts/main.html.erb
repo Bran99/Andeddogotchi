@@ -54,19 +54,17 @@
 <% end %>
 
 <!-- DEATH MODAL -->
-<% if current_user && !current_gotchi_age %>
-  <div class="modal death">
-    <form class="col s12 create-gotchi" action="<%= new_gotchis_path %>" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <div class='row'>
-        <div class="input-field">
-          <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
-          <label for='gotchiname'>Name your Andeddogotchi</label>
-        </div>
+<div class="modal death-hidden">
+  <form class="col s12 create-gotchi" action="<%= new_gotchis_path %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class='row'>
+      <div class="input-field">
+        <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
+        <label for='gotchiname'>Name your Andeddogotchi</label>
       </div>
-    </form>
-  </div>
-<% end %>
+    </div>
+  </form>
+</div>
 
 <!-- LOGOUT BUTTON -->
 

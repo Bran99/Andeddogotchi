@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
+  get '/has_gotchi', to: 'gotchis#has_gotchi', as: 'has_gotchi'
+
 end
