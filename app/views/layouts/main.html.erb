@@ -1,42 +1,45 @@
 <!-- CREATE USER MODAL -->
 <% unless current_user %>
   <div class="modal">
-    <h3 id='new'>Create an account!</h3>
-    <form class="signup col s12" action="<%= users_path %>" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <div class="input-field">
-        <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
-        <label for='name'>Name</label>
-      </div>
+    <!-- CREATE AN ACCOUNT -->
+      <h3 id='new'>Create an account!</h3>
+      <form class="signup col s12" action="<%= users_path %>" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <div class="input-field">
+              <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
+              <label for='name'>Name</label>
+          </div>
 
-      <div class="input-field">
-        <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
-        <label for='password'>Password</label>
-      </div>
+          <div class="input-field">
+              <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
+              <label for='password'>Password</label>
+          </div>
 
-      <div class='row'>
-        <div class="input-field">
-          <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
-          <label for='gotchiname'>Name your Andeddogotchi</label>
-        </div>
-      </div>
+          <div class='row'>
+              <div class="input-field">
+                  <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
+                  <label for='gotchiname'>Name your Andeddogotchi</label>
+              </div>
+          </div>
 
-      <input class='button lower' type="submit" value="Let's Go!">
-    </form>
-    <h3 id='togglelog'>Log In!</h3>
-    <form class="col s12 login" action="<%= session_path %>" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <div class="input-field">
-        <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
-        <label for="name">Name</label>
-      </div>
-      <div class="input-field">
-        <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
-        <label for="password">Password</label>
-      </div>
-      <input class="letsgo button" type="submit" value="Let's Go!">
-    </form>
+          <input class='button lower' type="submit" value="Let's Go!">
+      </form>
+      <!-- LOG IN -->
+      <h3 id='togglelog'>Log In!</h3>
+      <form class="col s12 login" action="<%= session_path %>" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <div class="input-field">
+              <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
+              <label for="name">Name</label>
+          </div>
+          <div class="input-field">
+              <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
+              <label for="password">Password</label>
+          </div>
+          <input class="letsgo button" type="submit" value="Let's Go!">
+      </form>
   </div>
+  <!-- ACCORDION LOGIC -->
   <script>
   $('#togglelog').on('click', function(){
      $('.signup').addClass('collapse');
@@ -65,7 +68,7 @@
   </div>
 <% end %>
 
-</div>
+<!-- LOGOUT BUTTON -->
 
 <% if current_user %>
   <form id="logout" class="col s12 logout"  action="<%= session_path %>" method="post">
@@ -73,255 +76,207 @@
     <input type="hidden" name="_method" value="DELETE">
     <input class="letsgo button" type="submit" value="Log out">
   </form>
-
-
 <% end %>
+
+<!-- MESSAGE/ MAYBE FLASH MESSAGE -->
   <span class='messagealert'> your andeddogotchi is already doing that!<div class='triangle'></div></span>
+
+
+<!-- PLAY AREA -->
 <div class='play'>
-  <div class='nav'>
-    <label>Food</label>
-    <div class='brain'></div>
-    <div class='foot'></div>
-    <label>Rest</label>
-    <div class='sun'></div>
-    <div class='moon gray'></div>
-  </div>
-  <div class='canvas'></div>
-  <div class='stats'>
-    <label>Fullness</label>
-    <div class='bar'><div class='fillfull'></div></div>
-    <label>Health</label>
-    <div class='bar'><div class='fillhealth'></div></div>
-    <label>Age</label>
-    <% if current_user %>
-      <span class='agedisplay'><%= current_gotchi_age %> afterlife days old</span>
-    <% end %>
+  <%if current_user%>
+  <!-- NAV BAR-->
+      <div class='nav'>
+          <!-- food -->
+          <label>Food</label>
+          <div class='brain'></div>
+          <div class='foot'></div>
+          <!-- rest-->
+          <label>Rest</label>
+          <div class='sun'></div>
+          <div class='moon gray'></div>
+      </div>
+      <!-- CANVAS -->
+      <div class='canvas'></div>
+  <!-- STATS BAR -->
+      <div class='stats'>
+        <label>Fullness</label>
+        <div class='bar'>
+          <div class='fillfull'></div>
+        </div>
+        <label>Health</label>
+        <div class='bar'>
+          <div class='fillhealth'></div>
+        </div>
+        <label>Age</label>
 
-  </div>
-  <% if current_user %>
-  <div class='gotchi'>
-  <h3 class='gname'><%= current_user.gotchi_name %></h3>
-  <div class="gotchi-<%= current_gotchi_age %>">
-    <div class='eye'></div>
-    <div class='eye'></div>
-    <div class='mouth'></div>
-  </div>
+        <% if current_user %>
+          <span class='agedisplay'><%= current_gotchi_age %> afterlife days old</span>
+        <% end %>
 
-  </div>
-  <div class='bathtub'></div>
-  <% end %>
-  <div class='yard'>
-  <div class='grave'></div>
-  <div class='grave'></div>
-  <div class='grave'></div>
-<!--   <div class='grave six'></div>
-  <div class='grave seven'></div> -->
-</div>
+      </div>
+    <!-- GOTCHI -->
+      <div class='gotchi'>
+        <h3 class='gname'><%= current_user.gotchi_name %></h3>
+        <div class="gotchi-<%= current_gotchi_age %>">
+          <div class='eye'></div>
+          <div class='eye'></div>
+          <div class='mouth'></div>
+        </div>
+      </div>
+      <!-- BATHTUB -->
+      <div class='bathtub'></div>
+      <% end %>
+      <!-- GRAVE YARD -->
+      <div class='yard'>
+      <div class='grave'></div>
+      <div class='grave'></div>
+      <div class='grave'></div>
+      <div class='grave'></div>
+      <div class='grave'></div>
+    </div>
 </div>
 
 <script>
-/*<><>BLOOD BATH<><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><><><><>CANVAS (BLOOD BATH)<><><><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 function bloodbath(){
 
-console.log('canvas scripts loaded');
+  console.log('canvas scripts loaded');
 
-//Declare global variables
+  //Declare global variables
 
-var canvas = document.createElement("canvas");
-   var c = canvas.getContext('2d');
+  var canvas = document.createElement("canvas");
+     var c = canvas.getContext('2d');
 
-    $(document).ready(function(){
-      //initial drawing of canvas and append to body
-      canvas.width = $(window).width();
-      canvas.height = $(window).height() - 70;
-      var grd = c.createLinearGradient(0, 0, canvas.width, canvas.height);
-      grd.addColorStop(0, '#000');
-      // dark blue
-      grd.addColorStop(.50, '#191970');
-      grd.addColorStop(1, '#800000')
-      c.fillStyle = grd;
-      c.fillRect(0,0, $(window).width(), $(window).height());
-      $(canvas).appendTo('.canvas');
-
-      var particles = {};
-      var particleIndex = 0;
-      var particleNum = 20;
-      var mouseX;
-      var mouseY;
-
-      //Particle Exploder
-      $(document).on('click', function(event){
-        for(var i in particles){
-          particles[i].vx *= 90;
-          particles[i].vy *= 90;
-
-        }
-      });
-
-      //Particle emitter on mouse coordinates
-      $(document).on('mousemove', function(event){
-        //sets the mouseX to wherever the mouse is whenever the mouse moves
-        mouseX = event.pageX;
-        mouseY = event.pageY;
-      });
-
-      //particle constructor
-
-       function Particle(){
-        this.x = canvas.width/2 - 80;
-        this.y = canvas.height/2 - 90;
-        //<><><<>optional<><><> Assigning the particles random color
-        /*this.color = 'rgb('
-           + Math.floor(Math.random() * 255) + ','
-           + Math.floor(Math.random() * 255) + ','
-           + Math.floor(Math.random() * 255) + ')'
-          ; */
-        //<><><><><>OPTIONAL
-        //Random speeds
-        this.vx = Math.random() * 20 -10;
-        this.vy = Math.random() * 20 -10;
-
-        //Increment the particle Index
-        //Add this particle to the particles object with a key of particle index
-        particleIndex ++;
-        particles[particleIndex] = this;
-        this.id = particleIndex;
-
-        //add a lifespan
-        this.life = 0;
-        this.maxLife = Math.random() * 20 + 20;
-
-      }
-
-      Particle.prototype.draw = function(){
-        this.x += this.vx;
-        this.y += this.vy;
-        this.gravity = 3;
-        var myY = this.y;
-
-        //simulate gravity
-       this.vy += this.gravity;
-          //Re-randomizes velocity ~~~ looks like swarm.
-        /*  if(Math.random()< 0.1){
-            this.vx = Math.random() * 20 - 10;
-            this.vy = Math.random() * 20 - 10;
-          }*/
-        //Draw the particles with random colors
-
-  c.fillStyle = 'rgb('
-           +( Math.floor(Math.random() * 255) + 150)+','
-           + Math.floor(Math.random() * 20) + ','
-           + Math.floor(Math.random() * 20) + ')'
-
-          ;
-       //<><><><OPTIONAL c.fillStyle = this.color; <><><>*/
-        c.fillRect(this.x, this.y, 10, 10);
-        //Age your particle
-        this.life++;
-        //If particle is too old, delete it.
-        if(this.life >= this.maxLife){
-            delete particles[this.id];
-        }
-
-      };
-if( this.Y > canvas.height/5){
-        //Constant Bounce Effect
-        //vy *= -1;
-        //Diminishing Bounce Effect
-        this.vy *= -1.6;
-        this.vx *= 0.6;
-        console.log('gravity');
-        this.Y = canvas.height/2;
-      }
-
-
-      setInterval(function(){
-        var grd = c.createLinearGradient(0, 0, canvas.width/300, canvas.height);
-      // light blue
-      grd.addColorStop(0, '#000');
-      // dark blue
-      grd.addColorStop(.50, '#191970');
-      grd.addColorStop(1, '#800000')
-      c.fillStyle = grd;
-/*        c.fillStyle = 'rgba(255,255,255,0.4)';*/
-        c.fillRect(0,0,$(window).width(), $(window).height());
-
-        for(var i = 0; i < particleNum; i ++){
-        new Particle();
-        }
-
-        for(var j in particles){
-        particles[j].draw();
-        }
-      },
-      30);
-
-
-      /*<><><><><><><><>EXCERSIZE ONE <><><><><><><>
-
-      //initial positions
-      var posX = canvas.width /2;
-      var posY = canvas.height/2;
-      //incrementing the position each time an interval occurs.
-      //velocity coefficients
-      var vx = 10;
-      var vy = -10;
-      var gravity = 1;
-
-      function Particle(){
-        this.x = canvas.width/2;
-        this.y = canvas.height/2;
-      }
-
-      setInterval(function(){
-        //Redrawing our canvas
-        c.fillStyle = "black";
+      $(document).ready(function(){
+        //initial drawing of canvas and append to body
+        canvas.width = $(window).width();
+        canvas.height = $(window).height() - 70;
+        var grd = c.createLinearGradient(0, 0, canvas.width, canvas.height);
+        grd.addColorStop(0, '#000');
+        // dark blue
+        grd.addColorStop(.50, '#191970');
+        grd.addColorStop(1, '#800000')
+        c.fillStyle = grd;
         c.fillRect(0,0, $(window).width(), $(window).height());
+        $(canvas).appendTo('.canvas');
 
-        //constant velocity
-        posX += vx;
-        posY += vy;
+        var particles = {};
+        var particleIndex = 0;
+        var particleNum = 20;
+        var mouseX;
+        var mouseY;
 
-        //acceleration ~~simulating friction
-       // vx *= 0.9;
-       // vy *= 0.9;
+        //Particle Exploder
+        $(document).on('click', function(event){
+          for(var i in particles){
+            particles[i].vx *= 90;
+            particles[i].vy *= 90;
+
+          }
+        });
+
+        //Particle emitter on mouse coordinates
+        $(document).on('mousemove', function(event){
+          //sets the mouseX to wherever the mouse is whenever the mouse moves
+          mouseX = event.pageX;
+          mouseY = event.pageY;
+        });
+
+        //particle constructor
+
+        function Particle(){
+          this.x = canvas.width/2 - 80;
+          this.y = canvas.height/2 - 90;
+       
+          //Random speeds
+          this.vx = Math.random() * 20 -10;
+          this.vy = Math.random() * 20 -10;
+
+          //Increment the particle Index
+          //Add this particle to the particles object with a key of particle index
+          particleIndex ++;
+          particles[particleIndex] = this;
+          this.id = particleIndex;
+
+          //add a lifespan
+          this.life = 0;
+          this.maxLife = Math.random() * 20 + 20;
+
+        }
+
+        Particle.prototype.draw = function(){
+          this.x += this.vx;
+          this.y += this.vy;
+          this.gravity = 3;
+          var myY = this.y;
+
+          //simulate gravity
+          this.vy += this.gravity;
+   
+          //So blood is diff shades of red (50 shades exactly, jk)
+          c.fillStyle = 'rgb('
+             +( Math.floor(Math.random() * 255) + 150)+','
+             + Math.floor(Math.random() * 20) + ','
+             + Math.floor(Math.random() * 20) + ')'
+            ;
+         //<><><><OPTIONAL c.fillStyle = this.color; <><><>*/
+          c.fillRect(this.x, this.y, 10, 10);
+          //Age your particle
+          this.life++;
+          //If particle is too old, delete it.
+          if(this.life >= this.maxLife){
+            delete particles[this.id];
+          }
+
+        };
+
+        if( this.Y > canvas.height/5){
+          this.vy *= -1.6;
+          this.vx *= 0.6;
+          console.log('gravity');
+          this.Y = canvas.height/2;
+        }
 
 
-       //simulate ground
-       //<><><>* need to make vy = 0 *<><><>//
-      if(posY > canvas.height/2){
-        //Constant Bounce Effect
-        //vy *= -1;
-        //Diminishing Bounce Effect
-        vy *= -0.6;
-        vx *= 0.6;
+        setInterval(function(){
+          //adding gradient bg
+          var grd = c.createLinearGradient(0, 0, canvas.width/300, canvas.height);
+          grd.addColorStop(0, '#000');
+          grd.addColorStop(.50, '#191970');
+          grd.addColorStop(1, '#800000')
+          c.fillStyle = grd;
+          /* c.fillStyle = 'rgba(255,255,255,0.4)';*/
+          c.fillRect(0,0,$(window).width(), $(window).height());
 
-        posY = canvas.height/2;
+          for(var i = 0; i < particleNum; i ++){
+            new Particle();
+          }
+
+          for(var j in particles){
+            particles[j].draw();
+          }
+        },
+        30);
+
+
+        resizeCanvas();
+
+        });
+
+        function resizeCanvas(){
+          $(window).resize(function(event){
+            canvas.width = $(window).width();
+            canvas.height = $(window).height();
+            c.fillStyle = 'white';
+            c.fillRect(0,0, $(window).width(), $(window).height());
+            $(canvas).appendTo('body');
+          });
       }
-        //simulate gravity
-       vy += gravity;
-
-        c.fillStyle = 'white';
-        c.fillRect(posX, posY, 10, 10); //pixel values
-
-      }, 30);
-      //ResizeCanvas
-*/
-      resizeCanvas();
-
-    });
-
-    function resizeCanvas(){
-      $(window).resize(function(event){
-           canvas.width = $(window).width();
-      canvas.height = $(window).height();
-      c.fillStyle = 'white';
-      c.fillRect(0,0, $(window).width(), $(window).height());
-      $(canvas).appendTo('body');
-      });
-
-
-    }
 
 };
 
@@ -329,65 +284,77 @@ if( this.Y > canvas.height/5){
 
 
 
-/*<><><><><><><><>><><><><><><><>*//*<><><><><><><><>><><><><><><><>*/
-/*<><><><><><><><>><><><><><><><>*/
-/*<><><><><><><><>><><><><><><><>*/
-/*<><><><><><><><>><><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><>REST LOGIC & BLOOD BATH LOGIC<><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+
+
+/*<><><><><><>BREATHING<><><><><>*/
+/*<><~Breathe in~><>*/
 function on(){
   $('.gotchi-1').addClass('moving')
 }
+/*<><~Breathe out~><>*/
 function off(){
  $('.gotchi-1').removeClass('moving')
 }
-$('.sun').on('click',function(){
-    if($('.sun').hasClass('gray')){
-      $('.messagealert').addClass('showmessage');
-      var clear = function(){
-      $('.messagealert').removeClass('showmessage')
-    }
-    setTimeout(clear,2000);
-    } else{
-/*<><><><><>*/
-setTimeout(bloodbath,1000)
 
-
-
-
-
-
-
-      /*<><><><><><><>*/
-      $('.gotchi-1').addClass('turn');
-      $('.bathtub').addClass('bathtubshow');
-      $('.eye').addClass('turn');
-      $('.sun').addClass('gray');
-      $('.moon').removeClass('gray');
-  }
-})
-
-$('.moon').on('click',function(){
-  if($('.moon').hasClass('gray')){
-    console.log('imhere')
-    $('.messagealert').addClass('showmessage');
-    var clear = function(){
-      $('.messagealert').removeClass('showmessage')
-    }
-    setTimeout(clear,2000);
-  } else{
-    var clear2 = function(){
-  $('canvas').addClass('hide');
-}
-
-setTimeout(clear2,100);
-    $('.gotchi-1').removeClass('turn');
-    $('.bathtub').removeClass('bathtubshow');
-    $('.eye').removeClass('turn');
-    $('.moon').addClass('gray');
-    $('.sun').removeClass('gray');
-  }
-})
 setInterval(on,2090)
 setInterval(off,1800)
+
+
+/*<><><><>REST<><><><>*/
+/*<><sleep/bloodbath><>*/
+
+$('.sun').on('click',function(){
+  //check to see if it's already clicked
+    if($('.sun').hasClass('gray')){
+      //flash message
+      $('.messagealert').addClass('showmessage');
+      //clear it
+      var clear = function(){
+        $('.messagealert').removeClass('showmessage')
+      }
+      setTimeout(clear,2000);
+    } else{
+        //if its not clicked bring on the bloood
+        setTimeout(bloodbath,1000)
+        $('.gotchi-1').addClass('turn');
+        $('.bathtub').addClass('bathtubshow');
+        $('.eye').addClass('turn');
+        $('.sun').addClass('gray');
+        $('.moon').removeClass('gray');
+      }
+})
+
+
+//Wake up
+
+$('.moon').on('click',function(){
+    //check if its already clicked
+    if($('.moon').hasClass('gray')){
+      console.log('imhere')
+      $('.messagealert').addClass('showmessage');
+      var clear = function(){
+        $('.messagealert').removeClass('showmessage')
+      }
+      setTimeout(clear,2000);
+    } else{
+        var clear2 = function(){
+          $('canvas').addClass('hide');
+        }
+
+        setTimeout(clear2,100);
+        $('.gotchi-1').removeClass('turn');
+        $('.bathtub').removeClass('bathtubshow');
+        $('.eye').removeClass('turn');
+        $('.moon').addClass('gray');
+        $('.sun').removeClass('gray');
+      }
+});
+
 
 
 

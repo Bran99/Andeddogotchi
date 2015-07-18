@@ -21,6 +21,7 @@
 $secondary-color: color("green", "lighten-2") !default;
 
 @import 'materialize';
+
 @import url(http://fonts.googleapis.com/css?family=VT323);
 
 
@@ -427,6 +428,8 @@ canvas{
   text-align: center;
   color:green;
   font-family: 'VT323', monospace; 
+  z-index: 9998;
+  position: relative;
 }
 
 /*<><><><><><><>TUB<><><><><><><>*/
@@ -452,7 +455,7 @@ canvas{
 /*<><><><><>GRAVEYARD<><><><><>*/
 .yard{
   background-color: black;
-  position: relative;
+  position: fixed;
   z-index: 997;
   width:100vw;
   height:20vh;
@@ -461,65 +464,61 @@ canvas{
 
 }
 .grave{
+  padding: 0;
   width:100px;
   height:100px;
   background-image: url('https://dl.dropboxusercontent.com/u/89221222/8Bit_Tombstone.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
   position: relative;
-  display: inline-block;
-  bottom:0;
+  /*display: inline-block;*/
+  float:left;
+  bottom:10px;
   transition:1s;
   z-index: 9999;
 }
 
 .grave:first-child{
-  margin-bottom:20%;
-  height:175px;
   margin-left:5%;
+  height:175px;
   transform:rotate(-5deg);
 }
 
 .grave:nth-child(2){
-  margin-bottom:10%;
+  margin-left: 10%;
   height:275px;
-  margin-left:15%;
-  transform:rotate(-5deg);
+  transform:rotate(5deg);
 }
 .grave:nth-child(3){
-  margin-bottom:20%;
+  margin-left: 25%;
   height:150px;
-  margin-left:40%;
   transform:rotate(2deg);
 }
 .grave:nth-child(4){
-  margin-bottom:20%;
-  margin-left:9%;
+  margin-left: 7%;
   transform: rotate(-1deg);
   
 }
 .grave:nth-child(5){
+  margin-left: 2%;
   height:120px;
-  margin-bottom:20%;
-  margin-left:9%;
   transform: rotate(-4deg);
 }
 
 .grave:nth-child(6){
-  margin-bottom:80%;
-  margin-left:-40%;
+  margin-left: 5%;
   transform:rotate(5deg);
 }
 
 .grave:nth-child(7){
-  margin-bottom:10%;
-  margin-left:-16%;
+  margin-left: 5%;
   height:105px;
   transform:rotate(-2deg);
 }
 
 .grave:hover{
- height:Calc(20% + 10px);
+  height:Calc(20% + 5px);
+  margin-top:5%;
 }
 
 /*<><><><><>FACEBOOK<><><><><>*/
