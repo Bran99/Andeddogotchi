@@ -38,8 +38,12 @@ function isDead() {
       success: function(data) {
         clearInterval(interval);
       }
-    })
-    $('.death').addClass('death-show');
+    });
+    $('.gotchi').addClass('died');
+    setTimeout(function(){
+      $('.death').addClass('death-show');
+    },5000);
+
   }
 }
 

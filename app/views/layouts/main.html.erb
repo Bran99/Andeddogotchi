@@ -3,8 +3,6 @@
 <%= javascript_include_tag 'nav.js'%>
 <%= javascript_include_tag 'app.js'%>
 <%= javascript_include_tag 'resize.js'%>
-<%= javascript_include_tag 'levels.js'%>
-
 <!-- PRELOADER -->
 <div class="preloader" style="opacity: 1; ">
 <div class="rain">
@@ -82,14 +80,14 @@ $('#new').on('click', function(){
 <div class="modal death">
 <form class="col s12 create-gotchi" action="<%= gotchis_path %>" method="post">
 </br></br></br>
-  <h4 class='deathmessage'> Your Andeddogotchi is dead. Want to resurrect another?</h4>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <div class='row'>
-    <div class="input-field">
-      <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
-      <label for='gotchiname'>Name your new Andeddogotchi</label>
-    </div>
-  </div>
+ <h4 class='deathmessage'> Your Andeddogotchi is dead. Want to resurrect another?</h4>
+ <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+ <div class='row'>
+   <div class="input-field">
+     <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
+     <label for='gotchiname'>Name your new Andeddogotchi</label>
+   </div>
+ </div>
 </form>
 </div>
 
@@ -144,7 +142,7 @@ $('#new').on('click', function(){
   <!-- GOTCHI -->
     <div class='gotchi'>
       <h3 class='gname'><%= current_user.gotchi_name %></h3>
-      <div class="gotchi-<%= current_gotchi_age %>">
+      <div class="thegotchi gotchi-<%= current_gotchi_age %>">
         <div class='eye'></div>
         <div class='eye'></div>
         <div class='mouth'></div>
@@ -186,6 +184,11 @@ $(window).load(function() {
 
 /*<><><><>REST<><><><>*/
 /*<><sleep/bloodbath><>*/
+
+if(($('.thegotchi').hasClass('gotchi-2'))||($('.thegotchi').hasClass('gotchi-3'))){
+$('.eye').addClass('happy');
+$('.mouth').addClass('happy');
+}
 $('.eye:nth-child(2)').on('mouseover', function(){
 $('.eye:nth-child(2)').addClass('turn');
 setTimeout(function(){
@@ -207,6 +210,8 @@ console.log('cat');
       //if its not clicked bring on the bloood
       setTimeout(bloodbath,1000);
       $('.gotchi-1').addClass('turn');
+      $('.gotchi-2').addClass('turn');
+      $('.gotchi-3').addClass('turn');
       $('.bathtub').addClass('bathtubshow');
       $('.eye').addClass('turn');
       $('.sun').addClass('gray');
@@ -233,6 +238,8 @@ $('.moon').on('click',function(){
 
       setTimeout(clear2,100);
       $('.gotchi-1').removeClass('turn');
+      $('.gotchi-2').removeClass('turn');
+      $('.gotchi-3').removeClass('turn');
       $('.bathtub').removeClass('bathtubshow');
       $('.eye').removeClass('turn');
       $('.moon').addClass('gray');
@@ -248,11 +255,13 @@ $('.food').addClass('eat');
 $('.eye').addClass('happy');
 $('.mouth').addClass('happy');
 $('.gotchi-1').addClass('happy');
+$('.gotchi-3').addClass('happy');
 setTimeout(function(){
   $('.food').removeClass('eat');
   $('.eye').removeClass('happy');
   $('.mouth').removeClass('happy');
   $('.gotchi-1').removeClass('happy');
+  $('.gotchi-3').removeClass('happy');
 },1000)
 })
 
