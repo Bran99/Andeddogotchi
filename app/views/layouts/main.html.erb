@@ -80,8 +80,9 @@ $('#new').on('click', function(){
 <div class="modal death">
 <form class="col s12 create-gotchi" action="<%= gotchis_path %>" method="post">
 </br></br></br>
- <h4 class='deathmessage'> Your Andeddogotchi is dead. Want to resurrect another?</h4>
+ <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</br></br>
  <div class='row'>
    <div class="input-field">
      <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
@@ -258,8 +259,10 @@ $('.gotchi-1').addClass('happy');
 $('.gotchi-3').addClass('happy');
 setTimeout(function(){
   $('.food').removeClass('eat');
-  $('.eye').removeClass('happy');
-  $('.mouth').removeClass('happy');
+  if(($('.thegotchi').hasClass('gotchi-1'))){
+    $('.eye').removeClass('happy');
+    $('.mouth').removeClass('happy');
+  } 
   $('.gotchi-1').removeClass('happy');
   $('.gotchi-3').removeClass('happy');
 },1000)

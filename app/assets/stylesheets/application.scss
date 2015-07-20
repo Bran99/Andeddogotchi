@@ -681,7 +681,7 @@ canvas{
 .death{
   display: none;
   opacity: 1;
-  padding:15px;
+  padding:0 25px;
 }
 
 .death-show{
@@ -690,6 +690,7 @@ canvas{
 .deathmessage{
   font-family: 'VT323',monospace;
   text-shadow:1px 1px 1px red;
+  text-align: center;
 }
 /*<><><><><>PRELOADER<><><><><><><>*/
 
