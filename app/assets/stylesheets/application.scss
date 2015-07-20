@@ -25,16 +25,43 @@ $secondary-color: color("green", "lighten-2") !default;
 @import url(http://fonts.googleapis.com/css?family=VT323);
 
 
+/*<><><><><>MEDIAQUERIES IN SCSS<<><><><><><>*/
+
+$break-small: 660px;
+
+/*<><><><><><><><>*/
 body{
-    background: -webkit-linear-gradient(black, midnightblue, maroon); /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(black, midnightblue, maroon); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(black, midnightblue, maroon); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(black, midnightblue, maroon); /* For Firefox 3.6 to 15 */
   background: linear-gradient(black, midnightblue, maroon); /* Standard syntax */
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   height:100vh;
-  overflow: hidden;
+  overflow: auto;
+
+}
+/*<><><><><>TITLE<><><><><>*/
+.titleAndeddo{
+  left:30%;
+  margin-top:-3%;
+  position: fixed;
+  z-index: 9999;
+  color:lightgreen;
+  text-shadow:2px 2px 2px green;
+  text-align: center;
+  font-family: 'VT323',monospace;
+}
+
+.titleAndeddo.small{
+  font-size: 1.5em;
+  z-index: 9777;
+  right:5px;
+  text-align: right;
 }
 /*<><><><><>SIGN UP<><><><><>*/
+.starting{
+  margin-top:5%;
+}
 .login{
   opacity: 0;
   height:0;
@@ -42,6 +69,7 @@ body{
   border:1px solid green;
   background-color: whitesmoke;
   z-index: 999;
+  position: relative;
 }
 
 
@@ -65,9 +93,9 @@ body{
   height:0;
 }
 
-.collapse .lower {
+/*.collapse .lower {
   display:none;
-}
+}*/
 
 .button{
  position:relative;
@@ -87,6 +115,8 @@ body{
 
 #togglelog{
   cursor: pointer;
+  position: relative;
+  z-index: 9999;
 }
 .modal{
   visibility: visible;
@@ -106,8 +136,7 @@ body{
   text-shadow:1px 1px 1px green;
   letter-spacing: .1em;
   text-transform: uppercase;
-  border-bottom:1px solid green;
-  border-top:1px solid green;
+  background:cornsilk;
 }
 
 .modal input{
@@ -117,18 +146,24 @@ body{
 }
 
 
-
+.lower{
+  position:relative;
+  z-index: 9888
+}
 
 
 .logout{
-  margin-top:-4%;
+  position: fixed;
+  margin-top:2%;
   margin-left:90%;
+  z-index: 9999;
 }
 /*<><><><><>GAME<><><><><>*/
 canvas{
   position:absolute;
   z-index: 2;
-  margin-top:0%;
+  margin-top:0;
+
 
 }
 .play{
@@ -137,6 +172,7 @@ canvas{
   display:inline-block;
   width:100%;
   height:80vh;
+
 
 }
 
@@ -204,14 +240,14 @@ canvas{
   background-color: whitesmoke;
   height:40vh;
   width:8vw;
-  margin-top:0;
+  margin-top:-2%;
   margin-left: 3%;
   position:fixed;
   display: inline-block;
   z-index: 999;
   padding:5px;
   border-radius:5px;
-  opacity: .5;
+  opacity: .8;
 
   label{
     font-size:1.2em;
@@ -240,7 +276,7 @@ canvas{
   display: inline-block;
   z-index: 999;
   border-radius:5px;
-  opacity: .5;
+  opacity: .8;
 
   label{
     font-size:1.2em;
@@ -264,7 +300,10 @@ canvas{
   background-image: url('https://dl.dropboxusercontent.com/u/89221222/Brain.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
-
+   @media screen and (max-width: $break-small) {
+    width: 30px;
+    height:30px;
+  }
 }
 .foot{
   width:45px;
@@ -274,6 +313,10 @@ canvas{
   background-image: url('https://dl.dropboxusercontent.com/u/89221222/8Bit_Foot.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
+  @media screen and (max-width: $break-small) {
+    width: 30px;
+    height:30px;
+  }
 }
 
 .sun{
@@ -287,6 +330,10 @@ canvas{
   background-color: blue;
   border-radius:20%;
   margin-top:5%;
+  @media screen and (max-width: $break-small) {
+    width: 30px;
+    height:30px;
+  }
 
 }
 
@@ -301,6 +348,10 @@ canvas{
   background-color: black;
   border-radius:20%;
   margin-top:5%;
+  @media screen and (max-width: $break-small) {
+    width: 30px;
+    height:30px;
+  }
 
 }
 .gray{
@@ -336,8 +387,7 @@ canvas{
   width:100%;
 }
 .gotchi{
- height:90%;
- width:50%;
+
  display: block;
  margin:0 auto;
 }
@@ -371,10 +421,10 @@ canvas{
   background-repeat: no-repeat;
   height:300px;
   position: relative;
-  z-index: 998;
+  z-index: 997;
   width: 300px;
-  margin-left:20%;
-  margin-top:15%;
+  margin-left:350px;
+  margin-top:60px;
   transition:background-image 0s;
   transition:.5s;
   transition-property:transform;
@@ -405,6 +455,17 @@ canvas{
   background-repeat:no-repeat;   
 }
 
+.eye.happy{
+  opacity: 0;
+}
+
+.mouth.happy{
+  opacity: 0;
+}
+
+.gotchi-1.happy{
+  background-image: url('https://dl.dropboxusercontent.com/u/89221222/2_Tadpole_Happy.svg');
+}
 
 .turn{
   transform:rotate(90deg);
@@ -417,7 +478,7 @@ canvas{
   float:left;
   margin-top:23%;
   margin-left:-35%;
-  z-index:999;
+  z-index:998;
   height:72px;
   width:72px;
   background-image:url('https://dl.dropboxusercontent.com/u/89221222/mouth.svg');
@@ -425,13 +486,40 @@ canvas{
   background-repeat:no-repeat; 
 }
 .gname{
+  display:inline-block;
+  margin-left:370px;
   text-align: center;
-  color:green;
+  color:lightgreen;
+  text-shadow:2px 2px 2px green;
+  letter-spacing: .1em;
   font-family: 'VT323', monospace; 
-  z-index: 9998;
+  z-index: 977;
+  width:200px;
   position: relative;
 }
-
+/*<><><><><><><>FOOD<><><><><><><>*/
+.food{
+  position: relative;
+  z-index: 997;
+  width:10px;
+  height:10px;
+  transition:0s;
+  opacity: 0;
+  margin-top:-50%;
+  margin-left: 10%;
+  display:block;
+  background-image: url('https://dl.dropboxusercontent.com/u/89221222/Brain.svg');
+  background-size:100% auto;
+  background-repeat: no-repeat;
+}
+.food.eat{
+  opacity: 1;
+  width:80px;
+  height:80px;
+  margin-top:-500px;
+  margin-left: 300px;
+  transition:1s;
+}
 /*<><><><><><><>TUB<><><><><><><>*/
 
 .bathtub{
@@ -439,15 +527,15 @@ canvas{
  width:600px;
  height:600px;
  margin-left:-105%;
- margin-top:-37%;
- position: absolute;
+ margin-top:-360px;
+ position: relative;
  z-index: 998;
  transition:.5s ease-out;
 }
 
 .bathtubshow{
   opacity: 1;
-  margin-left:24.5%;
+  margin-left:270px;
 }
 
 
@@ -456,7 +544,7 @@ canvas{
 .yard{
   background-color: black;
   position: fixed;
-  z-index: 997;
+  z-index: 996;
   width:100vw;
   height:20vh;
   bottom:0;
@@ -536,5 +624,128 @@ canvas{
 }
 
 
+/*<><><><><>DEATH MODAL<<><><><><>*/
+.death{
+  display: none;
+  opacity: 1;
+  padding:15px;
+}
 
+.death-show{
+  display: block;
+}
+.deathmessage{
+  font-family: 'VT323',monospace;
+  text-shadow:1px 1px 1px red;
+}
+/*<><><><><>PRELOADER<><><><><><><>*/
+
+
+.preloader {
+  z-index: 9999;
+  position: absolute;
+  margin-left: -55px;
+  margin-top: -100px;
+  height: 110px;
+  width: 110px;
+  left: 50%;
+  top: 50%;
+}
+
+
+/* Rain */
+.rain {
+  position: absolute;
+  width: 70px;
+  height: 700px;
+  margin-top: -32px;
+  margin-left: 17px;
+}
+
+.drop {
+  opacity: 1;
+  background: red;
+  display: block;
+  float: left;
+  width: 2px;
+  height: 10px;
+  margin-left: 4px;
+  
+  animation-name: drop;
+  animation-duration: 350ms;
+  animation-iteration-count: infinite;
+}
+
+.drop:nth-child(1) {
+  animation-delay: -130ms;
+}
+
+.drop:nth-child(2) {
+  animation-delay: -240ms;
+}
+
+.drop:nth-child(3) {
+  animation-delay: -390ms;
+}
+
+.drop:nth-child(4) {
+  animation-delay: -525ms;
+}
+
+.drop:nth-child(5) {
+  animation-delay: -640ms;
+}
+
+.drop:nth-child(6) {
+  animation-delay: -790ms;
+}
+
+.drop:nth-child(7) {
+  animation-delay: -900ms;
+}
+
+.drop:nth-child(8) {
+  animation-delay: -1050ms;
+}
+
+.drop:nth-child(9) {
+  animation-delay: -1130ms;
+}
+
+.drop:nth-child(10) {
+  animation-delay: -1300ms;
+}
+
+
+@keyframes drop {
+  50% {
+    height: 200px;
+    opacity: 0;
+  }
+
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    height: 1px;
+    opacity: 0;
+  }
+}
+
+.text{
+  display:block;
+  margin:0 auto;
+  font-family:'VT323',monospace;
+  letter-spacing: .1em;
+  color:lightgreen;
+  font-size:2em;
+}
+
+
+/*<><><><><>SCROLLTOME<<><><><><><>*/
+
+.scrolltome{
+  margin-left:110vw;
+}
 

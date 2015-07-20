@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'angularjs-rails'
 #add angular
+#some shit
+
 gem 'materialize-sass'
 #add materialize
 # Use jquery as the JavaScript library
