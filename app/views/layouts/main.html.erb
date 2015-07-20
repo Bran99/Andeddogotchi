@@ -25,7 +25,7 @@
 <div class="modal starting" ng-app='andeddogotchi'>
   <!-- CREATE AN ACCOUNT -->
     <h3 id='new'>Create an account!</h3>
-    <div ng-controller='andeddoController as ac'>{{ac.foo}}</div>
+    
     <form class="signup col s12" action="<%= users_path %>" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <div class="input-field">
@@ -106,11 +106,17 @@ $('#new').on('click', function(){
 <span class='messagealert'> your andeddogotchi is already doing that!<div class='triangle'></div></span>
 
 
+
+
 <!-- PLAY AREA -->
 <div class='play'>
 <%if current_user%>
 <h1 class='titleAndeddo small'>あんでっどごち!</h1>
+<!-- MESSAGE/ INSTRUCTIONS -->
+<span class='messagealert2'> Feed your andeddogotchi brainz for fullness!<div class='triangle'></div></span>
+<span class='messagealert3'> Shower your andeddogotchi with BLOOD for health!<div class='triangle'></div></span>
 <!-- NAV BAR-->
+
     <div class='nav'>
         <!-- food -->
         <label>Food</label>
@@ -196,8 +202,9 @@ setTimeout(function(){
   $('.eye:nth-child(2)').removeClass('turn');
 },300);
 })
+
 $('.sun').on('click',function(){
-console.log('cat');
+
 //check to see if it's already clicked
   if($('.sun').hasClass('gray')){
     //flash message
@@ -208,6 +215,10 @@ console.log('cat');
     };
     setTimeout(clear,2000);
   } else{
+      if(!($('.messagealert3').hasClass('hidemessage'))){
+      console.log('message working');  
+        $('.messagealert3').addClass('hidemessage');
+      }
       //if its not clicked bring on the bloood
       setTimeout(bloodbath,1000);
       $('.gotchi-1').addClass('turn');
@@ -252,6 +263,9 @@ $('.moon').on('click',function(){
 //food
 
 $('.brain').on('click', function(){
+if(!($('.messagealert2').hasClass('hidemessage'))){
+  $('.messagealert2').addClass('hidemessage');
+}
 $('.food').addClass('eat');
 $('.eye').addClass('happy');
 $('.mouth').addClass('happy');

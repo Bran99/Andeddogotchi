@@ -1,4 +1,4 @@
-console.log('poop');
+
 
 console.log(typeof angular !== undefined);
 
