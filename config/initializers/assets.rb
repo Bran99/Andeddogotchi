@@ -11,3 +11,8 @@ Rails.application.config.assets.precompile += %w( ajaxRequests.js )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( mycanvas.js )
+Rails.application.config.assets.precompile += %w( nav.js )
+Rails.application.config.assets.precompile += %w( app.js )
+Rails.application.config.assets.precompile += %w( resize.js )
