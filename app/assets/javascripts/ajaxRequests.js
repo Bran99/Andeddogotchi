@@ -1,7 +1,9 @@
 var token = $('[name="csrf-token"]').attr('content'),
-    isSleeping = 30000,
+    isSleeping = 6000,
     fullity,
-    interval;
+    rest,
+    interval,
+    bloodBath;
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -28,7 +30,7 @@ $('.moon').on('click', function () {
 //////////////////////////////////////////////
 
 function isDead() {
-  if (fullity <= 0) {
+  if (fullity <= 0 || rest <= 0) {
     $.ajax({
       url: "/gotchis",
       method: "DELETE",
@@ -56,7 +58,9 @@ $(document).ready(function () {
           },
     success: function(data) {
       $('.fillfull').css('width', data.fullity);
+      $('.fillhealth').css('width', data.rest);
       fullity = data.fullity;
+      rest = data.rest;
       isDead();
     },
     failure: function(data){
@@ -80,7 +84,9 @@ interval = setInterval(function () {
           },
     success: function(data) {
       $('.fillfull').css('width', data.fullity);
+      $('.fillhealth').css('width', data.rest);
       fullity = data.fullity;
+      rest = data.rest;
       isDead();
     },
     failure: function(data){
@@ -111,4 +117,40 @@ $('.brain').on('click', function (e) {
       console.log(data);
     }
   })
+})
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+//////////////// CLICK SHOWER  ///////////////
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+
+$('.sun').on('click', function (e) {
+  bloodBath = setInterval(function () {
+    $.ajax({
+      url: "/gotchis",
+      method: "PATCH",
+      data: { "authenticity_token": token,
+              gotchi: {health_action: "blood_bath"}
+            },
+      success: function(data) {
+        $('.fillhealth').css('width', data.rest);
+        rest = data.rest;
+        isDead();
+      },
+      failure: function(data){
+        console.log(data);
+      }
+    });
+  }, 3000)
+});
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+//////////////// SHOWER OFF //////////////////
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+
+$('.moon').on('click', function (e) {
+  clearInterval(bloodBath);
 })

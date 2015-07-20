@@ -1,166 +1,169 @@
+
 <%= javascript_include_tag 'mycanvas.js'%>
 <%= javascript_include_tag 'nav.js'%>
 <%= javascript_include_tag 'app.js'%>
 <%= javascript_include_tag 'resize.js'%>
-  <!-- PRELOADER -->
- <div class="preloader" style="opacity: 1; ">
-  <div class="rain">
-    <span class="drop"></span>
-    <span class="drop"></span>
-    <span class="drop"></span>
-    <span class="drop"></span>
-    <span class="drop"></span>
-    <span class="drop"></span>
-    <span class="drop"></span>
-    <span class="drop"></span>
-    <span class="drop"></span>
-    <span class="drop"></span>
-  </div>
-  <span class='text'> LOADING </span>
+<%= javascript_include_tag 'levels.js'%>
+
+<!-- PRELOADER -->
+<div class="preloader" style="opacity: 1; ">
+<div class="rain">
+  <span class="drop"></span>
+  <span class="drop"></span>
+  <span class="drop"></span>
+  <span class="drop"></span>
+  <span class="drop"></span>
+  <span class="drop"></span>
+  <span class="drop"></span>
+  <span class="drop"></span>
+  <span class="drop"></span>
+  <span class="drop"></span>
+</div>
+<span class='text'> LOADING </span>
 </div>
 <!-- CREATE USER MODAL -->
 <% unless current_user %>
 <h1 class='titleAndeddo'>あんでっどごち!</h1>
-  <div class="modal starting" ng-app='andeddogotchi'>
-    <!-- CREATE AN ACCOUNT -->
-      <h3 id='new'>Create an account!</h3>
-      <div ng-controller='andeddoController as ac'>{{ac.foo}}</div>
-      <form class="signup col s12" action="<%= users_path %>" method="post">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <div class="input-field">
-              <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
-              <label for='name'>Name</label>
-          </div>
+<div class="modal starting" ng-app='andeddogotchi'>
+  <!-- CREATE AN ACCOUNT -->
+    <h3 id='new'>Create an account!</h3>
+    <div ng-controller='andeddoController as ac'>{{ac.foo}}</div>
+    <form class="signup col s12" action="<%= users_path %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="input-field">
+            <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
+            <label for='name'>Name</label>
+        </div>
 
-          <div class="input-field">
-              <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
-              <label for='password'>Password</label>
-          </div>
+        <div class="input-field">
+            <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
+            <label for='password'>Password</label>
+        </div>
 
-          <div class='row'>
-              <div class="input-field">
-                  <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
-                  <label for='gotchiname'>Name your Andeddogotchi</label>
-              </div>
-          </div>
+        <div class='row'>
+            <div class="input-field">
+                <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
+                <label for='gotchiname'>Name your Andeddogotchi</label>
+            </div>
+        </div>
 
-          <input class='button lower' type="submit" value="Let's Go!">
-      </form>
-      <!-- LOG IN -->
-      <h3 id='togglelog'>Log In!</h3>
-      <form class="col s12 login" action="<%= session_path %>" method="post">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <div class="input-field">
-              <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
-              <label for="name">Name</label>
-          </div>
-          <div class="input-field">
-              <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
-              <label for="password">Password</label>
-          </div>
-          <input class="letsgo button" type="submit" value="Let's Go!">
-      </form>
-  </div>
-  <!-- ACCORDION LOGIC -->
-  <script>
-  $('#togglelog').on('click', function(){
-     $('.signup').addClass('collapse');
-     $('.login').addClass('show');
-  })
+        <input class='button lower' type="submit" value="Let's Go!">
+    </form>
+    <!-- LOG IN -->
+    <h3 id='togglelog'>Log In!</h3>
+    <form class="col s12 login" action="<%= session_path %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="input-field">
+            <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
+            <label for="name">Name</label>
+        </div>
+        <div class="input-field">
+            <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
+            <label for="password">Password</label>
+        </div>
+        <input class="letsgo button" type="submit" value="Let's Go!">
+    </form>
+</div>
+<!-- ACCORDION LOGIC -->
+<script>
+$('#togglelog').on('click', function(){
+   $('.signup').addClass('collapse');
+   $('.login').addClass('show');
+})
 
-  $('#new').on('click', function(){
-     $('.login').removeClass('show');
-     $('.signup').removeClass('collapse');
-  })
-  </script>
+$('#new').on('click', function(){
+   $('.login').removeClass('show');
+   $('.signup').removeClass('collapse');
+})
+</script>
 <% end %>
 
 <!-- DEATH MODAL -->
 <div class="modal death">
-  <form class="col s12 create-gotchi" action="<%= new_gotchis_path %>" method="post">
-  </br></br></br>
-    <h4 class='deathmessage'> Your Andeddogotchi is dead. Want to resurrect another?</h4>
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <div class='row'>
-      <div class="input-field">
-        <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
-        <label for='gotchiname'>Name your new Andeddogotchi</label>
-      </div>
+<form class="col s12 create-gotchi" action="<%= gotchis_path %>" method="post">
+</br></br></br>
+  <h4 class='deathmessage'> Your Andeddogotchi is dead. Want to resurrect another?</h4>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div class='row'>
+    <div class="input-field">
+      <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
+      <label for='gotchiname'>Name your new Andeddogotchi</label>
     </div>
-  </form>
+  </div>
+</form>
 </div>
 
 <!-- LOGOUT BUTTON -->
 
 <% if current_user %>
-  <form id="logout" class="col s12 logout"  action="<%= session_path %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input class="letsgo button" type="submit" value="Log out">
-  </form>
+<form id="logout" class="col s12 logout"  action="<%= session_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input class="letsgo button" type="submit" value="Log out">
+</form>
 <% end %>
 
 <!-- MESSAGE/ MAYBE FLASH MESSAGE -->
-  <span class='messagealert'> your andeddogotchi is already doing that!<div class='triangle'></div></span>
+<span class='messagealert'> your andeddogotchi is already doing that!<div class='triangle'></div></span>
 
 
 <!-- PLAY AREA -->
 <div class='play'>
-  <%if current_user%>
-  <h1 class='titleAndeddo small'>あんでっどごち!</h1>
-  <!-- NAV BAR-->
-      <div class='nav'>
-          <!-- food -->
-          <label>Food</label>
-          <div class='brain'></div>
-          <div class='foot'></div>
-          <!-- rest-->
-          <label>Rest</label>
-          <div class='sun'></div>
-          <div class='moon gray'></div>
-      </div>
-      <!-- CANVAS -->
-      <div class='canvas'></div>
-  <!-- STATS BAR -->
-      <div class='stats'>
-        <label>Fullness</label>
-        <div class='bar'>
-          <div class='fillfull'></div>
-        </div>
-        <label>Health</label>
-        <div class='bar'>
-          <div class='fillhealth'></div>
-        </div>
-        <label>Age</label>
-
-        <% if current_user %>
-          <span class='agedisplay'><%= current_gotchi_age %> afterlife days old</span>
-        <% end %>
-
-      </div>
-    <!-- GOTCHI -->
-      <div class='gotchi'>
-        <h3 class='gname'><%= current_user.gotchi_name %></h3>
-        <div class="gotchi-<%= current_gotchi_age %>">
-          <div class='eye'></div>
-          <div class='eye'></div>
-          <div class='mouth'></div>
-        </div>
-      </div>
-
-      <!-- BATHTUB -->
-      <div class='bathtub'></div>
-      <!-- FOOD ANIMATION-->
-      <div class='food'></div>
-      <% end %>
-      <!-- GRAVE YARD -->
-      <div class='yard'>
-      <div class='grave'></div>
-      <div class='grave'></div>
-      <div class='grave'></div>
-      <div class='grave'></div>
-      <div class='grave'></div>
+<%if current_user%>
+<h1 class='titleAndeddo small'>あんでっどごち!</h1>
+<!-- NAV BAR-->
+    <div class='nav'>
+        <!-- food -->
+        <label>Food</label>
+        <div class='brain'></div>
+        <div class='foot'></div>
+        <!-- rest-->
+        <label>Rest</label>
+        <div class='sun'></div>
+        <div class='moon gray'></div>
     </div>
+    <!-- CANVAS -->
+    <div class='canvas'></div>
+<!-- STATS BAR -->
+    <div class='stats'>
+      <label>Fullness</label>
+      <div class='bar'>
+        <div class='fillfull'></div>
+      </div>
+      <label>Health</label>
+      <div class='bar'>
+        <div class='fillhealth'></div>
+      </div>
+      <label>Age</label>
+
+      <% if current_user %>
+        <span class='agedisplay'><%= current_gotchi_age %> afterlife days old</span>
+      <% end %>
+
+    </div>
+  <!-- GOTCHI -->
+    <div class='gotchi'>
+      <h3 class='gname'><%= current_user.gotchi_name %></h3>
+      <div class="gotchi-<%= current_gotchi_age %>">
+        <div class='eye'></div>
+        <div class='eye'></div>
+        <div class='mouth'></div>
+      </div>
+    </div>
+
+    <!-- BATHTUB -->
+    <div class='bathtub'></div>
+    <!-- FOOD ANIMATION-->
+    <div class='food'></div>
+    <% end %>
+    <!-- GRAVE YARD -->
+    <div class='yard'>
+    <div class='grave'></div>
+    <div class='grave'></div>
+    <div class='grave'></div>
+    <div class='grave'></div>
+    <div class='grave'></div>
+  </div>
 </div>
 <div class='scrolltome'></div>
 <script>
@@ -170,11 +173,11 @@
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 
-  // Wait for window load
-  $(window).load(function() {
-    // Animate loader off screen
-    $(".preloader").fadeOut("slow");;
-  });
+// Wait for window load
+$(window).load(function() {
+  // Animate loader off screen
+  $(".preloader").fadeOut("slow");;
+});
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><><><>SUN + MOON<><><><><><><><><><><><>*/
@@ -184,29 +187,74 @@
 /*<><><><>REST<><><><>*/
 /*<><sleep/bloodbath><>*/
 $('.eye:nth-child(2)').on('mouseover', function(){
-  $('.eye:nth-child(2)').addClass('turn');
-  setTimeout(function(){
-    $('.eye:nth-child(2)').removeClass('turn');
-  },300);
+$('.eye:nth-child(2)').addClass('turn');
+setTimeout(function(){
+  $('.eye:nth-child(2)').removeClass('turn');
+},300);
 })
 $('.sun').on('click',function(){
-  console.log('cat');
-  //check to see if it's already clicked
-    if($('.sun').hasClass('gray')){
-      //flash message
-      $('.messagealert').addClass('showmessage');
-      //clear it
-      var clear = function(){
-        $('.messagealert').removeClass('showmessage');
-      };
-      setTimeout(clear,2000);
-    } else{
-        //if its not clicked bring on the bloood
-        setTimeout(bloodbath,1000);
-        $('.gotchi-1').addClass('turn');
-        $('.bathtub').addClass('bathtubshow');
-        $('.eye').addClass('turn');
-        $('.sun').addClass('gray');
-        $('.moon').removeClass('gray');
-      }
+console.log('cat');
+//check to see if it's already clicked
+  if($('.sun').hasClass('gray')){
+    //flash message
+    $('.messagealert').addClass('showmessage');
+    //clear it
+    var clear = function(){
+      $('.messagealert').removeClass('showmessage');
+    };
+    setTimeout(clear,2000);
+  } else{
+      //if its not clicked bring on the bloood
+      setTimeout(bloodbath,1000);
+      $('.gotchi-1').addClass('turn');
+      $('.bathtub').addClass('bathtubshow');
+      $('.eye').addClass('turn');
+      $('.sun').addClass('gray');
+      $('.moon').removeClass('gray');
+    }
 });
+
+
+//Wake up
+
+$('.moon').on('click',function(){
+  //check if its already clicked
+  if($('.moon').hasClass('gray')){
+    console.log('imhere');
+    $('.messagealert').addClass('showmessage');
+    var clear = function(){
+      $('.messagealert').removeClass('showmessage');
+    };
+    setTimeout(clear,2000);
+  } else{
+      var clear2 = function(){
+        $('canvas').addClass('hide');
+      };
+
+      setTimeout(clear2,100);
+      $('.gotchi-1').removeClass('turn');
+      $('.bathtub').removeClass('bathtubshow');
+      $('.eye').removeClass('turn');
+      $('.moon').addClass('gray');
+      $('.sun').removeClass('gray');
+    }
+});
+
+
+//food
+
+$('.brain').on('click', function(){
+$('.food').addClass('eat');
+$('.eye').addClass('happy');
+$('.mouth').addClass('happy');
+$('.gotchi-1').addClass('happy');
+setTimeout(function(){
+  $('.food').removeClass('eat');
+  $('.eye').removeClass('happy');
+  $('.mouth').removeClass('happy');
+  $('.gotchi-1').removeClass('happy');
+},1000)
+})
+
+
+</script>

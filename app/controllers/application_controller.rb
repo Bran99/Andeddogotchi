@@ -40,10 +40,12 @@ class ApplicationController < ActionController::Base
   end
 
   def levelup!(user)
-    if user.last_login - user.created_at > 2.day
-      user.levelup!
-    elsif user.last_login - user.created_at > 1.day
-      user.levelup!
+    if user.last_login - user.created_at > 2.day  && user.gotchi.age == 2
+      user.gotchi.age == 1
+      session[:current_gotchi_age] = user.gotchi.age
+    elsif user.last_login - user.created_at > 1.day && user.gotchi.age == 1
+      user.gotchi.age == 1
+      session[:current_gotchi_age] = user.gotchi.age
     end
   end
 end

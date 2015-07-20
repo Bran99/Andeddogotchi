@@ -1,16 +1,10 @@
 class GotchisController < ApplicationController
   protect_from_forgery with: :null_session
+  before_action
 
   def new
     @user = User.find_by(id: session[:current_user_id])
     unless @user.gotchi
-      puts "----------------------------------------------------"
-      puts "----------------------------------------------------"
-      puts "----------------------------------------------------"
-      puts "why am i here?!?!?!?"
-      puts "----------------------------------------------------"
-      puts "----------------------------------------------------"
-      puts "----------------------------------------------------"
       @user.gotchi = Gotchi.new
       @user.gotchi.save
     end
@@ -33,8 +27,12 @@ class GotchisController < ApplicationController
     if gotchi_params[:health_action] == "brain"
       @gotchi.fullity += 33
       @gotchi.save
+    elsif gotchi_params[:health_action] == "blood_bath"
+      @gotchi.rest += 20
+      @gotchi.save
     elsif gotchi_params[:health_action] == "tick"
       @gotchi.fullity -= 33
+      @gotchi.rest -= 20
       @gotchi.save
     end
 
@@ -44,13 +42,22 @@ class GotchisController < ApplicationController
   def destroy
     session[:current_gotchi_age] = nil
     current_user.gotchi.destroy
-
     render json: current_user
   end
 
   private
   def gotchi_params
     params.require(:gotchi).permit(:health_action)
+  end
+
+  def levelup!
+    if Time.now - current_user.gotchi.created_at > 2.day && current_user.gotchi.age == 2
+      current_user.gotchi.age += 1
+      session[:current_gotchi_age] = user.gotchi.age
+    elsif Time.now - current_user.gotchi.created_at > 1.day && current_user.gotchi.age == 1
+      current_user.gotchi.age += 1
+      session[:current_gotchi_age] = user.gotchi.age
+    end
   end
 
 end
