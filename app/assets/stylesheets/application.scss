@@ -50,6 +50,9 @@ body{
   text-shadow:2px 2px 2px green;
   text-align: center;
   font-family: 'VT323',monospace;
+  @media screen and (max-width: $break-small) {
+    font-size:1.5em;
+  }
 }
 
 .titleAndeddo.small{
@@ -386,11 +389,7 @@ canvas{
   background-color: green;
   width:100%;
 }
-.gotchi{
 
- display: block;
- margin:0 auto;
-}
 
 .fillfull{
   background-color: red;
@@ -415,8 +414,14 @@ canvas{
   display: block;
 }
 /*<><><><><>GOTCHIS<><><><><>*/
-.gotchi-1{
-  background-image:url('https://dl.dropboxusercontent.com/u/89221222/1_tadpoleGreen.svg');
+.gotchi{
+ transition: 3s;
+ transition-property:transform;
+ transition-timing-function: cubic-bezier(.5,.18,.42,1);
+ display: block;
+ margin:0 auto;
+}
+.thegotchi{
   background-size:cover;
   background-repeat: no-repeat;
   height:300px;
@@ -426,11 +431,32 @@ canvas{
   margin-left:350px;
   margin-top:60px;
   transition:background-image 0s;
-  transition:.5s;
+  transition: .5s;
   transition-property:transform;
   transition-timing-function: cubic-bezier(.16,1.37,.81,.25);
 }
+.gotchi-1{
+  background-image:url('https://dl.dropboxusercontent.com/u/89221222/1_tadpoleGreen.svg');
+}
+
+.gotchi-2{
+  background-image:url('https://dl.dropboxusercontent.com/u/89221222/3_Toddler.svg');
+
+}
+.gotchi-3{
+  background-image:url('https://dl.dropboxusercontent.com/u/89221222/4_Adult.svg');
+
+}
+
 .gotchi-1.moving{
+  width:305px;
+  height:305px;
+}
+.gotchi-2.moving{
+  width:305px;
+  height:305px;
+}
+.gotchi-3.moving{
   width:305px;
   height:305px;
 }
@@ -467,14 +493,24 @@ canvas{
   background-image: url('https://dl.dropboxusercontent.com/u/89221222/2_Tadpole_Happy.svg');
 }
 
+.gotchi-3.happy{
+  background-image: url('https://dl.dropboxusercontent.com/u/89221222/5_Adult_Hungry.svg');
+}
+
 .turn{
   transform:rotate(90deg);
 }
 .gotchi-1.turn{
   transform: translateX(150px) rotate(45deg);
 }
-.mouth{
+.gotchi-2.turn{
+  transform: translateX(150px) rotate(45deg);
+}
+.gotchi-3.turn{
+  transform: translateX(150px) rotate(45deg);
+}
 
+.mouth{
   float:left;
   margin-top:23%;
   margin-left:-35%;
@@ -485,6 +521,7 @@ canvas{
   background-image-size:cover;
   background-repeat:no-repeat; 
 }
+
 .gname{
   display:inline-block;
   margin-left:370px;
@@ -496,6 +533,13 @@ canvas{
   z-index: 977;
   width:200px;
   position: relative;
+}
+
+
+.gotchi.died{
+  opacity: .7;
+  -webkit-filter: grayscale(100%);
+  transform:translateY(-100vh);
 }
 /*<><><><><><><>FOOD<><><><><><><>*/
 .food{
@@ -536,6 +580,10 @@ canvas{
 .bathtubshow{
   opacity: 1;
   margin-left:270px;
+   @media screen and (max-width: $break-small) {
+    width: 550px;
+    height:550px;
+  }
 }
 
 
@@ -613,8 +661,13 @@ canvas{
 
 .fb-login-button{
   border-radius: 1px;
-  width:10vw;
+  width:40px;
+  height:40px;
+  overflow: hidden;
   margin-left:80%;
+  position:absolute;
+  z-index: 8888;
+  bottom:0;
 
   span{
     font-size: 0px;

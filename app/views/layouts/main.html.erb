@@ -142,7 +142,7 @@
     <!-- GOTCHI -->
       <div class='gotchi'>
         <h3 class='gname'><%= current_user.gotchi_name %></h3>
-        <div class="gotchi-<%= current_gotchi_age %>">
+        <div class="thegotchi gotchi-<%= current_gotchi_age %>">
           <div class='eye'></div>
           <div class='eye'></div>
           <div class='mouth'></div>
@@ -184,6 +184,11 @@
 
 /*<><><><>REST<><><><>*/
 /*<><sleep/bloodbath><>*/
+
+if(($('.thegotchi').hasClass('gotchi-2'))||($('.thegotchi').hasClass('gotchi-3'))){
+  $('.eye').addClass('happy');
+  $('.mouth').addClass('happy');
+}
 $('.eye:nth-child(2)').on('mouseover', function(){
   $('.eye:nth-child(2)').addClass('turn');
   setTimeout(function(){
@@ -205,6 +210,8 @@ $('.sun').on('click',function(){
         //if its not clicked bring on the bloood
         setTimeout(bloodbath,1000);
         $('.gotchi-1').addClass('turn');
+        $('.gotchi-2').addClass('turn');
+        $('.gotchi-3').addClass('turn');
         $('.bathtub').addClass('bathtubshow');
         $('.eye').addClass('turn');
         $('.sun').addClass('gray');
@@ -231,6 +238,8 @@ $('.moon').on('click',function(){
 
         setTimeout(clear2,100);
         $('.gotchi-1').removeClass('turn');
+        $('.gotchi-2').removeClass('turn');
+        $('.gotchi-3').removeClass('turn');
         $('.bathtub').removeClass('bathtubshow');
         $('.eye').removeClass('turn');
         $('.moon').addClass('gray');
@@ -246,11 +255,13 @@ $('.brain').on('click', function(){
   $('.eye').addClass('happy');
   $('.mouth').addClass('happy');
   $('.gotchi-1').addClass('happy');
+  $('.gotchi-3').addClass('happy');
   setTimeout(function(){
     $('.food').removeClass('eat');
     $('.eye').removeClass('happy');
     $('.mouth').removeClass('happy');
     $('.gotchi-1').removeClass('happy');
+    $('.gotchi-3').removeClass('happy');
   },1000)
 })
 

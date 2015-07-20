@@ -1,5 +1,5 @@
 var token = $('[name="csrf-token"]').attr('content'),
-    isSleeping = 30000,
+    isSleeping = 3000,
     fullity,
     interval;
 
@@ -36,8 +36,12 @@ function isDead() {
       success: function(data) {
         clearInterval(interval);
       }
-    })
-    $('.death').addClass('death-show');
+    });
+    $('.gotchi').addClass('died');
+    setTimeout(function(){
+      $('.death').addClass('death-show');
+    },5000);
+    
   }
 }
 
