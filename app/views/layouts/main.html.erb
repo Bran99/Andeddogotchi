@@ -1,8 +1,3 @@
-
-<%= javascript_include_tag 'mycanvas.js'%>
-<%= javascript_include_tag 'nav.js'%>
-<%= javascript_include_tag 'app.js'%>
-<%= javascript_include_tag 'resize.js'%>
 <!-- PRELOADER -->
 <div class="preloader" style="opacity: 1; ">
 <div class="rain">
@@ -20,6 +15,7 @@
 <span class='text'> LOADING </span>
 </div>
 <!-- CREATE USER MODAL -->
+<<<<<<< HEAD
 <% unless current_user %>
 <h1 class='titleAndeddo'>あんでっどごち!</h1>
 <div class="modal starting" ng-app='andeddogotchi'>
@@ -32,35 +28,48 @@
             <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
             <label for='name'>Name</label>
         </div>
+=======
+<div ng-class="ac.loggedIn ? 'notShown' : 'shown'">
+  <h1 class='titleAndeddo'>あんでっどごち!</h1>
+  <h4 class='subtitle'> Andeddogotchi! <h4>
+  <div class="modal starting">
+    <!-- CREATE AN ACCOUNT -->
+      <h3 id='new'>Create an account!</h3>
+      <form class="signup col s12" ng-submit="ac.createUser()">
+          <div class="input-field">
+              <input id='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
+              <label for='name'>Name</label>
+          </div>
+>>>>>>> master
 
-        <div class="input-field">
-            <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
-            <label for='password'>Password</label>
-        </div>
+          <div class="input-field">
+              <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
+              <label for='password'>Password</label>
+          </div>
 
-        <div class='row'>
-            <div class="input-field">
-                <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
-                <label for='gotchiname'>Name your Andeddogotchi</label>
-            </div>
-        </div>
+          <div class='row'>
+              <div class="input-field">
+                  <input id='gotchiname' class='validate' type="text" ng-model="ac.user.gotchi_name">
+                  <label for='gotchiname'>Name your Andeddogotchi</label>
+              </div>
+          </div>
 
-        <input class='button lower' type="submit" value="Let's Go!">
-    </form>
-    <!-- LOG IN -->
-    <h3 id='togglelog'>Log In!</h3>
-    <form class="col s12 login" action="<%= session_path %>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <div class="input-field">
-            <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
-            <label for="name">Name</label>
-        </div>
-        <div class="input-field">
-            <input id='password' class="disable-by-facebook validate" type="password" name="user[password]">
-            <label for="password">Password</label>
-        </div>
-        <input class="letsgo button" type="submit" value="Let's Go!">
-    </form>
+          <input class='button lower' type="submit" value="Let's Go!">
+      </form>
+      <!-- LOG IN -->
+      <h3 id='togglelog'>Log In!</h3>
+      <form class="col s12 login" ng-submit="ac.login()">
+          <div class="input-field">
+              <input id='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
+              <label for="name">Name</label>
+          </div>
+          <div class="input-field">
+              <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
+              <label for="password">Password</label>
+          </div>
+          <input class="letsgo button" type="submit" value="Let's Go!">
+      </form>
+  </div>
 </div>
 <!-- ACCORDION LOGIC -->
 <script>
@@ -74,33 +83,30 @@ $('#new').on('click', function(){
    $('.signup').removeClass('collapse');
 })
 </script>
-<% end %>
 
 <!-- DEATH MODAL -->
-<div class="modal death">
-<form class="col s12 create-gotchi" action="<%= gotchis_path %>" method="post">
+<div ng-class="(ac.gotchiName && isDead) ? 'death-show modal' : 'death modal'">
+<form class="col s12 create-gotchi" ng-submit="ac.deadGotchi()">
 </br></br></br>
  <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
- <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-</br></br>
+ </br></br>
  <div class='row'>
    <div class="input-field">
-     <input id='gotchiname' class='validate' type="text" name="user[gotchi_name]" >
+     <input id='gotchiname' class='validate' type="text" ng-model="ac.newName">
      <label for='gotchiname'>Name your new Andeddogotchi</label>
    </div>
+   <input class="letsgo button" type="submit" value="Let's Go!">
  </div>
 </form>
 </div>
 
 <!-- LOGOUT BUTTON -->
 
-<% if current_user %>
-<form id="logout" class="col s12 logout"  action="<%= session_path %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="DELETE">
+
+<form id="logout" ng-class="ac.loggedIn ? 'logout' : 'notShown'"  ng-submit="ac.logOut()">
   <input class="letsgo button" type="submit" value="Log out">
 </form>
-<% end %>
+
 
 <!-- MESSAGE/ MAYBE FLASH MESSAGE -->
 <span class='messagealert'> your andeddogotchi is already doing that!<div class='triangle'></div></span>
@@ -110,6 +116,7 @@ $('#new').on('click', function(){
 
 <!-- PLAY AREA -->
 <div class='play'>
+<<<<<<< HEAD
 <%if current_user%>
 <h1 class='titleAndeddo small'>あんでっどごち!</h1>
 <!-- MESSAGE/ INSTRUCTIONS -->
@@ -118,6 +125,12 @@ $('#new').on('click', function(){
 <!-- NAV BAR-->
 
     <div class='nav'>
+=======
+<h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">あんでっどごち!</h1>
+<h4 ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <h4>
+<!-- NAV BAR-->
+    <div ng-class="ac.loggedIn ? 'nav' : 'notShown'">
+>>>>>>> master
         <!-- food -->
         <label>Food</label>
         <div class='brain'></div>
@@ -130,26 +143,26 @@ $('#new').on('click', function(){
     <!-- CANVAS -->
     <div class='canvas'></div>
 <!-- STATS BAR -->
-    <div class='stats'>
-      <label>Fullness</label>
+    <div ng-class="ac.loggedIn ? 'stats' : 'notShown'">
+      <label class="fullnessLevel">Fullness</label>
       <div class='bar'>
         <div class='fillfull'></div>
       </div>
-      <label>Health</label>
+      <label class="healthLevel">Health</label>
       <div class='bar'>
         <div class='fillhealth'></div>
       </div>
       <label>Age</label>
 
-      <% if current_user %>
-        <span class='agedisplay'><%= current_gotchi_age %> afterlife days old</span>
-      <% end %>
+
+        <span class='agedisplay'>{{ac.gotchi.age}} afterlife days old</span>
+
 
     </div>
   <!-- GOTCHI -->
-    <div class='gotchi'>
-      <h3 class='gname'><%= current_user.gotchi_name %></h3>
-      <div class="thegotchi gotchi-<%= current_gotchi_age %>">
+    <div ng-class="ac.loggedIn ? 'shown gotchi' : 'notShown gotchi'">
+      <h3 class="gname">{{ac.gotchiName}}</h3>
+      <div class="thegotchi gotchi-{{ac.gotchi.age}}">
         <div class='eye'></div>
         <div class='eye'></div>
         <div class='mouth'></div>
@@ -160,7 +173,6 @@ $('#new').on('click', function(){
     <div class='bathtub'></div>
     <!-- FOOD ANIMATION-->
     <div class='food'></div>
-    <% end %>
     <!-- GRAVE YARD -->
     <div class='yard'>
     <div class='grave'></div>
@@ -276,7 +288,7 @@ setTimeout(function(){
   if(($('.thegotchi').hasClass('gotchi-1'))){
     $('.eye').removeClass('happy');
     $('.mouth').removeClass('happy');
-  } 
+  }
   $('.gotchi-1').removeClass('happy');
   $('.gotchi-3').removeClass('happy');
 },1000)

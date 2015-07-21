@@ -9,13 +9,23 @@ class GotchisController < ApplicationController
       @user.gotchi.save
     end
     session[:current_gotchi_age] = @user.gotchi.age
-    redirect_to root_path
+    fullData = {
+                 user: @user,
+                 gotchi: @user.gotchi
+               }
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { render json: fullData }
+    end
   end
 
   def has_gotchi
     @user = User.find_by(id: session[:current_user_id])
     session[:current_gotchi_age] = @user.gotchi.age
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { render json: @user }
+    end
   end
 
   def create

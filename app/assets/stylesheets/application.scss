@@ -40,6 +40,7 @@ body{
   overflow: auto;
 
 }
+
 /*<><><><><>TITLE<><><><><>*/
 .titleAndeddo{
   left:30%;
@@ -89,7 +90,7 @@ body{
 
 .show{
   opacity: 1;
-  height:300px; 
+  height:300px;
 }
 .collapse{
   opacity: 0;
@@ -178,7 +179,7 @@ canvas{
 
 /*.morning{
   background: -webkit-linear-gradient(white, skyblue,white); /* For Safari 5.1 to 6.0 */
-  /*background: -o-linear-gradient(white, skyblue,white);  For Opera 11.1 to 12.0 
+  /*background: -o-linear-gradient(white, skyblue,white);  For Opera 11.1 to 12.0
   background: -moz-linear-gradient(white, skyblue,white); /* For Firefox 3.6 to 15 */
   /*background: linear-gradient(white, skyblue,white); /* Standard syntax */
 
@@ -282,14 +283,14 @@ canvas{
 
 @-webkit-keyframes floating {
   0% {
-    -webkit-transform: translateY(0%);  
+    -webkit-transform: translateY(0%);
   }
   50% {
-    -webkit-transform: translateY(8%);  
-  } 
+    -webkit-transform: translateY(8%);
+  }
   100% {
     -webkit-transform: translateY(0%);
-  }     
+  }
 }
 
 /*<><><><><>NAV & STATS<><><><><>*/
@@ -346,7 +347,7 @@ canvas{
 
   label:first-child{
     margin-top:0;
-    
+
   }
 }
 
@@ -535,7 +536,7 @@ canvas{
   height:70px;
   background-image:url('https://dl.dropboxusercontent.com/u/89221222/EYE.svg');
   background-image-size:cover;
-  background-repeat:no-repeat;   
+  background-repeat:no-repeat;
 }
 
 .eye.happy{
@@ -576,7 +577,7 @@ canvas{
   width:72px;
   background-image:url('https://dl.dropboxusercontent.com/u/89221222/mouth.svg');
   background-image-size:cover;
-  background-repeat:no-repeat; 
+  background-repeat:no-repeat;
 }
 
 .gname{
@@ -586,7 +587,7 @@ canvas{
   color:lightgreen;
   text-shadow:2px 2px 2px green;
   letter-spacing: .1em;
-  font-family: 'VT323', monospace; 
+  font-family: 'VT323', monospace;
   z-index: 977;
   width:200px;
   position: relative;
@@ -690,7 +691,7 @@ canvas{
 .grave:nth-child(4){
   margin-left: 7%;
   transform: rotate(-1deg);
-  
+
 }
 .grave:nth-child(5){
   margin-left: 2%;
@@ -730,7 +731,7 @@ canvas{
     font-size: 0px;
   }
 
-  
+
 }
 
 
@@ -781,7 +782,7 @@ canvas{
   width: 2px;
   height: 10px;
   margin-left: 4px;
-  
+
   animation-name: drop;
   animation-duration: 350ms;
   animation-iteration-count: infinite;
@@ -860,3 +861,13 @@ canvas{
   margin-left:110vw;
 }
 
+/*<><><><><>MODAL SHIT<><><><><>*/
+.notShown{
+  display:none;
+}
+.notLoggedIn{
+  display:block;
+}
+.navBarYes{
+  display:inline-block;
+}
