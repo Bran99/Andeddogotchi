@@ -1,9 +1,10 @@
 var token = $('[name="csrf-token"]').attr('content'),
-    isSleeping = 6000,
+    isSleeping = 6000000000,
     fullity,
     rest,
     interval,
-    bloodBath;
+    bloodBath,
+    loginCheck;
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -79,7 +80,7 @@ $(document).ready(function () {
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 
-interval = setInterval(function () {
+var pageTick = function () {
   $.ajax({
     url: "/gotchis",
     method: "PATCH",
@@ -97,7 +98,9 @@ interval = setInterval(function () {
       console.log(data);
     }
   })
-}, isSleeping)
+};
+
+interval = setInterval(pageTick, isSleeping);
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
