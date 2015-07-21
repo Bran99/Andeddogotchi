@@ -15,20 +15,6 @@
 <span class='text'> LOADING </span>
 </div>
 <!-- CREATE USER MODAL -->
-<<<<<<< HEAD
-<% unless current_user %>
-<h1 class='titleAndeddo'>あんでっどごち!</h1>
-<div class="modal starting" ng-app='andeddogotchi'>
-  <!-- CREATE AN ACCOUNT -->
-    <h3 id='new'>Create an account!</h3>
-    
-    <form class="signup col s12" action="<%= users_path %>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <div class="input-field">
-            <input id='name' class="disable-by-facebook validate" type="text" name="user[name]">
-            <label for='name'>Name</label>
-        </div>
-=======
 <div ng-class="ac.loggedIn ? 'notShown' : 'shown'">
   <h1 class='titleAndeddo'>あんでっどごち!</h1>
   <h4 class='subtitle'> Andeddogotchi! <h4>
@@ -40,7 +26,6 @@
               <input id='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
               <label for='name'>Name</label>
           </div>
->>>>>>> master
 
           <div class="input-field">
               <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
@@ -112,25 +97,12 @@ $('#new').on('click', function(){
 <span class='messagealert'> your andeddogotchi is already doing that!<div class='triangle'></div></span>
 
 
-
-
 <!-- PLAY AREA -->
 <div class='play'>
-<<<<<<< HEAD
-<%if current_user%>
-<h1 class='titleAndeddo small'>あんでっどごち!</h1>
-<!-- MESSAGE/ INSTRUCTIONS -->
-<span class='messagealert2'> Feed your andeddogotchi brainz for fullness!<div class='triangle2'></div></span>
-<span class='messagealert3'> Shower your andeddogotchi with BLOOD for health!<div class='triangle3'></div></span>
-<!-- NAV BAR-->
-
-    <div class='nav'>
-=======
 <h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">あんでっどごち!</h1>
 <h4 ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <h4>
 <!-- NAV BAR-->
     <div ng-class="ac.loggedIn ? 'nav' : 'notShown'">
->>>>>>> master
         <!-- food -->
         <label>Food</label>
         <div class='brain'></div>
@@ -214,9 +186,8 @@ setTimeout(function(){
   $('.eye:nth-child(2)').removeClass('turn');
 },300);
 })
-
 $('.sun').on('click',function(){
-
+console.log('cat');
 //check to see if it's already clicked
   if($('.sun').hasClass('gray')){
     //flash message
@@ -227,10 +198,6 @@ $('.sun').on('click',function(){
     };
     setTimeout(clear,2000);
   } else{
-      if(!($('.messagealert3').hasClass('hidemessage'))){
-      console.log('message working');  
-        $('.messagealert3').addClass('hidemessage');
-      }
       //if its not clicked bring on the bloood
       setTimeout(bloodbath,1000);
       $('.gotchi-1').addClass('turn');
@@ -275,9 +242,6 @@ $('.moon').on('click',function(){
 //food
 
 $('.brain').on('click', function(){
-if(!($('.messagealert2').hasClass('hidemessage'))){
-  $('.messagealert2').addClass('hidemessage');
-}
 $('.food').addClass('eat');
 $('.eye').addClass('happy');
 $('.mouth').addClass('happy');
