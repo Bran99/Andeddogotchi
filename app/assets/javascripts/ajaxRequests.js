@@ -1,5 +1,5 @@
 var token = $('[name="csrf-token"]').attr('content'),
-    isSleeping = 6000000000,
+    isSleeping = 600000000000,
     fullity,
     rest,
     interval,

@@ -98,7 +98,7 @@ $('#new').on('click', function(){
 
 <!-- PLAY AREA -->
 <div class='play'>
-<h1 class='titleAndeddo small'>あんでっどごち!</h1>
+<h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">あんでっどごち!</h1>
 <!-- NAV BAR-->
     <div ng-class="ac.loggedIn ? 'nav' : 'notShown'">
         <!-- food -->
