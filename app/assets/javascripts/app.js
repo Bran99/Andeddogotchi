@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-
-=======
 var app = angular.module('andeddogotchi',[]);
 var fillfull = $('.fillfull').width();
 var fillhealth = $('.fillhealth').width();
->>>>>>> master
 
 var token = $('[name="csrf-token"]').attr('content');
 
