@@ -17,6 +17,7 @@
 <!-- CREATE USER MODAL -->
 <div ng-class="ac.loggedIn ? 'notShown' : 'shown'">
   <h1 class='titleAndeddo'>あんでっどごち!</h1>
+  <h4 class='subtitle'> Andeddogotchi! <h4>
   <div class="modal starting">
     <!-- CREATE AN ACCOUNT -->
       <h3 id='new'>Create an account!</h3>
@@ -99,6 +100,7 @@ $('#new').on('click', function(){
 <!-- PLAY AREA -->
 <div class='play'>
 <h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">あんでっどごち!</h1>
+<h4 ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <h4>
 <!-- NAV BAR-->
     <div ng-class="ac.loggedIn ? 'nav' : 'notShown'">
         <!-- food -->
