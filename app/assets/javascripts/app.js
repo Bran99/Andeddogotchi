@@ -32,13 +32,8 @@ app.controller('andeddoController',["$http", function($http){
       user: this.user
     })
       .success(function (data) {
-        console.log(data)
-        $http.get('/gotchis/new.json', {})
-             .success(function (data) {
-               console.log(data);
-               this.gotchiName = data.user.gotchi_name;
-               processCurrentUser(data);
-             })
+        this.gotchiName = data.user.gotchi_name;
+        processCurrentUser(data);
       });
   };
 
