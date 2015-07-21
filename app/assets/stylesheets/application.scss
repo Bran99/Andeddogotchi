@@ -206,7 +206,7 @@ canvas{
 
 .messagealert2{
   position: fixed;
-  top:15%;
+  top:9%;
   left:13%;
   border-radius: 5px;
   padding:5px;
@@ -215,7 +215,7 @@ canvas{
   z-index: 777;
   background-color: cornsilk;
   font-family: 'VT323', monospace;
-  opacity: .9;
+  opacity: 1;
   -webkit-animation-name: floating;
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
@@ -232,7 +232,7 @@ canvas{
   z-index: 777;
   background-color: cornsilk;
   font-family: 'VT323', monospace;
-  opacity: .9;
+  opacity: 1;
   -webkit-animation-name: floating;
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
@@ -256,6 +256,28 @@ canvas{
   margin-left: 10px;
   transform: rotate(45deg);
   background-color: cornsilk;
+}
+.triangle2{
+  position: absolute;
+  width:15px;
+  height:15px;
+  transform: rotate(45deg);
+  background-color: cornsilk;
+  margin-top:-13px;
+  margin-left: -9px;
+  z-index: -1;
+
+}
+.triangle3{
+  position: absolute;
+  width:15px;
+  height:15px;
+  transform: rotate(45deg);
+  background-color: cornsilk;
+  margin-top:-13px;
+  margin-left:-9px;
+  z-index: -1;
+
 }
 
 @-webkit-keyframes floating {
