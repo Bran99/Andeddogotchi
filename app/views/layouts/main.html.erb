@@ -20,7 +20,11 @@
 <!--   <span class='subtitle'> Andeddogotchi! <span> -->
   <div class="modal starting">
     <!-- CREATE AN ACCOUNT -->
-      <h3 id='new' class='backgreen'>resurrect an andeddogotchi</h3>
+      <h3 id='new' class='backgreen'>resurrect an andeddogotchi!</br> <span>create an account or login with facebook </span> <div id="fb-root"></div>
+  <%= javascript_include_tag "facebookStuff" %>
+  <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
+  <div id="status"></div>
+  <div onlogin="checkLoginState()" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false"></div></h3>
       <form class="signup col s12" ng-submit="ac.createUser()">
 
           <div class="input-field">
@@ -38,7 +42,7 @@
                   <label for='gotchiname'>Name your Andeddogotchi</label>
               </div>
 
-          <input class='button' type="submit" value="play!">
+          <input class='button' type="submit" value="Let's Go!">
       </form>
       <!-- LOG IN -->
       <h3 id='togglelog'>or click here to log in</h3>
@@ -51,7 +55,7 @@
               <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
               <label for="password">Password</label>
           </div>
-          <input class="button" type="submit" value="play!">
+          <input class="button" type="submit" value="Play!">
       </form>
   </div>
 </div>
@@ -70,24 +74,22 @@ $('#new').on('click', function(){
    $('.signup').removeClass('collapse');
    $('#togglelog').removeClass('backgreen');
 })
-
-
 </script>
 
 <!-- DEATH MODAL -->
 <div ng-class="(ac.loggedIn && ac.gotchiName && ac.isDead) ? 'death-show modal' : 'death modal'">
-  <form class="col s12 create-gotchi" ng-submit="ac.deadGotchi()">
-  </br></br></br>
-   <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
-   </br></br>
-   <div class='row'>
-     <div class="input-field">
-       <input id='gotchiname' class='validate' type="text" ng-model="ac.newName">
-       <label for='gotchiname'>Name your new Andeddogotchi</label>
-     </div>
-     <input class="letsgo button" type="submit" value="Let's Go!">
+<form class="col s12 create-gotchi" ng-submit="ac.deadGotchi()">
+</br></br></br>
+ <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
+ </br></br>
+ <div class='row'>
+   <div class="input-field">
+     <input id='gotchiname' class='validate' type="text" ng-model="ac.newName">
+     <label for='gotchiname'>Name your new Andeddogotchi</label>
    </div>
-  </form>
+   <input class="letsgo button" type="submit" value="Let's Go!">
+ </div>
+</form>
 </div>
 
 <!-- LOGOUT BUTTON -->
@@ -103,7 +105,7 @@ $('#new').on('click', function(){
 
 
 <!-- PLAY AREA -->
-<div ng-class="(ac.loggedIn && ac.gotchiName && ac.isDead) ? 'play grayitout' : 'play'">
+<div class='play'>
 <h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">Andeddogotchi!</h1>
 <!-- <span ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <span> -->
 <!-- NAV BAR-->
