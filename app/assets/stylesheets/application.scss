@@ -83,7 +83,8 @@ body{
 /*<><><><><>GENERAL MODAL STYLING<><><><><>*/
 
 .modal{
-  height:500px;
+  width:40%;
+  height:200px;
 }
 
 
@@ -95,7 +96,6 @@ body{
   opacity: 0;
   height:0;
   transition: height 0.75s ease, opacity 0.5s ease 0.05s;
-  border:1px solid green;
   background-color: whitesmoke;
   z-index: 999;
   position: relative;
@@ -106,7 +106,14 @@ body{
   height:300px;
   opacity: 1;
   transition: height 0.75s ease, opacity 0.5s ease 0.05s;
-  border:1px solid green;
+
+}
+.grayitout{
+    opacity: .7;
+  -webkit-filter: grayscale(80%);
+}
+#new:hover{
+  background-color: lightgreen;
 }
 
 .lower{
@@ -143,37 +150,50 @@ body{
 }
 
 #togglelog{
+  margin-top:2%;
   cursor: pointer;
   position: relative;
   z-index: 9999;
 }
+
+#togglelog:hover{
+  background-color: lightgreen;
+}
+
+
 .modal{
   visibility: visible;
   display:block;
   opacity: .9;
   padding:5px;
   z-index: 999;
-  width:60vw;
-  height:100%;
+  width:50vw;
+  height:70%;
+  margin-top:5%;
   background-color: #white;
 }
 .modal h3{
   text-align:center;
   padding-top:5px;
-  color:#666;
+  color:#000;
+  font-size:2em;
   font-family: 'VT323', monospace;
   text-shadow:1px 1px 1px green;
   letter-spacing: .1em;
   text-transform: uppercase;
-  background:cornsilk;
 }
-
+.backgreen{
+  background:lightgreen;
+}
 .modal input{
+  text-align: center;
   font-size: 2em;
   font-family: 'VT323', monospace;
   letter-spacing: .1em;
 }
-
+.modal label{
+  text-align: center;
+}
 
 .lower{
   position:relative;
@@ -888,11 +908,14 @@ canvas{
 
 /*<><><><><>MODAL SHIT<><><><><>*/
 .notShown{
+  transition:1s;
   display:none;
 }
 .notLoggedIn{
+  transition:1s;
   display:block;
 }
 .navBarYes{
+  transition:1s;
   display:inline-block;
 }

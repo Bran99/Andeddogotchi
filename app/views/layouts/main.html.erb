@@ -20,8 +20,9 @@
 <!--   <span class='subtitle'> Andeddogotchi! <span> -->
   <div class="modal starting">
     <!-- CREATE AN ACCOUNT -->
-      <h3 id='new'>Create an account!</h3>
+      <h3 id='new' class='backgreen'>resurrect an andeddogotchi</h3>
       <form class="signup col s12" ng-submit="ac.createUser()">
+
           <div class="input-field">
               <input id='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
               <label for='name'>Name</label>
@@ -32,17 +33,15 @@
               <label for='password'>Password (at least 8 characters)</label>
           </div>
 
-          <div class='row'>
               <div class="input-field">
                   <input id='gotchiname' class='validate' type="text" ng-model="ac.user.gotchi_name">
                   <label for='gotchiname'>Name your Andeddogotchi</label>
               </div>
-          </div>
 
-          <input class='button' type="submit" value="Let's Go!">
+          <input class='button' type="submit" value="play!">
       </form>
       <!-- LOG IN -->
-      <h3 id='togglelog'>Log In!</h3>
+      <h3 id='togglelog'>or click here to log in</h3>
       <form class="col s12 login" ng-submit="ac.login()">
           <div class="input-field">
               <input id='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
@@ -52,7 +51,7 @@
               <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
               <label for="password">Password</label>
           </div>
-          <input class="button" type="submit" value="Let's Go!">
+          <input class="button" type="submit" value="play!">
       </form>
   </div>
 </div>
@@ -61,12 +60,18 @@
 $('#togglelog').on('click', function(){
    $('.signup').addClass('collapse');
    $('.login').addClass('show');
+   $('#togglelog').addClass('backgreen');
+   $('#new').removeClass('backgreen');
 })
 
 $('#new').on('click', function(){
+   $('#new').addClass('backgreen');
    $('.login').removeClass('show');
    $('.signup').removeClass('collapse');
+   $('#togglelog').removeClass('backgreen');
 })
+
+
 </script>
 
 <!-- DEATH MODAL -->
@@ -98,7 +103,7 @@ $('#new').on('click', function(){
 
 
 <!-- PLAY AREA -->
-<div class='play'>
+<div ng-class="(ac.loggedIn && ac.gotchiName && ac.isDead) ? 'play grayitout' : 'play'">
 <h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">Andeddogotchi!</h1>
 <!-- <span ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <span> -->
 <!-- NAV BAR-->
@@ -257,6 +262,7 @@ setTimeout(function(){
   $('.gotchi-3').removeClass('happy');
 },1000)
 })
+
 
 
 </script>
