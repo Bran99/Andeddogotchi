@@ -18,12 +18,25 @@
 
 @import "materialize/components/color";
 
-$secondary-color: color("green", "lighten-2") !default;
+$secondary-color: color("grey","darken-4") !default;
 
 @import 'materialize';
 
 @import url(http://fonts.googleapis.com/css?family=VT323);
 
+@font-face {
+  font-family: 'Pokemon GB Japan HR';
+  src: url('/assets/Pokemon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PokemonKT';
+  src: url('/assets/PokemonKT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /*<><><><><>MEDIAQUERIES IN SCSS<<><><><><><>*/
 
@@ -50,7 +63,9 @@ body{
   color:lightgreen;
   text-shadow:2px 2px 2px green;
   text-align: center;
-  font-family: 'VT323',monospace;
+  margin-left:3%;
+  text-transform: uppercase;
+  font-family: 'VT323', monospace;
   @media screen and (max-width: $break-small) {
     font-size:1.5em;
   }
@@ -61,7 +76,17 @@ body{
   z-index: 9777;
   right:5px;
   text-align: right;
+
 }
+
+
+/*<><><><><>GENERAL MODAL STYLING<><><><><>*/
+
+.modal{
+  height:500px;
+}
+
+
 /*<><><><><>SIGN UP<><><><><>*/
 .starting{
   margin-top:5%;
@@ -167,17 +192,14 @@ canvas{
   position:absolute;
   z-index: 2;
   margin-top:0;
-
-
 }
+
 .play{
   position: relative;
   z-index: 777;
   display:inline-block;
   width:100%;
   height:80vh;
-
-
 }
 
 /*.morning{
@@ -191,8 +213,8 @@ canvas{
 
 /*<><><><><>MESSAGE<><><><><><>*/
 .messagealert{
-  position: fixed;
-  top:8%;
+  position: absolute;
+  top:8px;
   left:13%;
   border-radius: 5px;
   padding:5px;
@@ -200,10 +222,43 @@ canvas{
   font-size: 1rem;
   z-index: 777;
   background-color: cornsilk;
-  opacity: .9;
   font-family: 'VT323', monospace;
   transition:1s;
   opacity: 0;
+  -webkit-animation-name: floating;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.messagealert2{
+  position: fixed;
+  top:9%;
+  left:13%;
+  border-radius: 5px;
+  padding:5px;
+  color:black;
+  font-size: 1rem;
+  z-index: 777;
+  background-color: cornsilk;
+  font-family: 'VT323', monospace;
+  opacity: 1;
+  -webkit-animation-name: floating;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.messagealert3{
+  position: fixed;
+  top:25%;
+  left:13%;
+  border-radius: 5px;
+  padding:5px;
+  color:black;
+  font-size: 1rem;
+  z-index: 777;
+  background-color: cornsilk;
+  font-family: 'VT323', monospace;
+  opacity: 1;
   -webkit-animation-name: floating;
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
@@ -214,6 +269,9 @@ canvas{
   opacity: 1;
 }
 
+.hidemessage{
+  opacity: 0;
+}
 
 
 .triangle{
@@ -224,6 +282,28 @@ canvas{
   margin-left: 10px;
   transform: rotate(45deg);
   background-color: cornsilk;
+}
+.triangle2{
+  position: absolute;
+  width:15px;
+  height:15px;
+  transform: rotate(45deg);
+  background-color: cornsilk;
+  margin-top:-13px;
+  margin-left: -9px;
+  z-index: -1;
+
+}
+.triangle3{
+  position: absolute;
+  width:15px;
+  height:15px;
+  transform: rotate(45deg);
+  background-color: cornsilk;
+  margin-top:-13px;
+  margin-left:-9px;
+  z-index: -1;
+
 }
 
 @-webkit-keyframes floating {
@@ -301,7 +381,7 @@ canvas{
   height:45px;
   margin:0 auto;
   display:block;
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/Brain.svg');
+  background-image: url('/assets/Brain.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
    @media screen and (max-width: $break-small) {
@@ -314,7 +394,7 @@ canvas{
   height:45px;
   margin:0 auto;
   display:block;
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/8Bit_Foot.svg');
+  background-image: url('/assets/8Bit_Foot.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
   @media screen and (max-width: $break-small) {
@@ -328,7 +408,7 @@ canvas{
   height:45px;
   margin:0 auto;
   display:block;
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/Sun.svg');
+  background-image: url('/assets/Sun.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
   background-color: blue;
@@ -346,7 +426,7 @@ canvas{
   height:45px;
   margin:0 auto;
   display: block;
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/Moon.svg');
+  background-image: url('/assets/Moon.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
   background-color: black;
@@ -421,6 +501,8 @@ canvas{
  transition-timing-function: cubic-bezier(.5,.18,.42,1);
  display: block;
  margin:0 auto;
+ z-index: 997;
+ position: relative;
 }
 .thegotchi{
   background-size:cover;
@@ -437,15 +519,15 @@ canvas{
   transition-timing-function: cubic-bezier(.16,1.37,.81,.25);
 }
 .gotchi-1{
-  background-image:url('https://dl.dropboxusercontent.com/u/89221222/1_tadpoleGreen.svg');
+  background-image:url('/assets/1_tadpoleGreen.svg');
 }
 
 .gotchi-2{
-  background-image:url('https://dl.dropboxusercontent.com/u/89221222/3_Toddler.svg');
+  background-image:url('/assets/3_Toddler.svg');
 
 }
 .gotchi-3{
-  background-image:url('https://dl.dropboxusercontent.com/u/89221222/4_Adult.svg');
+  background-image:url('/assets/4_Adult.svg');
 
 }
 
@@ -477,7 +559,7 @@ canvas{
   float:left;
   width:70px;
   height:70px;
-  background-image:url('https://dl.dropboxusercontent.com/u/89221222/EYE.svg');
+  background-image:url('/assets/EYE.svg');
   background-image-size:cover;
   background-repeat:no-repeat;
 }
@@ -491,11 +573,11 @@ canvas{
 }
 
 .gotchi-1.happy{
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/2_Tadpole_Happy.svg');
+  background-image: url('/assets/2_Tadpole_Happy.svg');
 }
 
 .gotchi-3.happy{
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/5_Adult_Hungry.svg');
+  background-image: url('/assets/5_Adult_Hungry.svg');
 }
 
 .turn{
@@ -518,7 +600,7 @@ canvas{
   z-index:998;
   height:72px;
   width:72px;
-  background-image:url('https://dl.dropboxusercontent.com/u/89221222/mouth.svg');
+  background-image:url('/assets/mouth.svg');
   background-image-size:cover;
   background-repeat:no-repeat;
 }
@@ -553,7 +635,7 @@ canvas{
   margin-top:-50%;
   margin-left: 10%;
   display:block;
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/Brain.svg');
+  background-image: url('/assets/Brain.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
 }
@@ -568,7 +650,7 @@ canvas{
 /*<><><><><><><>TUB<><><><><><><>*/
 
 .bathtub{
- background-image:url('https://dl.dropboxusercontent.com/u/89221222/Tub.svg');
+ background-image:url('/assets/Tub.svg');
  width:600px;
  height:600px;
  margin-left:-105%;
@@ -604,7 +686,7 @@ canvas{
   padding: 0;
   width:100px;
   height:100px;
-  background-image: url('https://dl.dropboxusercontent.com/u/89221222/8Bit_Tombstone.svg');
+  background-image: url('/assets/8Bit_Tombstone.svg');
   background-size:100% auto;
   background-repeat: no-repeat;
   position: relative;
