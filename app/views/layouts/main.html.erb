@@ -16,8 +16,8 @@
 </div>
 <!-- CREATE USER MODAL -->
 <div ng-class="ac.loggedIn ? 'notShown' : 'shown'">
-  <h1 class='titleAndeddo'>あんでっどごち!</h1>
-  <h4 class='subtitle'> Andeddogotchi! <h4>
+  <h1 class='titleAndeddo'>Andeddogotchi!</h1>
+<!--   <span class='subtitle'> Andeddogotchi! <span> -->
   <div class="modal starting">
     <!-- CREATE AN ACCOUNT -->
       <h3 id='new'>Create an account!</h3>
@@ -29,7 +29,7 @@
 
           <div class="input-field">
               <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
-              <label for='password'>Password</label>
+              <label for='password'>Password (at least 8 characters)</label>
           </div>
 
           <div class='row'>
@@ -39,7 +39,7 @@
               </div>
           </div>
 
-          <input class='button lower' type="submit" value="Let's Go!">
+          <input class='button' type="submit" value="Let's Go!">
       </form>
       <!-- LOG IN -->
       <h3 id='togglelog'>Log In!</h3>
@@ -52,7 +52,7 @@
               <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
               <label for="password">Password</label>
           </div>
-          <input class="letsgo button" type="submit" value="Let's Go!">
+          <input class="button" type="submit" value="Let's Go!">
       </form>
   </div>
 </div>
@@ -70,7 +70,7 @@ $('#new').on('click', function(){
 </script>
 
 <!-- DEATH MODAL -->
-<div ng-class="(ac.gotchiName && isDead) ? 'death-show modal' : 'death modal'">
+<div ng-class="(ac.gotchiName && isDead && ac.loggedIn) ? 'death-show modal' : 'death modal'">
 <form class="col s12 create-gotchi" ng-submit="ac.deadGotchi()">
 </br></br></br>
  <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
@@ -99,8 +99,8 @@ $('#new').on('click', function(){
 
 <!-- PLAY AREA -->
 <div class='play'>
-<h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">あんでっどごち!</h1>
-<h4 ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <h4>
+<h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">Andeddogotchi!</h1>
+<!-- <span ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <span> -->
 <!-- NAV BAR-->
     <div ng-class="ac.loggedIn ? 'nav' : 'notShown'">
         <!-- food -->
@@ -113,7 +113,7 @@ $('#new').on('click', function(){
         <div class='moon gray'></div>
     </div>
     <!-- CANVAS -->
-    <div class='canvas'></div>
+    <div ng-class="ac.loggedIn ?  'canvas': 'notShown'"></div>
 <!-- STATS BAR -->
     <div ng-class="ac.loggedIn ? 'stats' : 'notShown'">
       <label class="fullnessLevel">Fullness</label>
@@ -142,7 +142,7 @@ $('#new').on('click', function(){
     </div>
 
     <!-- BATHTUB -->
-    <div class='bathtub'></div>
+    <div ng-class="ac.loggedIn ?  'bathtub': 'notShown'"></div>
     <!-- FOOD ANIMATION-->
     <div class='food'></div>
     <!-- GRAVE YARD -->
