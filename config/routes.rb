@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get '/has_gotchi', to: 'gotchis#has_gotchi', as: 'has_gotchi'
 
+  get '/session_check', to: 'sessions#check', as: 'check'
+
 end
