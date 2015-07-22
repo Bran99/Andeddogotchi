@@ -19,11 +19,22 @@ app.controller('andeddoController',["$http", function($http){
   this.isDead;
   var controller = this;
 
+  this.checkLogin = function () {
+    $http.get('/session_check.json')
+         .success(function (data) {
+           controller.loggedIn = data.loggedIn;
+           console.log(controller.loggedIn);
+         })
+  }
+
+  this.checkLogin();
+
   var processCurrentUser = function (data) {
-    if(data.name) {
-      controller.gotchiName = data.gotchi_name;
-      controller.gotchi.age = data.age;
+    if(data.user.name) {
+      controller.gotchiName = data.user.gotchi_name;
+      controller.gotchi.age = data.gotchi.age;
       controller.loggedIn = true;
+      interval = setInterval(pageTick, isSleeping);
     }
   }
 
@@ -33,27 +44,29 @@ app.controller('andeddoController',["$http", function($http){
       user: this.user
     })
       .success(function (data) {
+        console.log(data);
         controller.gotchiName = data.user.gotchi_name;
         processCurrentUser(data);
       });
   };
 
   this.login = function () {
+    console.log("hi it's me");
     $http.post('/session.json', {
       authenticity_token: token,
       user: this.user
     })
       .success(function (data) {
-        console.log(data);
-        if(data.gotchi_name) {
-          controller.gotchiName = data.gotchi_name;
+        if(data.user.gotchi_name) {
+          controller.gotchiName = data.user.gotchi_name;
           processCurrentUser(data);
           readyFunction();
-          console.log('calling isDead()');
           controller.isDead = isDead();
+          if (controller.isDead === true && !$('.death-show')) {
+            $('.grabThis').addClass('death-show');
+          }
           console.log('the result of isDead is : ' + isDead());
           console.log('the value of ac.isDead is : ' + controller.isDead);
-          interval = setInterval(pageTick, isSleeping);
         } else {
           isDead();
         }
@@ -71,6 +84,11 @@ app.controller('andeddoController',["$http", function($http){
         console.log('dead?: ' + controller.isDead);
         console.log('gotchiName?: ' + controller.gotchiName);
         console.log('loggedIn?: ' + controller.loggedIn);
+        clearInterval(interval);
+
+        if($('.grabThis').hasClass('death-show')) {
+          $('.grabThis').removeClass('death-show');
+        }
       })
   }
 
@@ -82,6 +100,5 @@ app.controller('andeddoController',["$http", function($http){
            $('.death').removeClass('death-show');
            $('.died').removeClass('died');
          })
-         interval = setInterval(pageTick, isSleeping);
   }
 }]);

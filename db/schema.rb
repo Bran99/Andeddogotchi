@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20150715155605) do
   enable_extension "plpgsql"
 
   create_table "gotchis", force: :cascade do |t|
-    t.integer  "fullity",    default: 100, null: false
-    t.integer  "rest",       default: 100, null: false
-    t.integer  "age",        default: 1,   null: false
+    t.integer  "fullity",    default: 15, null: false
+    t.integer  "rest",       default: 15, null: false
+    t.integer  "age",        default: 1,  null: false
     t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "gotchis", ["user_id"], name: "index_gotchis_on_user_id", using: :btree
