@@ -67,10 +67,9 @@ function isDead() {
     setTimeout(function(){
       $('.death').addClass('death-show');
     },5000);
-    console.log(true);
+    clearInterval(interval);
     return true;
   } else {
-    console.log(false);
     return false;
   }
 }
@@ -108,8 +107,6 @@ var pageTick = function () {
     }
   })
 };
-
-interval = setInterval(pageTick, isSleeping);
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////

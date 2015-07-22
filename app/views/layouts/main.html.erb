@@ -76,18 +76,18 @@ $('#new').on('click', function(){
 
 <!-- DEATH MODAL -->
 <div ng-class="(ac.loggedIn && ac.gotchiName && ac.isDead) ? 'death-show modal' : 'death modal'">
-<form class="col s12 create-gotchi" ng-submit="ac.deadGotchi()">
-</br></br></br>
- <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
- </br></br>
- <div class='row'>
-   <div class="input-field">
-     <input id='gotchiname' class='validate' type="text" ng-model="ac.newName">
-     <label for='gotchiname'>Name your new Andeddogotchi</label>
+  <form class="col s12 create-gotchi" ng-submit="ac.deadGotchi()">
+  </br></br></br>
+   <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
+   </br></br>
+   <div class='row'>
+     <div class="input-field">
+       <input id='gotchiname' class='validate' type="text" ng-model="ac.newName">
+       <label for='gotchiname'>Name your new Andeddogotchi</label>
+     </div>
+     <input class="letsgo button" type="submit" value="Let's Go!">
    </div>
-   <input class="letsgo button" type="submit" value="Let's Go!">
- </div>
-</form>
+  </form>
 </div>
 
 <!-- LOGOUT BUTTON -->

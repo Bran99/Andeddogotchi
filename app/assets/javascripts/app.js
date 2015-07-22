@@ -48,10 +48,12 @@ app.controller('andeddoController',["$http", function($http){
         if(data.gotchi_name) {
           controller.gotchiName = data.gotchi_name;
           processCurrentUser(data);
-          console.log("logging in user");
           readyFunction();
-          console.log("about to call isDead");
+          console.log('calling isDead()');
           controller.isDead = isDead();
+          console.log('the result of isDead is : ' + isDead());
+          console.log('the value of ac.isDead is : ' + controller.isDead);
+          interval = setInterval(pageTick, isSleeping);
         } else {
           isDead();
         }
@@ -66,6 +68,9 @@ app.controller('andeddoController',["$http", function($http){
     })
       .success(function (data) {
         controller.loggedIn = false;
+        console.log('dead?: ' + controller.isDead);
+        console.log('gotchiName?: ' + controller.gotchiName);
+        console.log('loggedIn?: ' + controller.loggedIn);
       })
   }
 
