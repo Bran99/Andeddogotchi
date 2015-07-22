@@ -1,5 +1,4 @@
 var token = $('[name="csrf-token"]').attr('content'),
-
     isSleeping = 6000,
     fullity,
     rest,
@@ -21,7 +20,7 @@ $('.sun').on('click', function () {
 
 $('.moon').on('click', function () {
   if(!$('.moon').hasClass('gray')) {
-    isSleeping = 60000;
+    isSleeping = 600000000;
   }
 })
 
@@ -30,6 +29,29 @@ $('.moon').on('click', function () {
 //////////////// DEATH CHECKER ///////////////
 //////////////////////////////////////////////
 //////////////////////////////////////////////
+
+function readyFunction() {
+  $.ajax({
+    url: "/gotchis",
+    method: "PATCH",
+    data: { "authenticity_token": token,
+            gotchi: {health_action: "load"}
+          },
+    success: function(data) {
+      console.log(data);
+      fullity = data.fullity || 0;
+      console.log(fullity);
+      rest = data.rest || 0;
+      console.log(rest);
+      $('.fillfull').css('width', fullity);
+      $('.fillhealth').css('width', rest);
+      isDead();
+    },
+    error: function(data){
+      console.log(data);
+    }
+  })
+}
 
 function isDead() {
   if (fullity <= 0 || rest <= 0) {
@@ -45,7 +67,11 @@ function isDead() {
     setTimeout(function(){
       $('.death').addClass('death-show');
     },5000);
-
+    console.log(true);
+    return true;
+  } else {
+    console.log(false);
+    return false;
   }
 }
 
@@ -55,25 +81,7 @@ function isDead() {
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 
-$(document).ready(function () {
-  $.ajax({
-    url: "/gotchis",
-    method: "PATCH",
-    data: { "authenticity_token": token,
-            gotchi: {health_action: "load"}
-          },
-    success: function(data) {
-      $('.fillfull').css('width', data.fullity);
-      $('.fillhealth').css('width', data.rest);
-      fullity = data.fullity;
-      rest = data.rest;
-      isDead();
-    },
-    failure: function(data){
-      console.log(data);
-    }
-  })
-})
+$(document).ready(readyFunction);
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////

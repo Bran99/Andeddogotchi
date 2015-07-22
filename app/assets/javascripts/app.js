@@ -16,12 +16,13 @@ app.controller('andeddoController',["$http", function($http){
   this.gotchiName;
   this.loggedIn = false;
   this.newName;
+  this.isDead;
   var controller = this;
 
   var processCurrentUser = function (data) {
-    if(data.user.name) {
-      controller.gotchiName = data.user.gotchi_name;
-      controller.gotchi.age = data.gotchi.age;
+    if(data.name) {
+      controller.gotchiName = data.gotchi_name;
+      controller.gotchi.age = data.age;
       controller.loggedIn = true;
     }
   }
@@ -32,7 +33,7 @@ app.controller('andeddoController',["$http", function($http){
       user: this.user
     })
       .success(function (data) {
-        this.gotchiName = data.user.gotchi_name;
+        controller.gotchiName = data.user.gotchi_name;
         processCurrentUser(data);
       });
   };
@@ -43,9 +44,14 @@ app.controller('andeddoController',["$http", function($http){
       user: this.user
     })
       .success(function (data) {
-        if(data.user.gotchi_name) {
-          this.gotchiName = data.user.gotchi_name;
+        console.log(data);
+        if(data.gotchi_name) {
+          controller.gotchiName = data.gotchi_name;
           processCurrentUser(data);
+          console.log("logging in user");
+          readyFunction();
+          console.log("about to call isDead");
+          controller.isDead = isDead();
         } else {
           isDead();
         }

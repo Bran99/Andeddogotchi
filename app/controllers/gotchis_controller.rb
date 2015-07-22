@@ -33,7 +33,7 @@ class GotchisController < ApplicationController
   end
 
   def update
-    @gotchi = current_user.gotchi
+    @gotchi = current_user.gotchi || {message: "I'm dead"}
     if gotchi_params[:health_action] == "brain"
       @gotchi.fullity += 33
       @gotchi.save
@@ -45,8 +45,9 @@ class GotchisController < ApplicationController
       @gotchi.rest -= 20
       @gotchi.save
     end
-
-    render json: @gotchi
+    respond_to do|format|
+      format.json { render json: @gotchi }
+    end
   end
 
   def destroy

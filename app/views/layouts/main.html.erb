@@ -70,7 +70,7 @@ $('#new').on('click', function(){
 </script>
 
 <!-- DEATH MODAL -->
-<div ng-class="(ac.gotchiName && isDead) ? 'death-show modal' : 'death modal'">
+<div ng-class="(ac.loggedIn && ac.gotchiName && ac.isDead) ? 'death-show modal' : 'death modal'">
 <form class="col s12 create-gotchi" ng-submit="ac.deadGotchi()">
 </br></br></br>
  <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
