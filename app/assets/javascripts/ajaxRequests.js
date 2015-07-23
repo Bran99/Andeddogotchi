@@ -5,7 +5,9 @@ var token = $('[name="csrf-token"]').attr('content'),
     interval,
     bloodBath,
     loginCheck,
-    gotchiAge;
+    gotchiAge,
+    restFill,
+    fullFill;
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -99,8 +101,10 @@ var pageTick = function () {
             gotchi: {health_action: "tick"}
           },
     success: function(data) {
-      $('.fillfull').css('width', data.fullity);
-      $('.fillhealth').css('width', data.rest);
+      fullFill = ((data.fullity / 100) * $('.bar').width())
+      restFill = ((data.rest / 100) * $('.bar').width())
+      $('.fillfull').css('width', fullFill);
+      $('.fillhealth').css('width', restFill);
 
       fullity = data.fullity;
       rest = data.rest;
@@ -127,10 +131,10 @@ $('.brain').on('click', function (e) {
             gotchi: {health_action: "brain"}
           },
     success: function(data) {
-      $('.fillfull').css('width', data.fullity);
+      fullFill = ((data.fullity / 100) * $('.bar').width())
+      $('.fillfull').css('width', fullFill);
       console.log(data.fullity);
-      if(data.fullity > 114){
-        console.log('we ok');
+      if(data.fullity > 50){
         $('.fillfull').css('background-color', 'lightgreen');
       }
       fullity = data.fullity;
@@ -157,9 +161,9 @@ $('.sun').on('click', function (e) {
               gotchi: {health_action: "blood_bath"}
             },
       success: function(data) {
-        $('.fillhealth').css('width', data.rest);
-        if(data.rest > 114){
-          console.log('we ok');
+        restFill = ((data.rest / 100) * $('.bar').width())
+        $('.fillhealth').css('width', restFill);
+        if(data.rest > 50){
           $('.fillhealth').css('background-color', 'lightgreen');
         }
         rest = data.rest;

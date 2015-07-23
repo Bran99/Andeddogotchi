@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def helper_shown
+    helper_shown = true;
+  end
+
   def current_gotchi_age
     @current_gotchi_age ||= session[:current_gotchi_age]
   end
