@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest, null: false
       t.string :gotchi_name, null: false
       t.datetime :last_login
+      t.boolean :helper_shown, null: false, default: false
 
       t.timestamps null: false
     end
