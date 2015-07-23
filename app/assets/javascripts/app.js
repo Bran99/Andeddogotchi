@@ -36,13 +36,10 @@ app.controller('andeddoController',["$http", function($http){
   };
 
   var processCurrentUser = function (data) {
-    console.log(data);
     controller.loggedIn = true;
     controller.gotchiName = data.user.gotchi_name;
     if(data.gotchi) {
-      console.log("HEY HEY HEY I'M IN HERE!!!");
       controller.gotchi = data.gotchi;
-      console.log(controller.gotchi);
       interval = setInterval(pageTick, isSleeping);
     } else {
       $('.gotchi').addClass('died');
@@ -61,7 +58,6 @@ app.controller('andeddoController',["$http", function($http){
   };
 
   this.login = function () {
-    console.log("hi it's me");
     $http.post('/session.json', {
       authenticity_token: token,
       user: this.user
@@ -75,8 +71,6 @@ app.controller('andeddoController',["$http", function($http){
           if (controller.isDead === true && !$('.death-show')) {
             $('.grabThis').addClass('death-show');
           }
-          console.log('the result of isDead is : ' + isDead());
-          console.log('the value of ac.isDead is : ' + controller.isDead);
         } else {
           isDead();
         }
@@ -91,9 +85,6 @@ app.controller('andeddoController',["$http", function($http){
     })
       .success(function (data) {
         controller.loggedIn = false;
-        console.log('dead?: ' + controller.isDead);
-        console.log('gotchiName?: ' + controller.gotchiName);
-        console.log('loggedIn?: ' + controller.loggedIn);
         clearInterval(interval);
 
         if($('.grabThis').hasClass('death-show')) {
@@ -105,8 +96,6 @@ app.controller('andeddoController',["$http", function($http){
   this.deadGotchi = function () {
     $http.get('/gotchis/new.json', { authenticity_token: token })
          .success(function (data) {
-           console.log("hey i'm here again");
-           console.log(data);
            processCurrentUser(data);
            controller.gotchiName = controller.newName;
            $('.grabThis').removeClass('death-show');
