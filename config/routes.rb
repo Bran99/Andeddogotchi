@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users
   resource :gotchis, only: [:new, :create, :update, :destroy]
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy] do
+    get 'current'
+  end
 
   get '/has_gotchi', to: 'gotchis#has_gotchi', as: 'has_gotchi'
 

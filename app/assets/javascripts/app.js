@@ -12,9 +12,7 @@ app.config([
 
 app.controller('andeddoController',["$http", function($http){
   this.user = {};
-  this.gotchi = {
-    age: gotchiAge
-  };
+  this.gotchi = {};
   this.gotchiName;
   this.loggedIn = false;
   this.newName;
@@ -22,27 +20,29 @@ app.controller('andeddoController',["$http", function($http){
   var controller = this;
 
   angular.element(document).ready(function () {
-    readyFunction();
+    // readyFunction();
     controller.checkLogin();
-    controller.gotchi.age = gotchiAge;
   });
 
   this.checkLogin = function () {
     $http.get('/session_check.json')
          .success(function (data) {
-           controller.loggedIn = data.loggedIn;
-           console.log(controller.loggedIn);
-         })
-  }
-
-  this.checkLogin();
+           if (data.user) {
+             processCurrentUser(data);
+           } else {
+             controller.loggedIn = false;
+           }
+         });
+  };
 
   var processCurrentUser = function (data) {
-    if(data.user.name) {
-      controller.gotchiName = data.user.gotchi_name;
-      controller.gotchi.age = data.gotchi.age;
-      controller.loggedIn = true;
+    controller.loggedIn = true;
+    controller.gotchiName = data.user.gotchi_name;
+    if(data.gotchi) {
+      controller.gotchi = data.gotchi;
       interval = setInterval(pageTick, isSleeping);
+    } else {
+      $('.gotchi').addClass('died');
     }
   }
 
@@ -52,14 +52,12 @@ app.controller('andeddoController',["$http", function($http){
       user: this.user
     })
       .success(function (data) {
-        console.log(data);
         controller.gotchiName = data.user.gotchi_name;
         processCurrentUser(data);
       });
   };
 
   this.login = function () {
-    console.log("hi it's me");
     $http.post('/session.json', {
       authenticity_token: token,
       user: this.user
@@ -73,8 +71,6 @@ app.controller('andeddoController',["$http", function($http){
           if (controller.isDead === true && !$('.death-show')) {
             $('.grabThis').addClass('death-show');
           }
-          console.log('the result of isDead is : ' + isDead());
-          console.log('the value of ac.isDead is : ' + controller.isDead);
         } else {
           isDead();
         }
@@ -89,9 +85,6 @@ app.controller('andeddoController',["$http", function($http){
     })
       .success(function (data) {
         controller.loggedIn = false;
-        console.log('dead?: ' + controller.isDead);
-        console.log('gotchiName?: ' + controller.gotchiName);
-        console.log('loggedIn?: ' + controller.loggedIn);
         clearInterval(interval);
 
         if($('.grabThis').hasClass('death-show')) {
@@ -103,7 +96,6 @@ app.controller('andeddoController',["$http", function($http){
   this.deadGotchi = function () {
     $http.get('/gotchis/new.json', { authenticity_token: token })
          .success(function (data) {
-           console.log("hey i'm here again");
            processCurrentUser(data);
            controller.gotchiName = controller.newName;
            $('.grabThis').removeClass('death-show');

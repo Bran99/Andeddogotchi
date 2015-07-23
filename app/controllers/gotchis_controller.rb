@@ -9,13 +9,14 @@ class GotchisController < ApplicationController
       @user.gotchi.save
     end
     session[:current_gotchi_age] = @user.gotchi.age
-    fullData = {
-                 user: @user,
-                 gotchi: @user.gotchi
-               }
+    response = {
+      user: @user,
+      gotchi: @user.gotchi
+    }
+    puts response
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.json { render json: fullData }
+      format.json { render json: response }
     end
   end
 

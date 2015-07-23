@@ -1,4 +1,18 @@
 class SessionsController < ApplicationController
+  def current
+    if current_user
+      render json: {
+        user: current_user,
+        gotchi: current_user.gotchi
+      }
+    else
+      render json: {
+        user: nil,
+        gotchi: nil
+      }
+    end
+  end
+
   def create
     @user = User.find_by(name: user_params[:name])
 
@@ -52,10 +66,16 @@ class SessionsController < ApplicationController
   end
 
   def check
-    loggedIn = current_user?
-    puts loggedIn
-    respond_to do |format|
-      format.json {render json: { loggedIn: loggedIn }}
+    if current_user
+      render json: {
+        user: current_user,
+        gotchi: current_user.gotchi
+      }
+    else
+      render json: {
+        user: nil,
+        gotchi: nil
+      }
     end
   end
 
