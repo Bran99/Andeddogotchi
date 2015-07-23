@@ -40,9 +40,9 @@ function readyFunction() {
     success: function(data) {
       console.log(data);
       fullity = data.fullity || 0;
-      console.log(fullity);
+      console.log(fullity+'fullity');
       rest = data.rest || 0;
-      console.log(rest);
+      console.log(rest+'rest');
       $('.fillfull').css('width', fullity);
       $('.fillhealth').css('width', rest);
       isDead();
@@ -50,7 +50,7 @@ function readyFunction() {
     error: function(data){
       console.log(data);
     }
-  })
+  });
 }
 
 function isDead() {
@@ -96,8 +96,10 @@ var pageTick = function () {
     success: function(data) {
       $('.fillfull').css('width', data.fullity);
       $('.fillhealth').css('width', data.rest);
+
       fullity = data.fullity;
       rest = data.rest;
+    
       isDead();
     },
     failure: function(data){
@@ -121,6 +123,11 @@ $('.brain').on('click', function (e) {
           },
     success: function(data) {
       $('.fillfull').css('width', data.fullity);
+      console.log(data.fullity);
+      if(data.fullity > 114){
+        console.log('we ok');
+        $('.fillfull').css('background-color', 'lightgreen');
+      } 
       fullity = data.fullity;
       isDead();
     },
@@ -146,6 +153,10 @@ $('.sun').on('click', function (e) {
             },
       success: function(data) {
         $('.fillhealth').css('width', data.rest);
+        if(data.rest > 114){
+          console.log('we ok');
+          $('.fillhealth').css('background-color', 'lightgreen');
+        }
         rest = data.rest;
         isDead();
       },
@@ -153,7 +164,7 @@ $('.sun').on('click', function (e) {
         console.log(data);
       }
     });
-  }, 3000)
+  }, 3000);
 });
 
 //////////////////////////////////////////////
