@@ -77,7 +77,8 @@ $('#new').on('click', function(){
 </script>
 
 <!-- DEATH MODAL -->
-<div ng-class="(ac.loggedIn && ac.gotchiName && ac.isDead) ? 'death-show modal grabThis' : 'death modal grabThis'">
+<div>
+<div ng-class="(ac.loggedIn && ac.gotchiName && !ac.gotchi.age) ? 'death-show modal grabThis' : 'death modal grabThis'">
   <form class="col s12 create-gotchi" ng-submit="ac.deadGotchi()">
   </br></br></br>
    <h4 class='deathmessage'> Your Andeddogotchi is dead. </br>Want to resurrect another?</h4>
@@ -145,7 +146,7 @@ $('#new').on('click', function(){
   <!-- GOTCHI -->
     <div ng-class="ac.loggedIn ? 'shown gotchi' : 'notShown gotchi'">
       <h3 class="gname">{{ac.gotchiName}}</h3>
-      <div class="thegotchi gotchi-{{ac.gotchi.age}}">
+      <div ng-show="!!ac.gotchi" class="thegotchi gotchi-{{ac.gotchi.age}}">
         <div class='eye'></div>
         <div class='eye'></div>
         <div class='mouth'></div>
