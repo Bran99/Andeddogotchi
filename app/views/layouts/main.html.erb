@@ -111,8 +111,8 @@ $('#new').on('click', function(){
 <h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">Andeddogotchi!</h1>
 <!-- <span ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <span> -->
 <!-- MESSAGE/ INSTRUCTIONS -->
-<span ng-class="ac.loggedIn ? 'messagealert2' : 'notShown'"> Feed your andeddogotchi brainz or foot!<div class='triangle2'></div></span>
-<span ng-class="ac.loggedIn ? 'messagealert3' : 'notShown'"> Shower your andeddogotchi with BLOOD for mood!<div class='triangle3'></div></span>
+<span ng-class="(ac.loggedIn && !helper_shown) ? 'messagealert2' : 'notShown'"> Feed your andeddogotchi brainz or foot!<div class='triangle2'></div></span>
+<span ng-class="(ac.loggedIn && !helper_shown) ? 'messagealert3' : 'notShown'"> Shower your andeddogotchi with BLOOD for mood!<div class='triangle3'></div></span>
 <!-- NAV BAR-->
     <div ng-class="ac.loggedIn ? 'nav' : 'notShown'">
         <!-- food -->
@@ -221,7 +221,7 @@ console.log('cat');
       $('.eye').addClass('turn');
       $('.sun').addClass('gray');
       $('.moon').removeClass('gray');
-      
+
       $('.messagealert3').addClass('hidemessage');
     }
 });
@@ -242,7 +242,7 @@ $('.moon').on('click',function(){
       var clear2 = function(){
         $('canvas').addClass('hide');
       };
-      
+
       setTimeout(clear2,100);
       $('.gotchi-1').removeClass('turn');
       $('.gotchi-2').removeClass('turn');

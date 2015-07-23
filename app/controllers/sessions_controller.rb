@@ -22,6 +22,8 @@ class SessionsController < ApplicationController
 
       @gotchi = @user.gotchi
 
+      helper_shown
+
       respond_to do |format|
         format.html { redirect_to new_gotchis_path }
         format.json { render json: {

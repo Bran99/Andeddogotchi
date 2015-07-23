@@ -17,6 +17,7 @@ app.controller('andeddoController',["$http", function($http){
   this.loggedIn = false;
   this.newName;
   this.isDead;
+  this.helper_shown;
   var controller = this;
 
   angular.element(document).ready(function () {
@@ -38,6 +39,7 @@ app.controller('andeddoController',["$http", function($http){
   var processCurrentUser = function (data) {
     controller.loggedIn = true;
     controller.gotchiName = data.user.gotchi_name;
+    controller.helper_shown = data.user.helper_shown;
     if(data.gotchi) {
       controller.gotchi = data.gotchi;
       interval = setInterval(pageTick, isSleeping);
