@@ -1,3 +1,191 @@
 // Place all the styles related to the user controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "materialize/components/color";
+$input-border-color: white !default;
+$secondary-color: white !default;
+
+@import 'materialize';
+
+@import url(http://fonts.googleapis.com/css?family=VT323);
+
+@font-face {
+  font-family: 'Pokemon GB Japan HR';
+  src: url('/assets/Pokemon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PokemonKT';
+  src: url('/assets/PokemonKT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*<><><><><>MEDIAQUERIES IN SCSS<<><><><><><>*/
+
+$break-small: 660px;
+
+/*<><><><><>GENERAL MODAL STYLING<><><><><>*/
+
+
+/*<><><><><>SIGN UP<><><><><>*/
+.starting{
+  margin-top:5%;
+}
+.login{
+  opacity: 0;
+  display: none;
+  height:0;
+  transition: height 0.75s ease, opacity 0.5s ease 0.05s;
+  z-index: 999;
+  position: relative;
+}
+
+
+.signup{
+  height:250px;
+  opacity: 1;
+  transition: height 0.75s ease, opacity 0.5s ease 0.05s;
+
+}
+.grayitout{
+    opacity: .7;
+  -webkit-filter: grayscale(80%);
+}
+#new:hover{
+  background-color: lightgreen;
+}
+
+.lower{
+  transition:opacity 0.1s ease 0.75s;
+}
+
+.show{
+  opacity: 1;
+  display:block;
+  height:300px;
+}
+.collapse{
+  opacity: 0;
+  height:0;
+}
+
+/*.collapse .lower {
+  display:none;
+}*/
+
+.button{
+ position:relative;
+ font-family: 'VT323', monospace;
+ font-size: 1.5em;
+ display: block;
+ margin:0 auto;
+ padding:0;
+ color:#FFF;
+ background-color: black;
+ border:1px solid white;
+}
+
+.button:hover{
+  color:black;
+  background-color: lightgreen;
+}
+
+#new{
+  cursor: pointer;
+}
+
+#togglelog{
+  margin-top:2%;
+  cursor: pointer;
+  position: relative;
+  z-index: 9999;
+}
+
+#togglelog:hover{
+  background-color: lightgreen;
+  color:black;
+}
+#new:hover{
+  background-color: lightgreen;
+  color:black;
+}
+.modal{
+  visibility: visible;
+  display:block;
+  opacity: .9;
+  padding:5px;
+  color:#FFF;
+  z-index: 999;
+  position: fixed;
+  width:50vw;
+  height:90vh;
+  margin-top:5%;
+  background-color: black;
+    h3{
+      text-align:center;
+      padding-top:5px;
+      font-size:2em;
+      padding-bottom:0;
+      font-family: 'VT323', monospace;
+      text-shadow:1px 1px 1px green;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+        span{
+          padding:0;
+          font-size:.5em;
+          display: inline-block;
+          width:80%;
+        }
+    }
+}
+form{
+  margin:0;
+  padding:0;
+}
+
+.backgreen{
+  background:lightgreen;
+  color:#000;
+}
+.modal input{
+  text-align: center;
+  font-size: 2em;
+  font-family: 'VT323', monospace;
+  letter-spacing: .1em;
+}
+.modal label{
+  text-align: center;
+}
+
+.lower{
+  position:relative;
+  z-index: 9888
+}
+
+
+.logout{
+  position: fixed;
+  margin-top:2%;
+  margin-left:90%;
+  z-index: 9999;
+}
+/*<><><><><>DEATH MODAL<<><><><><>*/
+.death{
+  display: none;
+  opacity: 1;
+  padding:0 25px;
+  position: fixed;
+  z-index: 998;
+}
+
+.death-show{
+  display: block;
+}
+.deathmessage{
+  font-family: 'VT323',monospace;
+  text-shadow:1px 1px 1px red;
+  text-align: center;
+}

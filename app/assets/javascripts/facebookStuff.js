@@ -23,6 +23,7 @@ function statusChangeCallback(response) {
   };
 };
 
+
 // This function is called when someone finishes with the Login
 // Button.  See the onlogin handler attached to it in the sample
 // code below.
@@ -52,7 +53,7 @@ FB.getLoginStatus(function(response) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js";
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1653771621504537";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
@@ -64,3 +65,16 @@ function testAPI() {
       'Thanks for logging in, ' + response.name + '!';
   });
 }
+
+
+
+
+
+// <div id="fb-root"></div>
+// <script>(function(d, s, id) {
+//   var js, fjs = d.getElementsByTagName(s)[0];
+//   if (d.getElementById(id)) return;
+//   js = d.createElement(s); js.id = id;
+//   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1653771621504537";
+//   fjs.parentNode.insertBefore(js, fjs);
+// }(document, 'script', 'facebook-jssdk'));</script>

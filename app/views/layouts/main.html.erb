@@ -16,15 +16,15 @@
 </div>
 <!-- CREATE USER MODAL -->
 <div ng-class="ac.loggedIn ? 'notShown' : 'shown'">
-  <h1 class='titleAndeddo'>Andeddogotchi!</h1>
+  <h1 class='titleAndeddo'> Andeddogotchi!</h1>
 <!--   <span class='subtitle'> Andeddogotchi! <span> -->
   <div class="modal starting">
     <!-- CREATE AN ACCOUNT -->
-      <h3 id='new' class='backgreen'>resurrect an andeddogotchi!</br> <span>create an account or login with facebook </span> <div id="fb-root"></div>
+      <h3 id='new' class='backgreen'>resurrect an andeddogotchi!</br> <span>create an account or use FB </span> <div id="fb-root"></div>
   <%= javascript_include_tag "facebookStuff" %>
   <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
   <div id="status"></div>
-  <div onlogin="checkLoginState()" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false"></div></h3>
+  <div onlogin="checkLoginState()" class="fb-login-button" data-auto-logout-link='true' data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false"></div></h3>
       <form class="signup col s12" ng-submit="ac.createUser()">
 
           <div class="input-field">
@@ -87,7 +87,6 @@ $('#new').on('click', function(){
        <input id='gotchiname' class='validate' type="text" ng-model="ac.newName">
        <label for='gotchiname'>Name your new Andeddogotchi</label>
      </div>
-     <input class="letsgo button" type="submit" value="Let's Go!">
    </div>
    <input class="letsgo button" type="submit" value="Let's Go!">
  </div>
@@ -110,6 +109,9 @@ $('#new').on('click', function(){
 <div class='play'>
 <h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">Andeddogotchi!</h1>
 <!-- <span ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <span> -->
+<!-- MESSAGE/ INSTRUCTIONS -->
+<span ng-class="ac.loggedIn ? 'messagealert2' : 'notShown'"> Feed your andeddogotchi brainz for fullness!<div class='triangle2'></div></span>
+<span ng-class="ac.loggedIn ? 'messagealert3' : 'notShown'"> Shower your andeddogotchi with BLOOD for health!<div class='triangle3'></div></span>
 <!-- NAV BAR-->
     <div ng-class="ac.loggedIn ? 'nav' : 'notShown'">
         <!-- food -->
@@ -216,6 +218,8 @@ console.log('cat');
       $('.eye').addClass('turn');
       $('.sun').addClass('gray');
       $('.moon').removeClass('gray');
+
+      $('.messagealert3').addClass('hidemessage');
     }
 });
 
@@ -256,6 +260,7 @@ $('.eye').addClass('happy');
 $('.mouth').addClass('happy');
 $('.gotchi-1').addClass('happy');
 $('.gotchi-3').addClass('happy');
+$('.messagealert2').addClass('hidemessage');
 setTimeout(function(){
   $('.food').removeClass('eat');
   if(($('.thegotchi').hasClass('gotchi-1'))){
