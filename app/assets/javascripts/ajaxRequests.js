@@ -4,7 +4,8 @@ var token = $('[name="csrf-token"]').attr('content'),
     rest,
     interval,
     bloodBath,
-    loginCheck;
+    loginCheck,
+    gotchiAge;
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -38,14 +39,14 @@ function readyFunction() {
             gotchi: {health_action: "load"}
           },
     success: function(data) {
-      console.log(data);
+      console.log("success!", data);
       fullity = data.fullity || 0;
-      console.log(fullity);
       rest = data.rest || 0;
-      console.log(rest);
       $('.fillfull').css('width', fullity);
       $('.fillhealth').css('width', rest);
       isDead();
+      gotchiAge = data.age;
+      console.log(gotchiAge);
     },
     error: function(data){
       console.log(data);
@@ -54,8 +55,6 @@ function readyFunction() {
 }
 
 function isDead() {
-  console.log("fullity:", fullity);
-  console.log("rest:", rest);
   if (fullity <= 0 || rest <= 0) {
     $.ajax({
       url: "/gotchis",
@@ -81,6 +80,8 @@ function isDead() {
 //////////// LOGIN HEALTH CHECKER ////////////
 //////////////////////////////////////////////
 //////////////////////////////////////////////
+
+$(document).ready(readyFunction);
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
