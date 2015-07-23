@@ -54,6 +54,8 @@ function readyFunction() {
 }
 
 function isDead() {
+  console.log("fullity:", fullity);
+  console.log("rest:", rest);
   if (fullity <= 0 || rest <= 0) {
     $.ajax({
       url: "/gotchis",
