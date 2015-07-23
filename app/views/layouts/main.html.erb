@@ -194,6 +194,7 @@ $('.mouth').addClass('happy');
 }
 $('.eye:nth-child(2)').on('mouseover', function(){
 $('.eye:nth-child(2)').addClass('turn');
+winkSound.play()
 setTimeout(function(){
   $('.eye:nth-child(2)').removeClass('turn');
 },300);
@@ -278,5 +279,25 @@ setTimeout(function(){
 $('.cutesound').on('click', function(){
   loadingSound.play();
 })
+
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><>VELOCITY SHIT<><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+/*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
+
+$('.brain').on('mouseover', function(){
+  $('.thegotchi').velocity({scaleX:(-1)},100);
+  
+
+})
+$('.brain').on('mouseout', function(){
+  $('.thegotchi').velocity({scaleX:(1)},100);
+
+})
+
+setInterval(function(){
+  $('.thegotchi').velocity({marginLeft: '550px'},2000).velocity({marginLeft: '350px'},2000);
+},5000)
 
 </script>

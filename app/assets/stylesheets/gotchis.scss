@@ -394,6 +394,7 @@ canvas{
  margin:0 auto;
  z-index: 997;
  position: relative;
+
 }
 .thegotchi{
   background-size:cover;
@@ -411,14 +412,17 @@ canvas{
 }
 .gotchi-1{
   background-image:url('/assets/1_tadpoleGreen.svg');
+  transform-origin:50% 50%;
 }
 
 .gotchi-2{
   background-image:url('/assets/3_Toddler.svg');
+  transform-origin:50% 50%;
 
 }
 .gotchi-3{
   background-image:url('/assets/4_Adult.svg');
+  transform-origin:50% 50%;
 
 }
 

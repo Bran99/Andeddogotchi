@@ -74,6 +74,7 @@ function isDead() {
       }
     });
     $('.gotchi').addClass('died');
+    deathSound.play();
     setTimeout(function(){
       $('.death').addClass('death-show');
     },5000);
