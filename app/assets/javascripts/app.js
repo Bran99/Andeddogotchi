@@ -12,12 +12,20 @@ app.config([
 
 app.controller('andeddoController',["$http", function($http){
   this.user = {};
-  this.gotchi = {};
+  this.gotchi = {
+    age: gotchiAge
+  };
   this.gotchiName;
   this.loggedIn = false;
   this.newName;
   this.isDead;
   var controller = this;
+
+  angular.element(document).ready(function () {
+    readyFunction();
+    controller.checkLogin();
+    controller.gotchi.age = gotchiAge;
+  });
 
   this.checkLogin = function () {
     $http.get('/session_check.json')
@@ -95,10 +103,12 @@ app.controller('andeddoController',["$http", function($http){
   this.deadGotchi = function () {
     $http.get('/gotchis/new.json', { authenticity_token: token })
          .success(function (data) {
+           console.log("hey i'm here again");
            processCurrentUser(data);
            controller.gotchiName = controller.newName;
-           $('.death').removeClass('death-show');
-           $('.died').removeClass('died');
+           $('.grabThis').removeClass('death-show');
+           $('.grabThis').addClass('death');
+           $('.gotchi').removeClass('died');
          })
   }
 }]);

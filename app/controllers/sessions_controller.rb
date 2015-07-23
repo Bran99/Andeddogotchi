@@ -20,7 +20,10 @@ class SessionsController < ApplicationController
     elsif @user && @user.authenticate(user_params[:password])
       login!(@user)
 
-      @gotchi = Gotchi.create(user: @user)
+      @gotchi = Gotchi.new(user: @user)
+      @gotchi.fullity = 0
+      @gotchi.rest = 0
+      @gotchi.save
 
       respond_to do |format|
         format.html { redirect_to new_gotchis_path }
