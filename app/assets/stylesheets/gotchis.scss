@@ -212,14 +212,37 @@ canvas{
  /*  flex-wrap:wrap;*/
   justify-content:space-around;
   align-items: center;
-  label{
-    padding:0;
-    width:100%;
+
+  label:nth-child(1), label:nth-child(2){
     display: flex !important;/* or inline-flex */
     flex-wrap: nowrap ;
     flex-direction: row;
     /*  flex-wrap:wrap;*/
     justify-content:space-between;
+    span:nth-child(1){
+      padding-left:5%;
+    }
+    span:nth-child(2){
+      padding-right:5%;
+    }
+  }
+
+  label:nth-child(3){
+    display: flex !important;/* or inline-flex */
+    flex-wrap: nowrap ;
+    flex-direction: row;
+    /*  flex-wrap:wrap;*/
+    justify-content:space-between;
+     span:nth-child(1){
+      padding-left:5%;
+    }
+    span:nth-child(2){
+      padding-right:5%;
+    }
+  }
+  label{
+    padding:0;
+    width:100%;
     font-size:1.2em;
     text-align: center;
     display: block;
@@ -227,19 +250,14 @@ canvas{
     margin-top:5%;
     color:black;
   }
-   label:last-child{
-      width:100%;
-      display: block!important;
-      text-align:center;
-    }
-  *{
+/*  *{
     flex-grow:1;
-  }
+  }*/
 
-  label:first-child{
+ /* label:first-child{
     margin-top:0;
 
-  }
+  }*/
   
 }
 

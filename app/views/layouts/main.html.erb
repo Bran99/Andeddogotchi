@@ -16,7 +16,7 @@
 </div>
 <!-- CREATE USER MODAL -->
 <div ng-class="ac.loggedIn ? 'notShown' : 'shown'">
-  <h1 class='titleAndeddo'> Andeddogotchi!</h1>
+  <h1 class='titleAndeddo'>  Andeddogotchi!</h1>
 <!--   <span class='subtitle'> Andeddogotchi! <span> -->
   <div class="modal starting">
     <!-- CREATE AN ACCOUNT -->
@@ -42,7 +42,7 @@
                   <label for='gotchiname'>Name your Andeddogotchi</label>
               </div>
 
-          <input class='button' type="submit" value="Let's Go!">
+          <input class='button cutesound'  type="submit" value="Let's Go!">
       </form>
       <!-- LOG IN -->
       <h3 id='togglelog'>or click here to log in</h3>
@@ -55,7 +55,7 @@
               <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
               <label for="password">Password</label>
           </div>
-          <input class="button" type="submit" value="Play!">
+          <input class="button cutesound" type="submit" value="Play!">
       </form>
   </div>
 </div>
@@ -110,8 +110,8 @@ $('#new').on('click', function(){
 <h1 ng-class="ac.loggedIn ? 'small titleAndeddo' : 'notShown'">Andeddogotchi!</h1>
 <!-- <span ng-class="ac.loggedIn ? 'small subtitle' : 'notShown'"> Andeddogotchi! <span> -->
 <!-- MESSAGE/ INSTRUCTIONS -->
-<span ng-class="ac.loggedIn ? 'messagealert2' : 'notShown'"> Feed your andeddogotchi brainz for fullness!<div class='triangle2'></div></span>
-<span ng-class="ac.loggedIn ? 'messagealert3' : 'notShown'"> Shower your andeddogotchi with BLOOD for health!<div class='triangle3'></div></span>
+<span ng-class="ac.loggedIn ? 'messagealert2' : 'notShown'"> Feed your andeddogotchi brainz or foot!<div class='triangle2'></div></span>
+<span ng-class="ac.loggedIn ? 'messagealert3' : 'notShown'"> Shower your andeddogotchi with BLOOD for mood!<div class='triangle3'></div></span>
 <!-- NAV BAR-->
     <div ng-class="ac.loggedIn ? 'nav' : 'notShown'">
         <!-- food -->
@@ -119,7 +119,7 @@ $('#new').on('click', function(){
         <div class='brain'></div>
         <div class='foot'></div>
         <!-- rest-->
-        <label>Rest</label>
+        <label>Mood</label>
         <div class='sun'></div>
         <div class='moon gray'></div>
     </div>
@@ -131,11 +131,11 @@ $('#new').on('click', function(){
       <div class='bar'>
         <div class='fillfull'></div>
       </div>
-      <label class="healthLevel"><span>Content</span> <span>Vengful</span></label>
+      <label class="healthLevel"><span>mad</span> <span>ok</span></label>
       <div class='bar'>
         <div class='fillhealth'></div>
       </div>
-      <label>Age</label>
+      <label>Age: {{ac.gotchiLife}}</label>
 
 
         <span class='agedisplay'>{{ac.gotchi.age}} afterlife days old</span>
@@ -209,6 +209,7 @@ console.log('cat');
     };
     setTimeout(clear,2000);
   } else{
+    showerSound.play();
       //if its not clicked bring on the bloood
       setTimeout(bloodbath,1000);
       $('.gotchi-1').addClass('turn');
@@ -218,7 +219,7 @@ console.log('cat');
       $('.eye').addClass('turn');
       $('.sun').addClass('gray');
       $('.moon').removeClass('gray');
-
+      
       $('.messagealert3').addClass('hidemessage');
     }
 });
@@ -239,7 +240,7 @@ $('.moon').on('click',function(){
       var clear2 = function(){
         $('canvas').addClass('hide');
       };
-
+      
       setTimeout(clear2,100);
       $('.gotchi-1').removeClass('turn');
       $('.gotchi-2').removeClass('turn');
@@ -261,6 +262,7 @@ $('.mouth').addClass('happy');
 $('.gotchi-1').addClass('happy');
 $('.gotchi-3').addClass('happy');
 $('.messagealert2').addClass('hidemessage');
+foodSound.play();
 setTimeout(function(){
   $('.food').removeClass('eat');
   if(($('.thegotchi').hasClass('gotchi-1'))){
@@ -272,6 +274,8 @@ setTimeout(function(){
 },1000)
 })
 
-
+$('.cutesound').on('click', function(){
+  loadingSound.play();
+})
 
 </script>
