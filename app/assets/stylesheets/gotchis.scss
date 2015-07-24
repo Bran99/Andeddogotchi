@@ -1,6 +1,40 @@
-// Place all the styles related to the gotchis controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+/*
+                               .--.
+                              /  ..\
+                         ____.'  _o/
+          .--.          '--.     |.__
+         /..  \         _.-'     /--'
+         \ o  /    _.--'        /
+         /    \   ~'--....___.-'   
+        /      \
+       (/      \)      ,_
+        |      \        |`\
+         \      '._     \  `'-._
+          '._      '-.   \      '-._/)
+             `'- ,~- _.`  '.        '.--.
+                            `-.,    / ..`\
+          .--.                 //'-.   o /
+         /..  \               (/     '--'
+         \o _ (____
+       __.|    .--'
+      '---\    '.         ,
+           '.    '-.___.-'/
+             '-.__     _.'
+                  `````
+
+////////////////////////////////
+//ANDEDDOGOTCHI GROUP PROJECT///
+////////////////////////////////
+// AUTHORS: Aarati Akkapeddi ///
+//          Brandon Goodman ////
+// PM:      Reshum Panchal /////
+// UX:      Rosemary      //////
+////////////////////////////////
+*/
+
 @import "materialize/components/color";
 $input-border-color: white !default;
 $secondary-color: white !default;
@@ -654,13 +688,19 @@ canvas{
   margin-left:450px;
   text-align: center;
   color:lightgreen;
-  background:black;
+
   text-shadow:2px 2px 2px green;
   letter-spacing: .1em;
   font-family: 'VT323', monospace;
   z-index: 977;
   width:200px;
   position: relative;
+  @media screen and (max-width: $mobile-small) {
+    display:none;
+  }
+  @media screen and (max-width: $mobile-large) {
+    display:none;
+  }
 }
 
 
