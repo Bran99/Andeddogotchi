@@ -41,13 +41,16 @@ class GotchisController < ApplicationController
       if @gotchi.fullity > 100
         @gotchi.fullity = 100
       end
-      @gotchi.save
+    elsif gotchi_params[:health_action] == "foot"
+      @gotchi.fullity += 20
+      if @gotchi.fullity > 100
+        @gotchi.fullity = 100
+      end
     elsif gotchi_params[:health_action] == "blood_bath"
       @gotchi.rest += 20
       if @gotchi.rest > 100
         @gotchi.rest = 100
       end
-      @gotchi.save
     elsif gotchi_params[:health_action] == "tick"
       @gotchi.fullity -= 33
       @gotchi.rest -= 20
@@ -56,8 +59,10 @@ class GotchisController < ApplicationController
       elsif @gotchi.rest < 0
         @gotchi.rest = 0
       end
-      @gotchi.save
     end
+
+    @gotchi.save
+    
     respond_to do|format|
       format.json { render json: @gotchi }
     end
