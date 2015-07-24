@@ -16,24 +16,24 @@
 </div>
 <!-- CREATE USER MODAL -->
 <div ng-class="ac.loggedIn ? 'notShown' : 'shown'">
-  <h1 class='titleAndeddo'>  Andeddogotchi!</h1>
+  <h1 class='titleAndeddo'>Andeddogotchi!</h1>
 <!--   <span class='subtitle'> Andeddogotchi! <span> -->
   <div class="modal starting">
     <!-- CREATE AN ACCOUNT -->
       <h3 id='new' class='backgreen'>resurrect an andeddogotchi!</br> <span>create an account or use FB </span> <div id="fb-root"></div>
   <%= javascript_include_tag "facebookStuff" %>
   <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
-  <div id="status"></div>
-  <div onlogin="checkLoginState()" class="fb-login-button" data-auto-logout-link='true' data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false"></div></h3>
+  <div id="status" ng-model="ac.fbName"></div>
+  <div id="fbButton" onlogin="checkLoginState()" class="fb-login-button" data-auto-logout-link='false' data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div></h3>
       <form class="signup col s12" ng-submit="ac.createUser()">
 
           <div class="input-field">
-              <input id='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
+              <input class='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
               <label for='name'>Name</label>
           </div>
 
           <div class="input-field">
-              <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
+              <input class='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
               <label for='password'>Password (at least 8 characters)</label>
           </div>
 
@@ -48,11 +48,11 @@
       <h3 id='togglelog'>or click here to log in</h3>
       <form class="col s12 login" ng-submit="ac.login()">
           <div class="input-field">
-              <input id='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
+              <input class='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
               <label for="name">Name</label>
           </div>
           <div class="input-field">
-              <input id='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
+              <input class='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
               <label for="password">Password</label>
           </div>
           <input class="button cutesound" type="submit" value="Play!">
@@ -288,7 +288,7 @@ $('.cutesound').on('click', function(){
 
 $('.brain').on('mouseover', function(){
   $('.thegotchi').velocity({scaleX:(-1)},100);
-  
+
 
 })
 $('.brain').on('mouseout', function(){
