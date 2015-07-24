@@ -15,12 +15,14 @@
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 function bloodbath(){
-
+var iw = $('body').innerWidth();
  function resizeCanvas(){
+  
   console.log('mew');
           $(window).resize(function(){
                      //initial drawing of canvas and append to body
-              canvas.width = $('.play').width();
+              iw = $('body').innerWidth();
+              canvas.width = iw;
               canvas.height = $('.play').height()+50;
               var grd = c.createLinearGradient(0, 0, canvas.width, canvas.height);
               grd.addColorStop(0, '#000');
@@ -78,8 +80,8 @@ function bloodbath(){
         //particle constructor
 
         function Particle(){
-          this.x = 480;
-          this.y = 180;
+          this.x = (iw/10) * 3.5;
+          this.y = 150;
 
           //Random speeds
           this.vx = Math.random() * 20 -10;

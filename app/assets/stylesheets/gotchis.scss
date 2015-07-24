@@ -435,14 +435,14 @@ canvas{
   border-radius:20%;
   margin-top:5%;
   @media screen and (max-width: $mobile-small) {
-    width: 45px;
+    width: 35px;
     height:55px;
-    margin:0 1%;
+    margin:0 3%;
     background-size:contain;
 
   }
   @media screen and (max-width: $mobile-large) {
-    width: 45px;
+    width: 35px;
     height:55px;
     margin:0 1%;
     background-size:contain;
@@ -462,14 +462,15 @@ canvas{
   background-color: black;
   border-radius:20%;
   margin-top:5%;
+
   @media screen and (max-width: $mobile-small) {
-    width: 45px;
+    width: 5px;
     height:55px;
-    margin:0 1%;
+    margin:0 3%;
     background-size:contain;
   }
   @media screen and (max-width: $mobile-large) {
-    width: 45px;
+    width: 35px;
     height:55px;
     margin:0 1%;
     background-size:contain;
@@ -556,7 +557,7 @@ canvas{
   position: relative;
   z-index: 997;
   width: 300px;
-  margin-left:350px;
+  margin-left:50%;
   margin-top:60px;
   transition:background-image 0s;
   transition: .5s;

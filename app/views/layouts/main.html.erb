@@ -28,31 +28,31 @@
       <form class="signup col s12" ng-submit="ac.createUser()">
 
           <div class="input-field">
-              <input class='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
+              <input placeholder=' ' class='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
               <label for='name'>Name</label>
           </div>
 
           <div class="input-field">
-              <input class='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
+              <input class='password' placeholder=' ' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
               <label for='password'>Password (at least 8 characters)</label>
           </div>
 
               <div class="input-field">
-                  <input id='gotchiname' class='validate' type="text" ng-model="ac.user.gotchi_name">
+                  <input id='gotchiname' placeholder=' ' class='validate' type="text" ng-model="ac.user.gotchi_name">
                   <label for='gotchiname'>Name your Andeddogotchi</label>
               </div>
 
-          <input class='button cutesound'  type="submit" value="Let's Go!">
+          <input class='button cutesound' type="submit" value="Let's Go!">
       </form>
       <!-- LOG IN -->
       <h3 id='togglelog'>or click here to log in</h3>
       <form class="col s12 login" ng-submit="ac.login()">
           <div class="input-field">
-              <input class='name' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
+              <input class='name' placeholder=' ' class="disable-by-facebook validate" type="text" ng-model="ac.user.name">
               <label for="name">Name</label>
           </div>
           <div class="input-field">
-              <input class='password' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
+              <input class='password' placeholder=' ' class="disable-by-facebook validate" type="password" ng-model="ac.user.password">
               <label for="password">Password</label>
           </div>
           <input class="button cutesound" type="submit" value="Play!">
@@ -85,7 +85,7 @@ $('#new').on('click', function(){
    </br></br>
    <div class='row'>
      <div class="input-field">
-       <input id='gotchiname' class='validate' type="text" ng-model="ac.newName">
+       <input id='gotchiname' placeholder=' ' class='validate' type="text" ng-model="ac.newName">
        <label for='gotchiname'>Name your new Andeddogotchi</label>
      </div>
    </div>
@@ -157,6 +157,7 @@ $('#new').on('click', function(){
     <div ng-class="ac.loggedIn ?  'bathtub': 'notShown'"></div>
     <!-- FOOD ANIMATION-->
     <div class='food'></div>
+    <div class='footfood'></div>
     <!-- GRAVE YARD -->
     <div class='yard'>
     <div class='grave'></div>
@@ -280,6 +281,31 @@ $('.cutesound').on('click', function(){
   loadingSound.play();
 })
 
+
+
+$('.foot').on('click', function(){
+$('.footfood').addClass('eat');
+$('.eye').addClass('happy');
+$('.mouth').addClass('happy');
+$('.gotchi-1').addClass('happy');
+$('.gotchi-3').addClass('happy');
+$('.messagealert2').addClass('hidemessage');
+foodSound.play();
+setTimeout(function(){
+  $('.footfood').removeClass('eat');
+  if(($('.thegotchi').hasClass('gotchi-1'))){
+    $('.eye').removeClass('happy');
+    $('.mouth').removeClass('happy');
+  }
+  $('.gotchi-1').removeClass('happy');
+  $('.gotchi-3').removeClass('happy');
+},1000)
+})
+
+$('.cutesound').on('click', function(){
+  loadingSound.play();
+})
+
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>VELOCITY ANIMATIONS<><><><><><><><><>*/
@@ -296,8 +322,11 @@ $('.brain').on('mouseout', function(){
 
 })
 
-setInterval(function(){
-  $('.thegotchi').velocity({marginLeft: '450px'},2000).velocity({marginLeft: '350px'},2000);
+var cuteSlide = setInterval(function(){
+  $('.thegotchi').velocity({marginLeft: '40vw'},2000).velocity({marginLeft: '30vw'},2000);
 },5000)
+
+
+
 
 </script>
