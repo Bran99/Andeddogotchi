@@ -51,14 +51,14 @@ app.controller('andeddoController',["$http", function($http){
   this.user = {};
   this.gotchi = {};
   this.gotchiName;
-  this.loggedIn = false;
+  this.loggedIn;
   this.newName;
   this.isDead;
   this.helper_shown;
+  this.fbName;
   var controller = this;
 
   angular.element(document).ready(function () {
-    // readyFunction();
     controller.checkLogin();
   });
 
