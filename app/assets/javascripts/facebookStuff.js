@@ -1,3 +1,40 @@
+
+
+
+/*
+                               .--.
+                              /  ..\
+                         ____.'  _o/
+          .--.          '--.     |.__
+         /..  \         _.-'     /--'
+         \ o  /    _.--'        /
+         /    \   ~'--....___.-'   
+        /      \
+       (/      \)      ,_
+        |      \        |`\
+         \      '._     \  `'-._
+          '._      '-.   \      '-._/)
+             `'- ,~- _.`  '.        '.--.
+                            `-.,    / ..`\
+          .--.                 //'-.   o /
+         /..  \               (/     '--'
+         \o _ (____
+       __.|    .--'
+      '---\    '.         ,
+           '.    '-.___.-'/
+             '-.__     _.'
+                  `````
+
+////////////////////////////////
+//ANDEDDOGOTCHI GROUP PROJECT///
+////////////////////////////////
+// AUTHORS: Aarati Akkapeddi ///
+//          Brandon Goodman ////
+// PM:      Reshum Panchal /////
+// UX:      Rosemary      //////
+////////////////////////////////
+
+
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
   // console.log('statusChangeCallback');

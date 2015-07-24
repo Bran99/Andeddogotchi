@@ -136,7 +136,7 @@ $('#new').on('click', function(){
       <div class='bar'>
         <div class='fillhealth'></div>
       </div>
-      <label>Age: {{ac.gotchiLife}}</label>
+      <label id='ageness'>Age: {{ac.gotchiLife}}</label>
 
 
         <span class='agedisplay'>{{ac.gotchi.age}} afterlife days old</span>
@@ -282,7 +282,7 @@ $('.cutesound').on('click', function(){
 
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
-/*<><><><><>VELOCITY SHIT<><><><><><><>*/
+/*<><><><><><><><>VELOCITY ANIMATIONS<><><><><><><><><>*/
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 
@@ -297,7 +297,7 @@ $('.brain').on('mouseout', function(){
 })
 
 setInterval(function(){
-  $('.thegotchi').velocity({marginLeft: '550px'},2000).velocity({marginLeft: '350px'},2000);
+  $('.thegotchi').velocity({marginLeft: '450px'},2000).velocity({marginLeft: '350px'},2000);
 },5000)
 
 </script>
