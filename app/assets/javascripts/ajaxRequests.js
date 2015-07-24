@@ -1,30 +1,3 @@
-
-
-
-/*
-                               .--.
-                              /  ..\
-                         ____.'  _o/
-          .--.          '--.     |.__
-         /..  \         _.-'     /--'
-         \ o  /    _.--'        /
-         /    \   ~'--....___.-'   
-        /      \
-       (/      \)      ,_
-        |      \        |`\
-         \      '._     \  `'-._
-          '._      '-.   \      '-._/)
-             `'- ,~- _.`  '.        '.--.
-                            `-.,    / ..`\
-          .--.                 //'-.   o /
-         /..  \               (/     '--'
-         \o _ (____
-       __.|    .--'
-      '---\    '.         ,
-           '.    '-.___.-'/
-             '-.__     _.'
-                  `````
-
 ////////////////////////////////
 //ANDEDDOGOTCHI GROUP PROJECT///
 ////////////////////////////////
@@ -33,7 +6,7 @@
 // PM:      Reshum Panchal /////
 // UX:      Rosemary      //////
 ////////////////////////////////
-*/
+
 
 var token = $('[name="csrf-token"]').attr('content'),
     isSleeping = 60000,
@@ -157,7 +130,7 @@ var pageTick = function () {
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
-///////////////// CLICK BRAIN ////////////////
+///////////////// CLICK FOOD /////////////////
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 
@@ -167,6 +140,29 @@ $('.brain').on('click', function (e) {
     method: "PATCH",
     data: { "authenticity_token": token,
             gotchi: {health_action: "brain"}
+          },
+    success: function(data) {
+      fullFill = ((data.fullity / 100) * $('.bar').width())
+      $('.fillfull').css('width', fullFill);
+      console.log(data.fullity);
+      if(data.fullity > 50){
+        $('.fillfull').css('background-color', 'lightgreen');
+      }
+      fullity = data.fullity;
+      isDead();
+    },
+    failure: function(data){
+      console.log(data);
+    }
+  })
+})
+
+$('.foot').on('click', function (e) {
+  $.ajax({
+    url: "/gotchis",
+    method: "PATCH",
+    data: { "authenticity_token": token,
+            gotchi: {health_action: "foot"}
           },
     success: function(data) {
       fullFill = ((data.fullity / 100) * $('.bar').width())

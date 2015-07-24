@@ -1,30 +1,3 @@
-
-
-
-/*
-                               .--.
-                              /  ..\
-                         ____.'  _o/
-          .--.          '--.     |.__
-         /..  \         _.-'     /--'
-         \ o  /    _.--'        /
-         /    \   ~'--....___.-'   
-        /      \
-       (/      \)      ,_
-        |      \        |`\
-         \      '._     \  `'-._
-          '._      '-.   \      '-._/)
-             `'- ,~- _.`  '.        '.--.
-                            `-.,    / ..`\
-          .--.                 //'-.   o /
-         /..  \               (/     '--'
-         \o _ (____
-       __.|    .--'
-      '---\    '.         ,
-           '.    '-.___.-'/
-             '-.__     _.'
-                  `````
-
 ////////////////////////////////
 //ANDEDDOGOTCHI GROUP PROJECT///
 ////////////////////////////////
@@ -107,7 +80,7 @@ function bloodbath(){
         function Particle(){
           this.x = 480;
           this.y = 180;
-       
+
           //Random speeds
           this.vx = Math.random() * 20 -10;
           this.vy = Math.random() * 20 -10;
@@ -132,7 +105,7 @@ function bloodbath(){
 
           //simulate gravity
           this.vy += this.gravity;
-   
+
           //So blood is diff shades of red (50 shades exactly, jk)
           c.fillStyle = 'rgb('
              +( Math.floor(Math.random() * 255) + 150)+','
@@ -183,10 +156,6 @@ function bloodbath(){
 
         });
 
-       
+
 
 };
-
-
-
-
