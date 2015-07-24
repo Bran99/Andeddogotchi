@@ -269,10 +269,18 @@ form{
   margin-left:90%;
   z-index: 9999;
   @media screen and (max-width: $mobile-small) {
-    margin-top:1%;
+    top:0;
+    margin-top: 0;
+    right:0;
+    font-size: .7em;
+    padding:2px;
   }
   @media screen and (max-width: $mobile-large) {
-     margin-top:1%;
+     top:0;
+     margin-top:0;
+     right:0;
+     font-size:.7em;
+     padding:2px;
   }
   
 }
@@ -517,6 +525,12 @@ canvas{
   -webkit-animation-name: floating;
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
+  @media screen and (max-width: $mobile-small) {
+    top:20vh;
+  }
+  @media screen and (max-width: $mobile-large) {
+    top:20vh;
+  }
 }
 
 .messagealert2{
@@ -534,6 +548,12 @@ canvas{
   -webkit-animation-name: floating;
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
+  @media screen and (max-width: $mobile-small) {
+    top:20vh;
+  }
+  @media screen and (max-width: $mobile-large) {
+    top:20vh;
+  }
 }
 
 .messagealert3{
@@ -551,6 +571,12 @@ canvas{
   -webkit-animation-name: floating;
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
+  @media screen and (max-width: $mobile-small) {
+    top:20vh;
+  }
+  @media screen and (max-width: $mobile-large) {
+    top:20vh;
+  }
 }
 
 
@@ -581,6 +607,14 @@ canvas{
   margin-top:-13px;
   margin-left: -9px;
   z-index: -1;
+  @media screen and (max-width: $mobile-small) {
+    margin-top:-5px;
+    margin-left: 10px;
+  }
+  @media screen and (max-width: $mobile-large) {
+    margin-top:-5px;
+    margin-left: 10px;
+  }
 
 }
 .triangle3{
@@ -592,6 +626,14 @@ canvas{
   margin-top:-13px;
   margin-left:-9px;
   z-index: -1;
+  @media screen and (max-width: $mobile-small) {
+    margin-top:-5px;
+    margin-left: 10px;
+  }
+  @media screen and (max-width: $mobile-large) {
+    margin-top:-5px;
+    margin-left: 10px;
+  }
 
 }
 
@@ -633,10 +675,8 @@ canvas{
     margin:0 auto;
     flex-direction:row;
     flex-wrap:wrap;
-    padding-top:5vh;
-    padding-left:0;
-    padding-right:0;
-
+    padding:0;
+    border-radius:none;
 
   }
   @media screen and (max-width: $mobile-large) {
@@ -647,6 +687,7 @@ canvas{
     flex-direction:row;
     flex-wrap:wrap;
     padding:0;
+    border-radius:none;
   }
 
     label{
@@ -1124,7 +1165,21 @@ canvas{
   }
 }
 
-
+.gname.small{
+  display:none;
+  font-size:1.2em;
+  position:absolute;
+  bottom:25vh;
+  z-index: 9999;
+  margin-left:-5vw;
+  margin-top:-3vh;
+  @media screen and (max-width: $mobile-small) {
+    display:block;
+  }
+  @media screen and (max-width: $mobile-large) {
+    display:block;
+  }
+}
 .gotchi.died{
   opacity: .7;
   -webkit-filter: grayscale(100%);
@@ -1165,17 +1220,33 @@ canvas{
   opacity: 1;
   width:80px;
   height:80px;
-  margin-top:-500px;
+  margin-top:-450px;
   margin-left: 300px;
   transition:1s;
+  @media screen and (max-width: $mobile-small) {
+    margin-top:-70px;
+    margin-left: 200px;
+  }
+  @media screen and (max-width: $mobile-large) {
+    margin-top:-200px;
+    margin-left: 100px;
+  }
 }
 .footfood.eat{
   opacity: 1;
   width:80px;
   height:80px;
-  margin-top:200px;
+  margin-top:100px;
   margin-left: 300px;
   transition:1s;
+  @media screen and (max-width: $mobile-small) {
+    margin-top:10px;
+    margin-left: 100px;
+  }
+  @media screen and (max-width: $mobile-large) {
+    margin-top:10px;
+    margin-left: 100px;
+  }
 }
 /*<><><><><><><>TUB<><><><><><><>*/
 
@@ -1205,11 +1276,13 @@ canvas{
     width: 350px;
     height:350px;
     margin-top:-200px;
+    margin-left:15vw;
   }
   @media screen and (max-width: $mobile-large) {
     width: 350px;
     height:350px;
     margin-top:-200px;
+    margin-left:15vw;
   }
 }
 

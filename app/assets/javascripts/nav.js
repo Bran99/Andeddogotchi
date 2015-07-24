@@ -47,6 +47,20 @@ var loadingSound;
         //$.get();
       });
 
+  var footSound;
+      $(document).ready(function() {
+        footSound = document.createElement('audio');
+        footSound.setAttribute('src', '/assets/foot.wav'); //filler audio for now
+        //audioElement.load()
+        //$.get();
+      });
+  var graveSound;
+      $(document).ready(function() {
+        graveSound = document.createElement('audio');
+        graveSound.setAttribute('src', '/assets/grave.wav'); //filler audio for now
+        //audioElement.load()
+        //$.get();
+      });
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

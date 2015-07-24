@@ -22,7 +22,7 @@ var iw = $('body').innerWidth();
           $(window).resize(function(){
                      //initial drawing of canvas and append to body
               iw = $('body').innerWidth();
-              canvas.width = iw;
+              canvas.width = $('.play').width()+50;
               canvas.height = $('.play').height()+50;
               var grd = c.createLinearGradient(0, 0, canvas.width, canvas.height);
               grd.addColorStop(0, '#000');
@@ -81,7 +81,18 @@ var iw = $('body').innerWidth();
 
         function Particle(){
           this.x = (iw/10) * 3.5;
-          this.y = 150;
+         
+          that = this;
+          if(iw < 670){
+            that.y = 250;
+          } else{
+            that.y = 150;
+          }
+          if(iw < 670){
+            that.x = (iw/10) * 4.5;
+          } else{
+            that.x = (iw/10) * 3.5;
+          }
 
           //Random speeds
           this.vx = Math.random() * 20 -10;

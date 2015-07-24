@@ -159,6 +159,7 @@ $('#new').on('click', function(){
     <div class='food'></div>
     <div class='footfood'></div>
     <!-- GRAVE YARD -->
+    <h3 class="gname small">{{ac.gotchiName}}</h3>
     <div class='yard'>
     <div class='grave'></div>
     <div class='grave'></div>
@@ -215,9 +216,6 @@ console.log('cat');
     showerSound.play();
       //if its not clicked bring on the bloood
       setTimeout(bloodbath,1000);
-      $('.gotchi-1').addClass('turn');
-      $('.gotchi-2').addClass('turn');
-      $('.gotchi-3').addClass('turn');
       $('.bathtub').addClass('bathtubshow');
       $('.eye').addClass('turn');
       $('.sun').addClass('gray');
@@ -290,7 +288,7 @@ $('.mouth').addClass('happy');
 $('.gotchi-1').addClass('happy');
 $('.gotchi-3').addClass('happy');
 $('.messagealert2').addClass('hidemessage');
-foodSound.play();
+footSound.play();
 setTimeout(function(){
   $('.footfood').removeClass('eat');
   if(($('.thegotchi').hasClass('gotchi-1'))){
@@ -306,6 +304,10 @@ $('.cutesound').on('click', function(){
   loadingSound.play();
 })
 
+
+$('.grave:nth-child(2)').on('mouseover',function(){
+  graveSound.play();
+})
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>><><><><><><><><><><><><><><><><><><>*/
 /*<><><><><><><><>VELOCITY ANIMATIONS<><><><><><><><><>*/
