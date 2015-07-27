@@ -8,7 +8,7 @@ lo
           .--.          '--.     |.__
          /..  \         _.-'     /--'
          \ o  /    _.--'        /
-         /    \   ~'--....___.-'   
+         /    \   ~'--....___.-'
         /      \
        (/      \)      ,_
         |      \        |`\
@@ -282,7 +282,7 @@ form{
      font-size:.7em;
      padding:2px;
   }
-  
+
 }
 /*<><><><><>DEATH MODAL<<><><><><>*/
 .death{
@@ -332,7 +332,7 @@ form{
       display: inline-block;
     }
   }
- 
+
  .fb_iframe_widget span{
   width:20px;
   height:20px;
@@ -347,8 +347,8 @@ form{
         height:20px;
       }
   }
-  
-  
+
+
   span{
     font-size: 0px;
   }
@@ -810,7 +810,7 @@ canvas{
     display:inline-block;
   }
   }
-  
+
   }
   }
 
@@ -831,7 +831,7 @@ canvas{
     margin-top:0;
 
   }*/
-  
+
 }
 
 
@@ -921,7 +921,7 @@ canvas{
   background-color: black;
   border-radius:20%;
   margin-top:5%;
-  
+
   @media screen and (max-width: $mobile-small) {
     width: 5px;
     height:55px;
@@ -1166,7 +1166,8 @@ canvas{
 }
 
 .gname.small{
-  display:none;
+  display:block;
+  visibility:hidden;
   font-size:1.2em;
   position:absolute;
   bottom:25vh;
@@ -1174,10 +1175,10 @@ canvas{
   margin-left:-5vw;
   margin-top:-3vh;
   @media screen and (max-width: $mobile-small) {
-    display:block;
+    visibility: visible;
   }
   @media screen and (max-width: $mobile-large) {
-    display:block;
+    visibility: visible;
   }
 }
 .gotchi.died{
@@ -1362,4 +1363,3 @@ canvas{
   height:Calc(20% + 5px);
   margin-top:5%;
 }
-
