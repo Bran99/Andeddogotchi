@@ -1166,8 +1166,7 @@ canvas{
 }
 
 .gname.small{
-  display:block;
-  visibility:hidden;
+  display:none;
   font-size:1.2em;
   position:absolute;
   bottom:25vh;
@@ -1175,10 +1174,10 @@ canvas{
   margin-left:-5vw;
   margin-top:-3vh;
   @media screen and (max-width: $mobile-small) {
-    visibility: visible;
+    display: block;
   }
   @media screen and (max-width: $mobile-large) {
-    visibility: visible;
+    display: block;
   }
 }
 .gotchi.died{
