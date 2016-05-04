@@ -2,7 +2,7 @@
 lock '3.5.0'
 
 set :application, 'Andeddogotchi'
-set :repo_url, 'git@github.com:bran99/andeddogotchi.git' # Edit this to match your repository
+set :repo_url, 'git@github.com:Bran99/Andeddogotchi.git' # Edit this to match your repository
 set :branch, :master
 set :deploy_to, '/home/deploy/andeddogotchi'
 set :pty, false
